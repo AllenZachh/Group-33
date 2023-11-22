@@ -1,0 +1,58 @@
+
+body{
+    background-color: rgb(132, 165, 184);
+}
+.topnav {
+    background-color: rgb(179, 218, 241, 0.6);
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.imgtopnav {
+
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+}
+
+.topnav a {
+    float: right;
+    color: rgb(66, 104, 124);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+.topnav a.active {
+    background-color: rgb(203,203,203);
+    color: white;
+}
+.topnav a:hover {
+    background-color: rgb(66, 104, 124);
+    color: black;
+}
+
+
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    background-color: rgb(179, 218, 241, 0.6);
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 30px;
+
+}
+.socialmedia{
+    width: 50%;
+    color: rgb(66, 104, 124);
+    transition: color 0.5s;
+    text-decoration: none;
+    margin: 10px;
+}
+.socialmedia:hover{
+    color: rgb(0,0,0)
+}
