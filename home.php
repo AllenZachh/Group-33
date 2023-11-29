@@ -1,3 +1,10 @@
+<?php
+
+    session_start();
+    require_once('connectdb.php');
+
+?>
+
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/style.css" >
 <script src="./js/script.js"></script>
@@ -19,6 +26,11 @@
             <a class="active" href="home.html">Home
                 <ion-icon name="home"></ion-icon>
             </a>
+            <?php
+                if (isset($_SESSION["username"])){ 
+                    echo "<a>Logged in as ".$_SESSION['username']."</a>";
+                  }
+            ?>
             <div class="imgtopnav"></div>
             <img src="images/Glacier Guys.png" alt="pic">
             <div class="search-container">
@@ -29,13 +41,24 @@
              </div>
              <div class="Coats">
                 <h2>Coats</h2>
-                <div id="Coats">
-                  <img src="images/Coat1.png" alt="Coat">
+                <div id="Coats" class="center">
+                  <?php
+
+                    // Prints image for all products containing the keyword "Coat"
+                    $query="SELECT imageFilePath FROM product WHERE keywords LIKE '%Coat%'";
+                    $rows = $db->query($query);
+                    $rows = $rows->fetchAll();
+                    while (current($rows)) {
+                        echo "<img src='".current($rows)['imageFilePath']."' class='center'>";
+                        next($rows);
+                    }
+                  ?>
                   
                 </div>
 
 
           </div>
+          
     
 
     <footer>
