@@ -1,9 +1,9 @@
 <?php
 
     $db_host = 'localhost';
-    $db_name = 'u_220136264_glacier_guys';
-    $username = 'u-220136264';
-    $password = 'nblCSkWM51PO69M';
+    $db_name = 'glacier_guys';
+    $username = 'root';
+    $password = '';
 
 
     # Attemp to connect to database, otherwise catch and report error
