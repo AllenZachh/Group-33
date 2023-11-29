@@ -1,41 +1,72 @@
 <?php
 
-  if (isset($_POST["submitted"])){
 
-    require_once('connectdb.php');
+  function register(){
+    if (isset($_POST["submitted"])){
 
-    $username=isset($_POST["username"])?$_POST["username"]:false;
-    $email=isset($_POST["email"])?$_POST["email"]:false;
-    if ($_POST['password']==$_POST['password_2']){
-      $password=isset($_POST["password"])?password_hash($_POST['password'],PASSWORD_DEFAULT):false;
-    } else {
-      echo "Error creating account - passwords do not match";
+      require_once('connectdb.php'); 
+    
+      $username=isset($_POST["username"])?$_POST["username"]:false; // set variable username to entered username
+      $email=isset($_POST["email"])?$_POST["email"]:false; // set variable email to entered email
+      
+      //compare passwords to make sure theyre the same, then set variable password to the hashed entered password
+      if ($_POST['password']==$_POST['password_2']){
+        $password=isset($_POST["password"])?password_hash($_POST['password'],PASSWORD_DEFAULT):false;
+      } else {
+        return "Error creating account - passwords do not match";
+      }
+
+      // catch emtpy variables
+      if (!($username)){
+        return "Error creating account - no username given";
+      }
+      if (!($email)){
+        return "Error creating account - no email given";
+      }
+      if (!($password)){
+        return "Error creating account - no password given";
+      }
+
+      // Try to query the database, catch is theres an error connecting to the database
+      try{
+      if (!isset($db)){return "<p style='color:red'>Failed to connect to the database</p>";}
+
+      // Make sure the username is not already in use
+      $stmt = $db->prepare("SELECT username FROM user WHERE username = :username");
+      $stmt->execute(['username' => $username]);
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      if (!empty($user)){
+        return '<p>Username already taken!<p>';
+      }
+
+      // Make sure the email is not already in use
+      $stmt = $db->prepare("SELECT email FROM user WHERE email = :email");
+      $stmt->execute(['email' => $email]);
+      $user = $stmt->fetch(PDO::FETCH_ASSOC);
+      if (!empty($user)){
+        return '<p>Email already taken!<p>';
+      }
+
+      // Try to add the new user entry into the database
+
+        $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`) VALUES (NULL, ?, ?, ?)');
+			  $stat->execute(array($username, $password, $email));
+        $created = True;
+        header("Location:login.php");
+
+      } catch (PDOexception $ex){
+        $error = TRUE;
+      }
+
+      if ($created == TRUE){
+        return "<p>Sign-Up Sucessful!</p>";
+      }
+      if ($error == TRUE){
+        return "<p style='color:red'>Failed to connect to the database</p>";
+      }
+
     }
-
-    if (!($username)){
-      echo "Error creating account - no username given";
-      exit;
-    }
-    if (!($email)){
-      echo "Error creating account - no email given";
-      exit;
-    }
-    if (!($password)){
-      echo "Error creating account - no password given";
-      exit;
-    }
-
-    try{
-
-      $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`) VALUES (NULL, ?, ?, ?)');
-			$stat->execute(array($username, $password, $email));
-      //header("Location:login.php");
-
-    } catch (PDOexception $ex){
-      $error = TRUE;
-    }
-
-  }
+  } 
 
 ?>
 <!DOCTYPE html>
@@ -52,16 +83,6 @@
           <img src="images/logo.jpg"/>
           <h1>Welcome to Glacier Guy's Gear!!!</h1>
           <p>Please fill in this form to create an account and join the family.</p>
-          <?php 
-            global $created, $error;
-            if ($created == TRUE){
-              echo "<h3>Sign-Up Sucessful!</h3>";
-            }
-            if ($error == TRUE){
-              echo "<h3 style='color:red'>Failed to connect to the database</h3>";
-            }
-            echo "<br>"
-          ?>
           <form method='post' action='register.php'>
             <label for="email"><b>Username</b></label>
             <input type="text" placeholder="Enter Username" name="username" id="username" required>
@@ -79,6 +100,7 @@
             <button type="submit" class="registerbtn">Register</button>
             <input type="hidden" name="submitted" value="true">
           </form>
+          <?php echo register(); ?>
           <p>Already have an account? <a href="login.php">Sign in</a>.</p>
           <p><a href="home.html">Go back to the homepage</a>.<p>
 
