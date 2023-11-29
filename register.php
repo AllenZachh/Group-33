@@ -48,7 +48,7 @@
 
       // Try to add the new user entry into the database
 
-        $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`) VALUES (NULL, ?, ?, ?)');
+        $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`) VALUES (NULL, ?, ?, ?, "user")');
 			  $stat->execute(array($username, $password, $email));
         $created = True;
         header("Location:login.php");
@@ -101,7 +101,7 @@
           </form>
           <?php echo register(); ?>
           <p>Already have an account? <a href="login.php">Sign in</a>.</p>
-          <p><a href="home.html">Go back to the homepage</a>.<p>
+          <p><a href="home.php">Go back to the homepage</a>.<p>
 
         </div>
       </form>

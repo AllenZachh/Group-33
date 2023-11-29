@@ -65,7 +65,7 @@
         <?php echo login(); ?>
         <p>Don't have an account?<a href="register.php">Register Now!</a>.</p>
 
-        <p><a href="index.html">Go back to the homepage</a>.<p>
+        <p><a href="home.php">Go back to the homepage</a>.<p>
 
       </div>
 </body>
