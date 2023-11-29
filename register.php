@@ -1,6 +1,5 @@
 <?php
 
-
   function register(){
     if (isset($_POST["submitted"])){
 
