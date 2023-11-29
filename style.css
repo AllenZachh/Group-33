@@ -1,58 +1,233 @@
+/* header.html css*/
 
-body{
-    background-color: rgb(132, 165, 184);
+.logo{
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  width: 10%;
 }
-.topnav {
-    background-color: rgb(179, 218, 241, 0.6);
-    overflow: hidden;
-    font-family: Arial, Helvetica, sans-serif;
-}
-.imgtopnav {
-
-  max-width: 100%;
-  max-height: 100%;
-  width: auto;
-  height: auto;
-}
-
-.topnav a {
-    float: right;
-    color: rgb(66, 104, 124);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-.topnav a.active {
-    background-color: rgb(203,203,203);
-    color: white;
-}
-.topnav a:hover {
-    background-color: rgb(66, 104, 124);
-    color: black;
-}
-
-
-
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
+.logo img{
+    height: 100%;
     width: 100%;
-    height: 5%;
-    background-color: rgb(179, 218, 241, 0.6);
+    object-fit: contain;
+  }
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #84A5B8;
+  }
+  
+.navigation li {
+    float: left;
+  }
+  
+.navigation  li a {
+    display: block;
+    color: white;
     text-align: center;
-    padding: 14px 16px;
-    font-size: 30px;
+    padding: 10px 25px;
+    text-decoration: none;
+  }
+  
+.navigation  li a:hover {
+    background-color: #B3DAF1;
+  }
+
+.navright {
+    float: right;
+}
+
+/* product_page.html css*/
+
+.h3 {
+  font-family:serif ;
+  font-weight: bold;
+}
+
+
+.productcontainer .box{
+display: flex;
+flex-direction: row;
+}
+
+.pname {
+    float: left;
+    margin-left: 0%;
+}
+
+.productimage {
+    float: left;
+    size: 60%;
+}
+
+.productinfo{
+    float: left;
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: left;
+}
+/* size select style */
+.size {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .size input[type="radio"] {
+    opacity: 0;
+    width: 0;
+  }
+  
+  .size label {
+    cursor: pointer;
+      display:inline-block;
+      background-color: #CBCBCB;
+      padding: 10px 20px;
+      font-family: 'Times New Roman', Times, serif;
+      border: 2px solid #707571;
+  }
+  
+  .size label:hover {
+    background-color: #B3DAF1;
+    border-color:#4884a7 ;
+  }
+  
+ 
+  
+  .size input[type="radio"]:checked + label {
+      background-color: #B3DAF1;
+      border-color: #618ea7;
+  }
+
+
+/* color select*/
+  .colors img {
+    
+      width: 100px;
+      height: 150px;
+      object-fit: contain;
+    
+  }
+  .colors {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .colors input[type="radio"] {
+    opacity: 0;
+    width: 0;
+  }
+  
+  .colors label {
+    cursor: pointer;
+      display:inline-block;
+      background-color: #CBCBCB;
+      border: 2px solid #707571;
+  }
+  
+  .colors label:hover {
+    background-color: #B3DAF1;
+    border-color:#4884a7 ;
+  }
+  
+ 
+  
+  .colors input[type="radio"]:checked + label {
+      background-color: #B3DAF1;
+      border-color: #618ea7;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .cart a button {
+    background-color: #42687C;
+    display:block;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    
+  }
+
+  .cart h1{
+    text-align: right;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/* register.html and login.html style*/
+
+ .bgimg {
+    background-image: url('background.jpg');
+    background-size: cover;
+}
+
+.lgrcontainer img {
+  height: inherit;
+  width: inherit;
+}
+
+.lgrcontainer {
+  width: 50%;
+ margin: auto;
+  padding: 70px 0;
+  background-color: white;
+  opacity: 70%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.lgrcontainer h1 {
+  text-align: center;
+  font: 1em sans-serif;
 
 }
-.socialmedia{
-    width: 50%;
-    color: rgb(66, 104, 124);
-    transition: color 0.5s;
-    text-decoration: none;
-    margin: 10px;
+
+.card {
+  margin: auto;
+  width: 25%;
+  height: 50%;
+  padding: 20px;
+  background-color: white;
+  border: #42687C;
+  border-color:#42687C; 
+
 }
-.socialmedia:hover{
-    color: rgb(0,0,0)
+
+.card button {
+  border: none;
+  background-color: #618ea7;
+  width: max-content;
+  cursor: pointer;
 }
