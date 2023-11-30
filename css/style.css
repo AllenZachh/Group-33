@@ -1,12 +1,15 @@
 
 body{
     background-color: rgb(132, 165, 184);
+    height: 10000px;
 
 }
+
 .topnav {
     background-color: rgb(179, 218, 241, 0.6);
     overflow: hidden;
     font-family: Arial, Helvetica, sans-serif;
+    position: relative;
 }
 
 
@@ -38,51 +41,208 @@ body{
   
 .search-container {
     text-align: center; 
-    margin-top: 0px;
-    border-radius: 5px; 
-    background-color: rgb(179, 218, 241,); 
-  }
-  
-  input[type="text"] {
+    margin-top: 20px; 
+}
+
+
+.glacier-guys {
+    color: #70c9ff; 
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    line-height: 60px;
+    margin-top: 25px;
+    font-weight: bold;
+    background: linear-gradient(to right, #fff, #70c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 3px #ffffff;
+}
+
+.subtitle {
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 17px;
+    text-align: center;
+    font-style: italic;
+    background: linear-gradient(to right, #fff, #70c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 2px #ffffff; 
+}
+
+input[type="text"] {
     padding: 8px;
-    width: 200px;
     border: none;
-    border-radius: 20px;
-  }
+    outline: none;
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    width: 200px;
+    transition: border-color 0.3s; 
+}
+
+input[type="text"]:hover {
+    border-bottom: 1px solid rgb(132, 165, 184);
+}
+
+input[type="text"]:focus {
+    border-bottom: 1px solid white; 
+}
+
+input[type="text"]:focus,
+input[type="text"]:hover {
+    transition: border-color 0.3s; 
+}
+
+
+
   
-  button {
+.custom-button {
     padding: 8px 16px;
     margin-left: 10px;
+    box-shadow: none;
     cursor: pointer;
-    border-radius: 20px; 
-  }
-  
-  
+    border: none;
+    background-color: transparent;
+    color: rgb(0, 0, 0);
+    position: relative;
+}
+
+.custom-button::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: black;
+    transition: transform 0.3s ease;
+    transform-origin: left;
+    transform: scaleX(0);
+}
+
+.custom-button:hover::before {
+    transform-origin: right;
+    transform: scaleX(1);
+}
+
+.custom-button:hover {
+    color: rgb(150, 150, 150)
+}
+
+.original-img {
+    display: block;
+}
+
+.hover-img {
+    display: none;
+}
+
+.coat-item:hover .original-img {
+    display: none;
+}
+
+.coat-item:hover .hover-img {
+    display: block;
+}
+
+.hat-item:hover .original-img {
+    display: none;
+}
+
+.hat-item:hover .hover-img {
+    display: block;
+}
+
+
   .Coats {
     position: relative;
-    height: 1600px; 
-  }
-  
-  .Coats h2 {
-    position: absolute;
-    top: 650px;
-    left: 7%;
-    transform: translateX(-50%);
+    height: auto;
+}
+
+.Coats h2 {
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  #Coats {
-    position: absolute;
-    top: 700px; 
-    left: 25%;
-    transform: translateX(-50%);
-  }
-  
-  #Coats img {
-    display: block;
-    max-width: 25%;
-  }
+    margin-top: 1600px; 
+    background: linear-gradient(to right, #fff, #70c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 5px #ffffff;
+    
+}
+
+.images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px; 
+}
+
+.coat-item {
+    text-align: center;
+    margin: 20px;
+}
+
+.coat-text {
+    font-size: 14px; 
+    margin-top: 5px; 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.images-container img {
+    width: 230px;
+    height: 334px;
+    margin: 30px;
+}
+
+
+.Hats {
+    position: relative;
+    height: auto;
+    margin-top: 500px;
+}
+
+.Hats h2 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    background: linear-gradient(to right, #fff, #70c9ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0px 0px 5px #ffffff;
+}
+
+.Hats .images-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.Hats .images-container img {
+    width: 230px;
+    height: 230px;
+    margin: 30px; 
+}
+
+.hat-item {
+    text-align: center;
+    margin: 20px;
+}
+
+.hat-text {
+    font-size: 14px;
+    margin-top: 5px;
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
 
@@ -108,11 +268,4 @@ footer {
 }
 .socialmedia:hover{
     color: rgb(0,0,0)
-}
-
-.center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
 }
