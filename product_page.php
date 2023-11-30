@@ -2,6 +2,7 @@
 
     session_start();
     require_once('connectdb.php');
+    // Quieries the database using the html tag, then stores information regarding the item selected
     $product = htmlspecialchars($_GET["select_product"]);
     $query="SELECT * FROM product WHERE productid = $product";
         $rows = $db->query($query);
