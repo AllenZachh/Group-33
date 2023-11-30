@@ -17,6 +17,9 @@
         <div class="topnav">
    
               <div id="searchResults"></div>
+            <a href="login.php">Log-In
+                <ion-icon name="login-outline"></ion-icon>
+            </a>
             <a href="basket.html">View Basket
                 <ion-icon name="basket-outline"></ion-icon>
             </a>
@@ -44,20 +47,47 @@
                 <div id="Coats" class="center">
                   <?php
 
-                    // Prints image for all products containing the keyword "Coat"
-                    $query="SELECT imageFilePath FROM product WHERE keywords LIKE '%Coat%'";
+                    // Queries the database to find all productTypes with the keyword "Coat", Then displays each type once
+                    $query= "SELECT * FROM producttype WHERE keywords LIKE '%Coat%'";
                     $rows = $db->query($query);
                     $rows = $rows->fetchAll();
-                    while (current($rows)) {
-                        echo "<img src='".current($rows)['imageFilePath']."' class='center'>";
-                        next($rows);
+                    foreach ($rows as $row){
+                        $query= "SELECT * FROM product WHERE productTypeid = ".$row['productTypeid']." LIMIT 1";
+                        $rows = $db->query($query);
+                        $rows = $rows->fetchAll();
+                        while (current($rows)) {
+                            echo "<a href='product_page.php?select_product=".current($rows)['productid']."'><img src='".current($rows)['imageFilePath']."' class='center'></a>";
+                            next($rows);
+                        }
+                    }
+                  ?>
+
+
+
+          </div>
+
+          </div>
+                <div class="T-shirts">
+                <h2>T-Shirts</h2>
+                <div id="T-shirts">
+                  <?php
+
+                    // Queries the database to find all productTypes with the keyword "T-Shirt", Then displays each type once
+                    $query= "SELECT * FROM producttype WHERE keywords LIKE '%T-Shirt%'";
+                    $rows = $db->query($query);
+                    $rows = $rows->fetchAll();
+                    foreach ($rows as $row){
+                        $query= "SELECT * FROM product WHERE productTypeid = ".$row['productTypeid']." LIMIT 1";
+                        $rows = $db->query($query);
+                        $rows = $rows->fetchAll();
+                        while (current($rows)) {
+                            echo "<a href='product_page.php?select_product=".current($rows)['productid']."'><img src='".current($rows)['imageFilePath']."' class='center'></a>";
+                            next($rows);
+                        }
                     }
                   ?>
                   
                 </div>
-
-
-          </div>
           
     
 
