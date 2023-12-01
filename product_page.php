@@ -2,6 +2,7 @@
 
     session_start();
     require_once('connectdb.php');
+
     // Quieries the database using the html tag, then stores information regarding the item selected
     $product = htmlspecialchars($_GET["select_product"]);
     $query="SELECT * FROM product WHERE productid = $product";
@@ -10,6 +11,9 @@
     $query="SELECT * FROM producttype WHERE productTypeid = ".$product["productTypeid"];
         $rows = $db->query($query);
         $productType = $rows->fetch();
+    $query = "SELECT colour, imageFilePath FROM product WHERE productTypeid = ".$productType["productTypeid"];
+        $rows = $db->query($query);
+        $differentColours = $rows->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -58,23 +62,22 @@
             <h2 class="pprice"><?php echo $productType['price'];  ?></h3>
             <h5 class="pdesc"><?php echo $productType['description'];  ?></h5>
             <h3>Select your color style:</h3>
-            <div  class = "colors">     
-                <input type="radio" id="purple" name="colors" value="purple" >
-                <label for="purple">
-                    <img src = "./images/purple.jpg" onclick="expandImg(this);"/>
-                </label><br>
-                <input type="radio" id="orange" name="colors" value="orange">
-                <label for="orange">
-                        <img src = "./images/orange.jpg"  onclick="expandImg(this);"/>
-                    </label><br>
-                <input type="radio" id="grey" name="colors" value="grey">
-                <label for="grey">
-                        <img src = "./images/grey.jpg" onclick="expandImg(this);"/>
-                    </label><br>
-                <input type="radio" id="blue" name="colors" value="blue">
-                <label for="blue">
-                        <img src = "./images/blue.jpg" onclick="expandImg(this);"/>
-                    </label><br>
+            <div  class = "colors">
+                <?php 
+                    
+                    // Displays one of each colour of the chosen piece of clothing
+                    $displayedColours = array();
+                    foreach ($differentColours as $colour){
+                        if (!in_array($colour['colour'], $displayedColours)){
+                            echo '  <input type="radio" id="'.$colour["colour"].'" name="colors" value="'.$colour["colour"].'" >
+                                    <label for="'.$colour["colour"].'">
+                                        <img src = "'.$colour["imageFilePath"].'" onclick="expandImg(this);"/>
+                                    </label><br>';
+                        }
+                        array_push($displayedColours, $colour['colour']);
+                    }
+
+                ?>
 
 </div>
 <h3>Select your size:</h3>
