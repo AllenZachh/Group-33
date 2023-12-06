@@ -1,0 +1,282 @@
+/* header.html css*/
+
+.logo{
+  display: flex;
+  flex-direction: row;
+  height: 30%;
+  width: 10%;
+}
+.logo img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+.navigation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #84A5B8;
+  }
+  
+.navigation li {
+    float: left;
+  }
+  
+.navigation  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 25px;
+    text-decoration: none;
+  }
+  
+.navigation  li a:hover {
+    background-color: #B3DAF1;
+  }
+
+.navright {
+    float: right;
+}
+
+/* product_page.html css*/
+
+.h3 {
+  font-family:serif ;
+  font-weight: bold;
+}
+
+
+.productcontainer .box{
+display: flex;
+}
+
+.pname {
+    float: left;
+    margin-left: 0%;
+}
+
+.productimage {
+  flex: 1;
+  width: 70%;
+  margin-right: 20px;
+}
+
+.productimage img {
+  float: left;
+  width: 60%;
+  margin-top: 10px;
+  margin-right: 50px;
+}
+
+.productinfo{
+  flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    justify-content: left;
+}
+/* size select style */
+.size {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .size input[type="radio"] {
+    opacity: 0;
+    width: 0;
+  }
+  
+  .size label {
+    cursor: pointer;
+      display:inline-block;
+      background-color: #CBCBCB;
+      padding: 10px 20px;
+      font-family: 'Times New Roman', Times, serif;
+      border: 2px solid #707571;
+  }
+  
+  .size label:hover {
+    background-color: #B3DAF1;
+    border-color:#4884a7 ;
+  }
+  
+ 
+  
+  .size input[type="radio"]:checked + label {
+      background-color: #B3DAF1;
+      border-color: #618ea7;
+  }
+
+
+/* color select*/
+  .colors img {
+    
+      width: 100px;
+      height: 150px;
+      object-fit: contain;
+    
+  }
+  .colors {
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .colors input[type="radio"] {
+    opacity: 0;
+    width: 0;
+  }
+  
+  .colors label {
+    cursor: pointer;
+      display:inline-block;
+      background-color: #CBCBCB;
+      border: 2px solid #707571;
+  }
+  
+  .colors label:hover {
+    background-color: #B3DAF1;
+    border-color:#4884a7 ;
+  }
+  
+ 
+  
+  .colors input[type="radio"]:checked + label {
+      background-color: #B3DAF1;
+      border-color: #618ea7;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .cart  button {
+    margin-top: 10px;
+    background-color: #42687C;
+    display:block;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    
+  }
+
+  .cart h1{
+    text-align: right;
+  }
+
+
+
+
+
+
+
+
+
+
+
+/* register.html and login.html style*/
+
+ .bgimg {
+    background-image: url('background.jpg');
+    background-size: cover;
+}
+
+.lgrcontainer img {
+  height: inherit;
+  width: inherit;
+}
+
+.lgrcontainer {
+  width: 50%;
+ margin: auto;
+  padding: 70px 0;
+  background-color: white;
+  opacity: 70%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  display: flex;
+justify-content: center;
+align-items: center;
+}
+
+
+.lgrcontainer h1 {
+  text-align: center;
+  font: 1em sans-serif;
+
+}
+
+.card {
+  display: inline-block;
+  margin: auto;
+  max-width: 21%;
+  margin-top: 10px;
+  padding: 20px;
+  background-color: white;
+
+}
+
+
+
+
+
+.card button {
+  outline: 0;
+  border: none;
+  background-color: #618ea7;
+  width: 100%;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.card viewproduct :hover {
+  color: aqua;
+}
+
+.card a :hover{
+  color: #84A5B8;
+}
+
+.card img {
+  width: 100%;
+  object-fit: fill;
+}
+
+
+/* css for links*/
+
+a.link:link
+{
+   color: #42687C;
+   text-decoration: none;
+}
+a.link:visited
+{
+   color: #42687C;
+   text-decoration: none;
+}
+a.link:hover
+{
+   color: #B3DAF1;
+   text-decoration: none;
+}
+a.link:active
+{
+   color: #B3DAF1;
+   text-decoration: none;
+}
