@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel ="stylesheet" href = "css/styleAwais.css">
+    <link rel ="stylesheet" href = "styleAwais.css">
     <title>Document</title>
 </head>
 <body>
@@ -21,9 +21,17 @@
                 <li><a href = "search.html">Search</a></li>
                 <li><a href="accountpage.html">Account</a></li>
                 <li><a href="basket.html">Basket</a></li>
-              </div>
-          </ul>
+            </div>
         </div>
+            <div class = "container">
+                <div class = "card">
+                    <img src = "test.jpg"/>
+                    <h1>name </h1>
+                    <h2>price</h2>
+                    <a class = "viewproduct" href='https://www.freecodecamp.org/'><button>View Product</button></a>
+                </div>
+              
+            </div>
         </div>
     </div>
 </div>
