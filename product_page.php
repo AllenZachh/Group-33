@@ -69,7 +69,7 @@
                     // Display colour options for that item
                     $colours = array();
                     foreach ($productRows as $row){
-                        $row = $db->query("SELECT * FROM product WHERE colour = '".$row['colour']."' AND size = '".$product['size']."'")->fetch();
+                        $row = $db->query("SELECT * FROM product WHERE colour = '".$row['colour']."' AND productTypeid = '".$product['productTypeid']."'")->fetch();
                         if (!in_array($row['colour'], $colours)){
                             if ($row['productid'] == $product['productid']){
                                 $st = 'checked="checked"';
@@ -171,8 +171,8 @@
                 document.getElementById("result").innerHTML = sentence;
 
             } catch (TypeError) {
-                var incorrect = "You need to select your style, size  and quantity for this product to add to the cart";
-                document.getElementById("result").innerHTML = TypeError;
+                var incorrect = "You need to select your colour and size!";
+                document.getElementById("result").innerHTML = incorrect;
             }
 
         }
