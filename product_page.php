@@ -162,38 +162,19 @@
 
         function checkradio() {
 
-            var sizeSelect = document.querySelector('.size:checked').value;
-            var colourSelect = document.querySelector('.colour:checked').value;
-            var quantityCheck = document.getElementById("quantity");
+            try{
+                var sizeSelect = document.querySelector('.size:checked').value;
+                var colourSelect = document.querySelector('.colour:checked').value;
+                var quantityCheck = document.getElementById("quantity");
 
+                var sentence = "<?php echo $productType["name"]; ?> has been added to your basket";
+                document.getElementById("result").innerHTML = sentence;
 
-            var sizeSelected = false;
-            var colorSelected = false;
-
-            console.log(colourSelect)
-            console.log(sizeSelect)
-
-            if (sizeSelect) {
-                sizeSelected = true;         
+            } catch (TypeError) {
+                var incorrect = "You need to select your style, size  and quantity for this product to add to the cart";
+                document.getElementById("result").innerHTML = TypeError;
             }
 
-            if (colourSelect) {
-                colorSelected = true;         
-            }
-
-
-
-            if (colorSelected === true && sizeSelected  === true && quantityCheck > 0){
-                var productname = document.getElementById("pname");
-                var sentence = " has been added to your basket";
-                document.getElementById("result").innerHTML = productname.concat(sentence);
-                }
-                else{
-                    var incorrect = "You need to select your style, size  and quantity for this product to add to the cart";
-                    document.getElementById("result").innerHTML = incorrect;
-
-                }
-          
         }
     
         </script>
