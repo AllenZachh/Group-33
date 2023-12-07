@@ -111,12 +111,12 @@
                         $rows = $db->query($query);
                         $rows = $rows->fetchAll();
                         foreach ($rows as $row){
-                            $query= "SELECT * FROM product WHERE productTypeid = ".$row['productTypeid']." LIMIT 1";
+                            $query= "SELECT * FROM product WHERE productTypeid = ".$row['productTypeid']." AND size = 'M' LIMIT 1";
                             $rows = $db->query($query);
                             $rows = $rows->fetchAll();
                             while (current($rows)) {
                                 echo '  <div class="coat-item">
-                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['defaultImageFilePath'].'" alt="Coat" class="original-img"> </a>
+                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
                                             <p class="coat-text">'.$row["name"].'</p>
                                         </div>"';
