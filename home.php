@@ -59,9 +59,9 @@
 
     <div class="slides">
         <div class="slide">
-            <img src="images/slider-image1.png" alt="Slider Image 1">
+            <a href="products_list.php?select=Coat"><img src="./images/White_Parka.jpg" style="width:100%; height:100%;" alt="Slider Image 1"></a>
             <div class="slide-content">
-                <p class="slide-text">Slide 1 Text</p>
+                <h1 class="slide-text" style="color:Black;">Coats</h1>
             </div>
         </div>
         <div class="slide">
