@@ -4,13 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Order Confirmation | Glacier Guys</title>
+    <script src="script.js"></script>
+    <title>Glacier Guys | Checkout Options</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
+    
+    <!-- Additional CSS -->
     <style>
-
+        .btn_Option {
+            border: none;
+            background-color: inherit;
+            padding: 14px 28px;
+            font-size: 16px;
+            cursor: pointer;
+            display: inline-block;
+            margin: 20px;
+        }
     </style>
 </head>
 
@@ -37,33 +47,17 @@
             <ion-icon name="home"></ion-icon>
         </a>
         <div class="imgtopnav"></div>
-        <div class="glacier-guys">Glacier Guys</div>
+        <div class="glacier-guys">Glacier Guys</div> 
         <div class="subtitle">"Stay Warm, Embrace Style: Elevating Winter for the Modern Man!"</div>
         <img src="images/Glacier Guys.png" alt="pic">
     </div>
 
-    <!-- Order Confirmation -->
-    <section class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Order Confirmed</h2>
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <p>Thank you for your order!</p>
-                    <ul>
-                        <li><strong>Order Number:</strong> #123456</li>
-                        <li><strong>Date:</strong> 13th December 2023</li>
-                        <li><strong>Total Amount:</strong> £52.99</li>
-                    </ul>
-                    <p>Your items will be shipped to the following address:</p>
-                    <p>
-                        Yousuf<br>
-                        My Street<br>
-                        Birmingham, England<br>
-                        Postocde: B11 111
-                    </p>
-                    <p>If you have any questions or concerns, please <a href="contactus.html">contact us</a>.</p>
-                </div>
-            </div>
+    <!-- Checkout Options -->
+    <section class="Checkout_Options">
+        <div style="padding-top: 80px;" class="container-options text-center">
+            <h2 class="mb-5">Select Checkout Option</h2>
+            <button class="btn_Option" onclick="redirectToCheckout('guest')"><u> Checkout as Guest </u></button>
+            <button class="btn_Option" onclick="redirectToCheckout('existing')"><u> Checkout as Existing User </u></button>
         </div>
     </section>
 
@@ -75,5 +69,15 @@
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
     </footer>
+
+    <script>
+        function redirectToCheckout(option) {
+            if (option === 'guest') {
+                window.location.href = 'GuestCheckout.html';
+            } else if (option === 'existing') {
+                window.location.href = 'UserCheckout.html'; 
+            }
+        }
+    </script>
 </body>
 </html>
