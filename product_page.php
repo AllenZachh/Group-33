@@ -1,3 +1,18 @@
+<?php
+
+    session_start();
+    require_once('connectdb.php');
+
+    $product = htmlspecialchars($_GET["select_product"]);
+    $query="SELECT * FROM product WHERE productid = $product";
+        $rows = $db->query($query);
+        $product = $rows->fetch();
+    $query="SELECT * FROM producttype WHERE productTypeid = ".$product["productTypeid"];
+        $rows = $db->query($query);
+        $productType = $rows->fetch();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,34 +46,38 @@
       
 <div class="productcontainer">
             <div class ="productimage">
-                   <img id="expandedImg" src = "purple.jpg"> 
+                   <img id="expandedImg" src = "<?php echo $product['imageFilePath'] ?>"> 
             </div>
 
             <div class = "productinfo">
                 <form action="/basket.php" method="post"></form>
-            <h2 id=""  class="pname"> <?php $product[name]?> </h2>
+            <h2 id=""  class="pname"> <?php echo $productType['name']; ?> </h2>
+            <h2 id = " " class="pprice"><?php echo $productType['price']; ?></h3>
 
-            <h2 id = " " class="pprice"><?php $product[price]?></h3>
             <h5 id = "productid" class="productid"></h3>
-            <h5 id = " " class="pdesc"><?php $producttype[description]?><</h5>
+            <h5 id = " " class="pdesc"><?php echo $productType['description']; ?></h5>
+
             <h3>Select your color style:</h3>
-            <div  id= "colors" class = "colors">     
-                <input type="radio" id="purple" name="colors" value="purple">
-                <label for="purple">
-                    <img src = "purple.jpg" onclick="expandImg(this);"/>
-                </label><br>
-                <input type="radio" id="orange" name="colors" value="orange">
-                <label for="orange">
-                        <img src = "orange.jpg"  onclick="expandImg(this);"/>
-                    </label><br>
-                <input type="radio" id="grey" name="colors" value="grey">
-                <label for="grey">
-                        <img src = "grey.jpg" onclick="expandImg(this);"/>
-                    </label><br>
-                <input type="radio" id="blue" name="colors" value="blue">
-                <label for="blue">
-                        <img src = "blue.jpg" onclick="expandImg(this);"/>
-                    </label><br>
+            <div  id= "colors" class = "colors">
+
+                <?php
+                    
+                    $query="SELECT * FROM product WHERE productTypeid = ".$product["productTypeid"];
+                        $rows = $db->query($query);
+                        $rows = $rows->fetchAll();
+
+                    $colours = array();
+                    foreach ($rows as $row){
+                        if (!in_array($row["colour"], $colours)){
+                            echo '  <input type="radio" id="'.$row["imageFilePath"].'" name="colors" value="'.$row["imageFilePath"].'">
+                                    <label for="'.$row["imageFilePath"].'">
+                                        <img src = "'.$row["imageFilePath"].'" onclick="expandImg(this);"/>
+                                    </label><br>';
+                            array_push($colours, $row['colour']);
+                        }
+                    }        
+
+                ?>
 
 </div>
 <h3>Select your size:</h3>

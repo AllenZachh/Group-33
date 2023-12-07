@@ -116,8 +116,8 @@
                             $rows = $rows->fetchAll();
                             while (current($rows)) {
                                 echo '  <div class="coat-item">
-                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
-                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="images/Coat1-hover.png" alt="Coat Hover" class="hover-img"> </a>
+                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['defaultImageFilePath'].'" alt="Coat" class="original-img"> </a>
+                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
                                             <p class="coat-text">'.$row["name"].'</p>
                                         </div>"';
                                 next($rows);
