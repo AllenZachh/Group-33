@@ -22,17 +22,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styleAwais.css">
+    <link rel="stylesheet" href="./css/styleAwais.css">
     <title>Document</title>
 </head>
 <body>
     <div class="logo">
     <h1>Glacier Gear</h1>
-    <img src = "logo.jpg">
+    <img src = "./images/logo.jpg">
     </div>
     <div class="navigation">
     <ul>
-        <li><a href="home.html">Home</a></li>
+        <li><a href="home.php">Home</a></li>
         <li><a href="products_list.html">Products</a></li>
         <li><a href="contact.html">Contact Us</a></li>
         <li><a href="about.asp">About Us</a></li>
@@ -69,9 +69,14 @@
                     $colours = array();
                     foreach ($productRows as $row){
                         if (!in_array($row['colour'], $colours)){
-                            echo '  <input type="radio" id="'.$row["imageFilePath"].'" name="colors" value="'.$row["imageFilePath"].'">
+                            if ($row['productid'] == $product['productid']){
+                                $st = 'checked="checked"';
+                            } else {
+                                $st = "" ;
+                            }
+                            echo '  <input type="radio" id="'.$row["imageFilePath"].'" name="colours" value="'.$row["imageFilePath"].'" '.$st.'>
                                     <label for="'.$row["imageFilePath"].'">
-                                        <a href="product_page.php?select_product='.$row["productid"].'"> <img src = "'.$row["imageFilePath"].'" onclick="expandImg(this);"/> </a>
+                                        <a href="product_page.php?select_product='.$row["productid"].'"> <img src = "'.$row["imageFilePath"].'"/> </a>
                                     </label><br>';
                             array_push($colours, $row['colour']);
                         }
@@ -122,7 +127,7 @@
 
     <button  onclick = "checkradio()" class = "cartbutton">Add to Cart</button>
 </div>
-<h1 id = "price"</h1>
+<h1 id = "price"></h1>
 <h2 id = "result"></h2>
 </div>
 </div>
@@ -149,7 +154,7 @@
         function checkradio() {
 
             var sizeSelect = document.getElementsByName("size");
-            var colorSelect = document.getElementsByName("colors");
+            var colorSelect = document.getElementsByName("colours");
             var quantityCheck = document.getElementById("quantity");
 
 
