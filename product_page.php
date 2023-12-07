@@ -3,6 +3,7 @@
     session_start();
     require_once('connectdb.php');
 
+    // Selects the product and prodcutType from table using the html attribute, aswell as every type of the productType
     $product = htmlspecialchars($_GET["select_product"]);
     $query="SELECT * FROM product WHERE productid = $product";
         $rows = $db->query($query);
@@ -10,6 +11,9 @@
     $query="SELECT * FROM producttype WHERE productTypeid = ".$product["productTypeid"];
         $rows = $db->query($query);
         $productType = $rows->fetch();
+    $query="SELECT * FROM product WHERE productTypeid = ".$product["productTypeid"];
+        $rows = $db->query($query);
+        $productRows = $rows->fetchAll();
 
 ?>
 
@@ -52,7 +56,7 @@
             <div class = "productinfo">
                 <form action="/basket.php" method="post"></form>
             <h2 id=""  class="pname"> <?php echo $productType['name']; ?> </h2>
-            <h2 id = " " class="pprice"><?php echo $productType['price']; ?></h3>
+            <h2 id = " " class="pprice">£<?php echo $productType['price']; ?></h3>
 
             <h5 id = "productid" class="productid"></h3>
             <h5 id = " " class="pdesc"><?php echo $productType['description']; ?></h5>
@@ -61,17 +65,13 @@
             <div  id= "colors" class = "colors">
 
                 <?php
-                    
-                    $query="SELECT * FROM product WHERE productTypeid = ".$product["productTypeid"];
-                        $rows = $db->query($query);
-                        $rows = $rows->fetchAll();
 
                     $colours = array();
-                    foreach ($rows as $row){
-                        if (!in_array($row["colour"], $colours)){
+                    foreach ($productRows as $row){
+                        if (!in_array($row['colour'], $colours)){
                             echo '  <input type="radio" id="'.$row["imageFilePath"].'" name="colors" value="'.$row["imageFilePath"].'">
                                     <label for="'.$row["imageFilePath"].'">
-                                        <img src = "'.$row["imageFilePath"].'" onclick="expandImg(this);"/>
+                                        <a href="product_page.php?select_product='.$row["productid"].'"> <img src = "'.$row["imageFilePath"].'" onclick="expandImg(this);"/> </a>
                                     </label><br>';
                             array_push($colours, $row['colour']);
                         }
@@ -82,7 +82,23 @@
 </div>
 <h3>Select your size:</h3>
 
-            <div  class = "size">     
+            <div  class = "size">  
+
+                <?php
+
+                    /*
+                    $sizes = array();
+                    foreach ($productRows as $row){
+                        if (!in_array($row['size'], $sizes)){
+                            echo '  <input type="radio" id="'.$row["size"].'" name="size" value="xsmall">
+                                    <label for="'.$row["size"].'">'.$row["size"].'</label><br>';
+                            array_push($sizes, $row['size']);
+                        }
+                    }       
+                    */
+
+                ?>
+
                 <input type="radio" id="xsmall" name="size" value="xsmall">
                 <label for="xsmall">XS</label><br>
                 <input type="radio" id="small" name="size" value="small">
@@ -95,9 +111,11 @@
                 <label for="xlarge">XL</label>
 </div>
 <label for="quantity">Quantity</label>
-<input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="100">
+<input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="<?php echo $product['stock']; ?>">
 </form>
 <div class = bottom>
+    <h5 id = "productid" class="productid"></h3>
+    <h5 id = " " class="pstock"><?php echo $product['stock']; ?> Left in Stock!</h5>
 
 </div>
 <div class="cart">
@@ -116,7 +134,7 @@
 <script>
     function finalprice() {
         var input = document.getElementById("quantity");
-        var temp = input.value * 70;
+        var temp = input.value * <?php echo $productType['price'];  ?>;
         var sign = "£";
         document.getElementById("price").innerHTML =sign.concat(temp) ; 
         }
