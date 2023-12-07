@@ -66,16 +66,18 @@
 
                 <?php
 
+                    // Display colour options for that item
                     $colours = array();
                     foreach ($productRows as $row){
+                        $row = $db->query("SELECT * FROM product WHERE colour = '".$row['colour']."' AND size = '".$product['size']."'")->fetch();
                         if (!in_array($row['colour'], $colours)){
                             if ($row['productid'] == $product['productid']){
                                 $st = 'checked="checked"';
                             } else {
                                 $st = "" ;
                             }
-                            echo '  <input type="radio" id="'.$row["imageFilePath"].'" name="colours" value="'.$row["imageFilePath"].'" '.$st.'>
-                                    <label for="'.$row["imageFilePath"].'">
+                            echo '  <input type="radio" id="'.$row["colour"].'" name="colours" value="'.$row["colour"].'" class="colour" '.$st.'>
+                                    <label for="'.$row["colour"].'">
                                         <a href="product_page.php?select_product='.$row["productid"].'"> <img src = "'.$row["imageFilePath"].'"/> </a>
                                     </label><br>';
                             array_push($colours, $row['colour']);
@@ -91,29 +93,36 @@
 
                 <?php
 
-                    /*
-                    $sizes = array();
+                    $order = array("XS" => 0, "S" => 1, "M" => 2, "L" => 3, "XL" => 4);                
+                    $sizes = array(null, null, null, null, null);
+
+                    // Rearange the sizes into predefined order os "XS, S, M, L, XL"
                     foreach ($productRows as $row){
-                        if (!in_array($row['size'], $sizes)){
-                            echo '  <input type="radio" id="'.$row["size"].'" name="size" value="xsmall">
-                                    <label for="'.$row["size"].'">'.$row["size"].'</label><br>';
-                            array_push($sizes, $row['size']);
+                        if ($row['colour'] == $product['colour']){
+                            $productRows[$order[$row['size']]] = $row;
+                        }
+                    }
+
+                    // Display size options for that item
+                    foreach ($productRows as $row){
+                        if ($row['colour'] == $product['colour']){
+                            $row = $db->query("SELECT * FROM product WHERE colour = '".$product['colour']."' AND size = '".$row['size']."'")->fetch();
+                            if ($row['stock'] <= 0){
+                                $st = 'disabled';
+                            } else {
+                                $st = "" ;
+                            }
+                            if (!in_array($row['size'], $sizes)){
+                                echo '  <input type="radio" id="'.$row["size"].'" name="size" value="'.$row["size"].'" class="size" '.$st.'>
+                                        <label for="'.$row["size"].'">'.$row["size"].'</label><br>';
+                                array_push($sizes, $row['size']);
+                            }
                         }
                     }       
-                    */
+                    
 
                 ?>
 
-                <input type="radio" id="xsmall" name="size" value="xsmall">
-                <label for="xsmall">XS</label><br>
-                <input type="radio" id="small" name="size" value="small">
-                <label for="small">S</label><br>
-                <input type="radio" id="medium" name="size" value="medium">
-                <label for="medium">M</label><br>
-                <input type="radio" id="large" name="size" value="large">
-                <label for="large">L</label>
-                <input type="radio" id="xlarge" name="size" value="xlarge">
-                <label for="xlarge">XL</label>
 </div>
 <label for="quantity">Quantity</label>
 <input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="<?php echo $product['stock']; ?>">
@@ -153,24 +162,23 @@
 
         function checkradio() {
 
-            var sizeSelect = document.getElementsByName("size");
-            var colorSelect = document.getElementsByName("colours");
+            var sizeSelect = document.querySelector('.size:checked').value;
+            var colourSelect = document.querySelector('.colour:checked').value;
             var quantityCheck = document.getElementById("quantity");
 
 
             var sizeSelected = false;
             var colorSelected = false;
 
-            for (var i = 0, len = sizeSelect.length; i < len; i++) {
-                if (sizeSelect[i].checked === true) {
-                    sizeSelected = true;         
-                }
+            console.log(colourSelect)
+            console.log(sizeSelect)
+
+            if (sizeSelect) {
+                sizeSelected = true;         
             }
 
-            for (var j = 0, len2 = colorSelect.length; j < len2; j++) {
-                if (colorSelect[j].checked === true) {
-                    colorSelected = true;         
-                }
+            if (colourSelect) {
+                colorSelected = true;         
             }
 
 
