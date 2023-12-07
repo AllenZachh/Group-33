@@ -43,7 +43,7 @@
       $stmt->execute(['email' => $email]);
       $user = $stmt->fetch(PDO::FETCH_ASSOC);
       if (!empty($user)){
-        return '<p>Email already taken!<p>';
+        return "<h3 style='color:red; font-size: 15px'>Emails don't match</h3>";
       }
 
       // Try to add the new user entry into the database
