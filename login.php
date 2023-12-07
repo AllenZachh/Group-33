@@ -1,5 +1,7 @@
 <?php 
 
+  session_start();
+
   function login(){
    if (isset($_POST["submitted"])){
 
@@ -17,7 +19,6 @@
         // Checks if the entered password matches with the username, if so starts session, otherwise tells user
         if (password_verify($_POST["password"], $row["password"])){
 
-          session_start();
           $_SESSION["username"]=$_POST["username"];
           return "Logged in!";
 
@@ -66,6 +67,24 @@
         <p>Don't have an account?<a href="register.php">Register Now!</a>.</p>
 
         <p><a href="home.php">Go back to the homepage</a>.<p>
+          
+        <?php
+
+          if (isset($_SESSION["username"])){ 
+            $addPage = '"'.'addproject.php'.'"';
+            echo "<br><br><br><form method='post'>
+              <button value='logout' class='tbl_btn'>Logout</button>
+              <input type='hidden' name='logout' value='true' />
+              </form></td></tr>\n";
+          }
+          
+          if (isset($_POST["logout"])){ 
+            session_destroy();
+            header("Location:home.php");
+            exit();
+          }
+  
+        ?>
 
       </div>
 </body>
