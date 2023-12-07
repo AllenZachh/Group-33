@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 30, 2023 at 01:49 AM
+-- Generation Time: Dec 07, 2023 at 05:38 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -29,10 +29,37 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `order` (
   `orderid` int(11) NOT NULL,
-  `productid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
   `datePlaced` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`orderid`, `userid`, `datePlaced`) VALUES
+(1, 27, '2023-12-07');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orderitems`
+--
+
+CREATE TABLE `orderitems` (
+  `orderItemsid` int(11) NOT NULL,
+  `orderid` int(11) NOT NULL,
+  `productid` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orderitems`
+--
+
+INSERT INTO `orderitems` (`orderItemsid`, `orderid`, `productid`, `quantity`) VALUES
+(1, 1, 1, 5),
+(2, 1, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -54,11 +81,11 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, `imageFilePath`) VALUES
-(1, 1, 50, 'orange', 'm', './images/coat1.jpg'),
-(2, 3, 50, 'Grey', 'm', './images/coat2.jpg'),
-(3, 2, 50, 'Purple', 'm', './images/purple.jpg'),
+(1, 1, 45, 'Orange', 'm', './images/coat1.png'),
+(2, 3, 50, 'Grey', 'm', './images/coat2.png'),
+(3, 2, 47, 'Purple', 'm', './images/purple.jpg'),
 (4, 2, 50, 'Orange', 'm', './images/orange.jpg'),
-(5, 2, 50, 'orange', 's', './images/orange.jpg');
+(5, 2, 50, 'Orange', 's', './images/orange.jpg');
 
 -- --------------------------------------------------------
 
@@ -71,17 +98,19 @@ CREATE TABLE `producttype` (
   `name` varchar(64) NOT NULL,
   `keywords` text NOT NULL,
   `price` varchar(8) NOT NULL,
-  `description` text NOT NULL
+  `description` text NOT NULL,
+  `defaultImageFilePath` text NOT NULL,
+  `hoverImageFilePath` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `producttype`
 --
 
-INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `description`) VALUES
-(1, 'Coat 1', 'Winter, Coat, Puffer', '£50', 'Winter Puffer Coat'),
-(2, 'T-Shirt 1', 'T-Shirt', '£30', 'T-Shirt'),
-(3, 'Coat 2', 'Coat, Denim', '£50', 'Denim Coat');
+INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `description`, `defaultImageFilePath`, `hoverImageFilePath`) VALUES
+(1, 'Coat 1', 'Winter, Coat, Puffer', '£50', 'Winter Puffer Coat', './images/Coat1.png', './images/Coat1-hover.png'),
+(2, 'T-Shirt 1', 'T-Shirt', '£30', 'T-Shirt', '', ''),
+(3, 'Coat 2', 'Coat, Denim', '£50', 'Denim Coat', './images/Coat2.png', './images/Coat2-hover.png');
 
 -- --------------------------------------------------------
 
@@ -99,6 +128,13 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `phoneNum`) VALUES
+(27, 'Jacob Woodhouse', '$2y$10$UKetwEKNHTanB5A.5smssOfgUbseSZZDpYqQycj68gMn9PjnbM/P6', 'Jacobwoodhouse333@gmail.com', 'user', 0);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -107,8 +143,15 @@ CREATE TABLE `user` (
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderid`),
-  ADD KEY `order_user` (`userid`),
-  ADD KEY `order_product` (`productid`);
+  ADD KEY `order_user` (`userid`);
+
+--
+-- Indexes for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  ADD PRIMARY KEY (`orderItemsid`),
+  ADD KEY `orderid` (`orderid`),
+  ADD KEY `productid` (`productid`);
 
 --
 -- Indexes for table `product`
@@ -137,7 +180,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  MODIFY `orderItemsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `product`
@@ -155,7 +204,7 @@ ALTER TABLE `producttype`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
@@ -165,8 +214,14 @@ ALTER TABLE `user`
 -- Constraints for table `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `order_product` FOREIGN KEY (`productid`) REFERENCES `product` (`productid`),
   ADD CONSTRAINT `order_user` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`);
+
+--
+-- Constraints for table `orderitems`
+--
+ALTER TABLE `orderitems`
+  ADD CONSTRAINT `orderitems-order` FOREIGN KEY (`orderid`) REFERENCES `order` (`orderid`),
+  ADD CONSTRAINT `orderitems-product` FOREIGN KEY (`productid`) REFERENCES `product` (`productid`);
 
 --
 -- Constraints for table `product`
