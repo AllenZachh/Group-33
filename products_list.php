@@ -1,40 +1,76 @@
+<?php
+session_start();
+require_once("connectdb.php");
+$items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid ) LIMIT 20");
+$items->execute();
+$products = $items->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel ="stylesheet" href = "styleAwais.css">
-    <title>Document</title>
-</head>
-<body>
-    <div class="logo">
-        <h1>Glacier Gear</h1>
-        <img src = "logo.jpg">
-        </div>
-        <div class="navigation">
-        <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="products_list.html">Products</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="about.asp">About Us</a></li>
-            <div class="navright">
-                <li><a href = "search.html">Search</a></li>
-                <li><a href="accountpage.html">Account</a></li>
-                <li><a href="basket.html">Basket</a></li>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel ="stylesheet" href = "css\style.css">
+        <title>Document</title>
+    </head>
+    <div class="topnav">
+            <div id="searchResults"></div>
+            <a href="aboutus.html">About Us
+                <ion-icon name="person-circle-outline"></ion-icon>
+            </a>
+            <a href="aboutus.html">Log In
+                <ion-icon name="log-in-outline"></ion-icon>
+            </a>
+            <a href="basket.html">View Basket
+                <ion-icon name="basket-outline"></ion-icon>
+            </a>
+            <a href="contactus.html">Contact Us
+                <ion-icon name="call-outline"></ion-icon>
+            </a>
+            <a href="products.html">Products
+                <ion-icon name="shirt-outline"></ion-icon>
+            </a>
+            <a class="active" href="home.html">Home
+                <ion-icon name="home"></ion-icon>
+            </a>
+            <div class="imgtopnav"></div>
+            <div class="glacier-guys">Glacier Guys</div> 
+            <div class="subtitle">"Stay Warm, Embrace Style: Elevating Winter for the Modern Man!"</div>
+            <img src="images/Glacier Guys.png" alt="pic">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Coats, Hats...">
+                <button class="custom-button" onclick="search()">Search</button>
             </div>
-        </div>
-            <div class = "container">
-                <div class = "card">
-                    <img src = "test.jpg"/>
-                    <h1>name </h1>
-                    <h2>price</h2>
-                    <a class = "viewproduct" href='https://www.freecodecamp.org/'><button>View Product</button></a>
-                </div>
-              
-            </div>
-        </div>
-    </div>
-</div>
-</body>
-</html>
 
+
+    </div>
+        <body>
+            <div class="products">
+                <h1>Products</h1>
+                <div class="product">
+                    <?php foreach ($products as $product): ?>
+                        <?php
+                            $typeid = $product["productTypeid"];
+                            $item_specifics = $db->prepare("SELECT * FROM producttype WHERE producttypeid=$typeid ");
+                            $item_specifics->execute();
+                            $spec = $item_specifics->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                        <a href="product_page.php?select_product=<?=$product["productid"]?>" class="single-prod">
+                            <img src="<?=$product["imageFilePath"]?>" alt="<?=$spec["name"]?>" width="50" height="50">
+                            <span class="name" style="color:beige"><?=$spec["name"]?></span>
+                            <span class="price" style="color:beige"><?=$spec["price"]?></span>
+                        </a>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </body>
+    <footer>
+        <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
+            <ion-icon size="large" name="logo-instagram"></ion-icon>
+        </a>
+        <a class="socialmedia" href="https://twitter.com/" target="_blank">
+            <ion-icon size="large" name="logo-twitter"></ion-icon>
+        </a>
+    </footer>
+</html>
