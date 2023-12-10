@@ -3,6 +3,8 @@
 function navbar($currentPage){
     if (isset($_SESSION["username"])){ 
         $loggedIn = "<a>Logged in as ".$_SESSION['username']."</a>";
+    } else {
+        $loggedIn = "";
     }
 
     echo '<div class="topnav">
