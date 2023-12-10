@@ -15,6 +15,27 @@
         $rows = $db->query($query);
         $productRows = $rows->fetchAll();
 
+        //Checks if the page was loaded with POST method, then checks if everything was entered, then updates the basket cookie
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            if (isset($_POST["size"])) {
+                $productSize = $_POST["size"];
+                $rows = $db->query("SELECT productid FROM product WHERE size = '".$productSize."' AND colour = '".$product["colour"]."'");
+                $selectProduct = $rows->fetch();
+                $prod = $selectProduct[0];
+                $array = array();
+
+                if (isset($_COOKIE["basket"]) && $_COOKIE["basket"] != 'null') {
+                    $array = json_decode($_COOKIE["basket"], true);
+                    array_push($array, $prod);
+                    $array = json_encode($array, true);
+                    setcookie('basket', $array, time()+3600);
+                } else {
+                    $array = json_encode($array, true);
+                    setcookie('basket', $array, time()+3600);
+                }
+            }
+        }
+
 ?>
 
 <!DOCTYPE html>
@@ -33,13 +54,13 @@
     <div class="navigation">
     <ul>
         <li><a href="home.php">Home</a></li>
-        <li><a href="products_list.html">Products</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="products_list.php">Products</a></li>
+        <li><a href="contact.php">Contact Us</a></li>
         <li><a href="about.asp">About Us</a></li>
         <div class="navright">
-            <li><a href = "search.html">Search</a></li>
-            <li><a href="accountpage.html">Account</a></li>
-            <li><a href="basket.html">Basket</a></li>
+            <li><a href = "search.php">Search</a></li>
+            <li><a href="accountpage.php">Account</a></li>
+            <li><a href="basket.php">Basket</a></li>
           </div>
       </ul>
     </div>
@@ -54,12 +75,12 @@
             </div>
 
             <div class = "productinfo">
-                <form action="/basket.php" method="post"></form>
             <h2 id=""  class="pname"> <?php echo $productType['name']; ?> </h2>
             <h2 id = " " class="pprice">£<?php echo $productType['price']; ?></h3>
 
             <h5 id = "productid" class="productid"></h3>
             <h5 id = " " class="pdesc"><?php echo $productType['description']; ?></h5>
+            <form action="<?php echo $_SERVER['PHP_SELF'].'?select_product='.$product['productid'];?>" method="POST">
 
             <h3>Select your color style:</h3>
             <div  id= "colors" class = "colors">
@@ -126,15 +147,13 @@
 </div>
 <label for="quantity">Quantity</label>
 <input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="<?php echo $product['stock']; ?>">
+<button  onclick = "checkradio()" class = "cartbutton">Add to Cart</button>
+<input type="hidden" name="submitted" value="true">
 </form>
 <div class = bottom>
     <h5 id = "productid" class="productid"></h3>
     <h5 id = " " class="pstock"><?php echo $product['stock']; ?> Left in Stock!</h5>
 
-</div>
-<div class="cart">
-
-    <button  onclick = "checkradio()" class = "cartbutton">Add to Cart</button>
 </div>
 <h1 id = "price"></h1>
 <h2 id = "result"></h2>
@@ -169,6 +188,7 @@
 
                 var sentence = "<?php echo $productType["name"]; ?> has been added to your basket";
                 document.getElementById("result").innerHTML = sentence;
+
 
             } catch (TypeError) {
                 var incorrect = "You need to select your colour and size!";

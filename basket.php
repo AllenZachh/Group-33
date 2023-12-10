@@ -1,68 +1,14 @@
 <?php
 session_start();
 require_once("connectdb.php");
-if (isset($_POST["productid"]) && is_numeric($_POST["productid"]) && isset($_POST["productTypeid"]) && is_numeric($_POST["productTypeid"]) && isset($_POST["quantity"]) && is_numeric($_POST["quantity"]) && isset($_POST["size"])) {
-    $prodid = $_POST["productid"];
-    $typeid= $_POST["productTypeid"];
-    $quantity = $_POST["quantity"];
-    $size = $_POST["size"];
-    $item = $db->prepare("SELECT * FROM product WHERE producttypeid=$typeid AND 'size'='$size'");
-    $item->execute();
-    $product = $item->fetch(PDO::FETCH_ASSOC);
-    if ($product && $quantity > 0) {
-        if(isset($_SESSION["basket"]) && is_array($_SESSION["basket"])) {
-            if (array_key_exists($product["productid"], $_SESSION["basket"])){
-                $_SESSION["basket"][$product["productid"]] += $quantity;
-            } else {
-                $_SESSION["basket"][$product["productid"]] = $quantity;
-            }
-        } else {
-            $_SESSION["basket"]= array($product["productid"] => $quantity);
-        }
-    }
-    header("location: basket.php");
-    exit;
-}
-if (isset($_GET["remove"]) && isset($_SESSION["basket"])  && is_numeric($_GET["remove"]) && isset($_SESSION["basket"][$_GET["remove"]])) {
-    unset($_SESSION["basket"][$_GET["remove"]]);
-}
 
-if (isset($_POST["update"]) && isset($_SESSION["basket"])) {
-    foreach($_POST as $a => $b) {
-         if (is_numeric($b) && strpos($a, "quantity") !== false ) {
-            $pid = str_replace("quantity-", "", $a);
-            $pidquantity = (int)$b;
-            if ($pidquantity>0 && is_numeric($pid) && isset($_SESSION["basket"][$pid])) {
-                $_SESSION["basket"][$pid] = $pidquantity;
-            }
-         }
-    }
-    header("location: basket.php");
-    exit;
-}
-
-if (isset($_POST["checkout"]) && isset($_SESSION["basket"]) && !empty($_SESSION["basket"])) {
-    header("Location: ChooseCheckout.html");
-    exit;
-}
-
-$items = array();
-$basketitems = isset($_SESSION["basket"]) ? $_SESSION["basket"] : array();
-$totalprice = 0.00;
-
-if($basketitems) {
-    $atqm = implode(",", array_fill(0, count($basketitems), "?"));
-    $allitems = $db->prepare("SELECT * FROM product WHERE productid IN (". $atqm .") ");
-    $allitems->execute(array_keys($basketitems));
-    $items = $allitems->fetchAll(PDO::FETCH_ASSOC);
-    foreach($items as $singleitem) {
-        $prodtypeid = $singleitem["productTypeid"];
-        $item_specifics = $db->prepare("SELECT * FROM producttype WHERE productTypeid= $prodtypeid ");
-        $item_specifics->execute();
-        $spec = $item_specifics->fetch(PDO::FETCH_ASSOC);
-        $totalprice += (float)$spec["price"] * (int)$basketitems[$singleitem["productid"] ];
-    }
-}
+// Checks if 'basket' cookie is set 
+if (isset($_COOKIE["basket"])) {
+    $items = array();
+    $array = json_decode($_COOKIE["basket"], true);
+    foreach ($array as $product) {
+        array_push($items, $product);
+    }}
 ?>
 
 <!DOCTYPE html>
@@ -119,32 +65,33 @@ if($basketitems) {
                         <p style="text-align:center;"> No items in basket </p>
                     </div>
                 <?php else: ?>
-                <?php foreach($items as $singleitem): ?>
+                <?php $totalprice = 0; foreach($items as $singleitem): ?>
                     <?php
-                    $prodtypeid = $singleitem["productTypeid"];
-                    $item_specifics = $db->prepare("SELECT * FROM producttype WHERE productTypeid= $prodtypeid ");
-                    $item_specifics->execute();
-                    $spec = $item_specifics->fetch(PDO::FETCH_ASSOC);
+
+                    $item = $db->query("SELECT * FROM product WHERE productid = ". $singleitem);
+                    $selectProduct = $item->fetch();
+                    $itemType = $db->query("SELECT * FROM producttype WHERE productTypeid = ". $selectProduct["productTypeid"]);
+                    $selectProductType = $itemType->fetch();
                     ?>
                     <div class="row">
                     <div class="col-md-3 mb-3">
                         <div class="card border-0 shadow rounded">
-                            <a href="product_page.php?id=<?=$singleitem["productid"]?>">
-                                <img src="<?=$singleitem["imageFilePath"]?>" width="200" height="200" alt="<?=$spec["name"]?>">
+                            <a href="product_page.php?id=<?=$singleitem?>">
+                                <img src="<?=$selectProduct["imageFilePath"]?>" width="200" height="200" alt="<?=$selectProductType["name"]?>">
                             </a>
                             <div class="card-body">
-                                <h5 class="card-title text-dark"><?=$spec["name"]?></h5>
-                                <p class="card-text">Size: <?=$singleitem["size"]?></p>
-                                <p class="card-text">Price: £<?=$spec["price"]?></p>
+                                <h5 class="card-title text-dark"><?=$selectProductType["name"]?></h5>
+                                <p class="card-text">Size: <?=$selectProduct["size"]?></p>
+                                <p class="card-text">Price: £<?=$selectProductType["price"]?></p>
                                 <div class="row justify-content-end">
-                                    <a href="basket.php?remove=<?=$singleitem["productid"]?>" class="remove">Remove</a>
-                                    <input type="number" name="quantity-<?=$singleitem["productid"]?>" value="<?=$basketitems[$singleitem["productid"]]?>" min="1" placeholder="Enter quantity" required/>
+                                    <a href="basket.php?remove=<?=$selectProduct["productid"]?>" class="remove">Remove</a>
+                                    <input type="number" name="quantity-<?=$selectProduct["productid"]?>" value="" min="1" placeholder="Enter quantity" required/>
                                 </div>
                             </div>
                         </div>
                     </div>
                     </div>
-                <?php endforeach; ?>
+                <?php $totalprice += $selectProductType["price"]; endforeach; ?>
                 <?php endif; ?>
             </div>
         </section>
@@ -159,16 +106,17 @@ if($basketitems) {
                             <div class="d-flex justify-content-between mb-5">
                                 <div>
                                     <h4 id="subtotal">Sub-total</h4>
+                                    <h4 id="subtotal">£<?=$totalprice?></h4>
                                     <h4>Delivery</h4>
                                 </div>
                                 <div>
-                                    <h4 id="subtotalAmount">£<?=$totalprice?></h4>
+                                    <h4 id="delivery">£5</h4>
                                 </div>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <h4>Total</h4>
-                                <h4 id="totalAmount">£<?=$totalprice?></h4>
+                                <h4 id="totalAmount">£<?=$totalprice+5?></h4>
                             </div>
                         </div>
                     </div>
