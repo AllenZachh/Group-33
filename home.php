@@ -6,10 +6,14 @@
 ?>
 
 <!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/script.js"></script>
 
 <head>
+    <title>Home | Glacier Guys</title>
 </head>
 
 <body>
