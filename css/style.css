@@ -318,8 +318,8 @@ input[type="text"]:hover {
 }
 
 .Boots .images-container img {
-    width: 230px;
-    height: 230px;
+    width: 270px;
+    height: 208px;
     margin: 30px; 
 }
 .Boots .original-img {
@@ -337,14 +337,16 @@ input[type="text"]:hover {
 
 .Boots .boot-item:hover .hover-img {
     display: block;
-    transform: scale(1.1);
+    
 }
 .Boots .boot-text {
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     margin-top: 5px;
+    text-align: center;
 }
+
 .Gloves {
     position: relative;
     height: auto;
@@ -550,11 +552,27 @@ input[type="text"]:hover {
     position: absolute;
     top: 20px;
     left: 20px;
-    color: white;
-    font-size: 20px;
+    color: #26547c;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
+    font-size: 30px;
     font-weight: bold;
     z-index: 10;
+    font-family: Arial, Helvetica, sans-serif;
 }
+
+.additional-slide-text {
+    font-size: 22px;
+    margin-top: 20px;
+    color: #26547c;
+    text-shadow: 0px 0px 8px rgba(255, 255, 255, 0.8);
+    position: absolute;
+    top: 45px;
+    left: 20px;
+    z-index: 10;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif
+}
+
 
 
 
@@ -605,8 +623,3 @@ footer {
     font-size: 30px;
 
 }
-
-.container-total {
-  padding-right: 66px;
-}
-
