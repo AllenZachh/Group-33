@@ -6,42 +6,20 @@ $items->execute();
 $products = $items->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE php>
+<php lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel ="stylesheet" href = "css\style.css">
         <title>Document</title>
     </head>
-    <div class="topnav">
-            <div id="searchResults"></div>
-            <a href="aboutus.html">About Us
-                <ion-icon name="person-circle-outline"></ion-icon>
-            </a>
-            <a href="aboutus.html">Log In
-                <ion-icon name="log-in-outline"></ion-icon>
-            </a>
-            <a href="basket.html">View Basket
-                <ion-icon name="basket-outline"></ion-icon>
-            </a>
-            <a href="contactus.html">Contact Us
-                <ion-icon name="call-outline"></ion-icon>
-            </a>
-            <a href="products.html">Products
-                <ion-icon name="shirt-outline"></ion-icon>
-            </a>
-            <a class="active" href="home.html">Home
-                <ion-icon name="home"></ion-icon>
-            </a>
-            <div class="imgtopnav"></div>
-            <div class="glacier-guys">Glacier Guys</div> 
-            <div class="subtitle">"Stay Warm, Embrace Style: Elevating Winter for the Modern Man!"</div>
-            <img src="images/Glacier Guys.png" alt="pic">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="Coats, Hats...">
-                <button class="custom-button" onclick="search()">Search</button>
-            </div>
+
+    <?php require_once("navbar.php"); navbar("productList"); ?>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Coats, Hats...">
+            <button class="custom-button" onclick="search()">Search</button>
+        </div>
 
 
     </div>
@@ -59,7 +37,7 @@ $products = $items->fetchAll(PDO::FETCH_ASSOC);
                         <a href="product_page.php?select_product=<?=$product["productid"]?>" class="single-prod">
                             <img src="<?=$product["imageFilePath"]?>" alt="<?=$spec["name"]?>" width="50" height="50">
                             <span class="name" style="color:beige"><?=$spec["name"]?></span>
-                            <span class="price" style="color:beige"><?=$spec["price"]?></span>
+                            <span class="price" style="color:beige">£<?=$spec["price"]?></span>
                         </a>
                     <?php endforeach; ?>
                 </div>
@@ -73,4 +51,4 @@ $products = $items->fetchAll(PDO::FETCH_ASSOC);
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
     </footer>
-</html>
+</php>
