@@ -109,6 +109,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <?php endif; ?>
             </div>
         </section>
+        </form>
 
         <!-- Total section -->
         <section class="Total">
@@ -137,10 +138,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
 
+        
         <!-- Proceed to Checkout button -->
+        <form action="ChooseCheckout.html" method="post">
         <div class="row justify-content-end">
             <div class="col-lg-1 mb-8">
                 <button class="btn btn-primary btn-proceed-to-checkout">Proceed to Checkout</button>
+                <input type="hidden" name="submitted" value="true">
             </div>
             <!-- <div class="col-lg-1 mb-8">
                 <input type="submit" value="Update" name="update">
@@ -156,7 +160,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
     </footer>
-    <!-- <script>
+    <script>
         // Sample product details
         const productPrice = 59.99;
         let basketItems = [
@@ -222,7 +226,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         });
             
         updateSubtotal();
-    </script> -->
+    </script>
 </body>
 </html>
 
