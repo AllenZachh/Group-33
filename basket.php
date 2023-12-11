@@ -9,6 +9,19 @@ if (isset($_COOKIE["basket"])) {
     foreach ($array as $product) {
         array_push($items, $product);
     }}
+
+// Deletes items from POST
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST["remove"])) {
+        $array = json_decode($_COOKIE["basket"], true);
+        if (($key = array_search($_POST["remove"], $array)) !== false) {
+            unset($array[$key]);
+            $array = json_encode($array);
+            setcookie('basket', $array, time()+3600);
+            header("Location:basket.php");
+        }
+    }}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +29,12 @@ if (isset($_COOKIE["basket"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
     <script src="script.js"></script>
     <title>Basket | Glacier Guys</title>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
     <!-- Additional CSS -->
     <style>
@@ -84,8 +97,9 @@ if (isset($_COOKIE["basket"])) {
                                 <p class="card-text">Size: <?=$selectProduct["size"]?></p>
                                 <p class="card-text">Price: £<?=$selectProductType["price"]?></p>
                                 <div class="row justify-content-end">
-                                    <a href="basket.php?remove=<?=$selectProduct["productid"]?>" class="remove">Remove</a>
-                                    <input type="number" name="quantity-<?=$selectProduct["productid"]?>" value="" min="1" placeholder="Enter quantity" required/>
+                                    <button name="remove" value="<?=$selectProduct["productid"]?>" class="btn_Remove" method="POST">Remove</a>
+                                    <input type="hidden" name="submitted" value="true">
+                                    <!-- <input type="number" name="quantity-<?=$selectProduct["productid"]?>" value="" min="1" placeholder="Enter quantity" required/> -->
                                 </div>
                             </div>
                         </div>
@@ -106,17 +120,17 @@ if (isset($_COOKIE["basket"])) {
                             <div class="d-flex justify-content-between mb-5">
                                 <div>
                                     <h4 id="subtotal">Sub-total</h4>
-                                    <h4 id="subtotal">£<?=$totalprice?></h4>
                                     <h4>Delivery</h4>
                                 </div>
                                 <div>
+                                <h4 id="subtotal"><?php if (isset($totalprice)){echo '£'.$totalprice;}?></h4>
                                     <h4 id="delivery">£5</h4>
                                 </div>
                             </div>
                             <hr>
                             <div class="d-flex justify-content-between">
                                 <h4>Total</h4>
-                                <h4 id="totalAmount">£<?=$totalprice+5?></h4>
+                                <h4 id="totalAmount"><?php if (isset($totalprice)){echo '£'.$totalprice+5;}?></h4>
                             </div>
                         </div>
                     </div>
@@ -126,11 +140,11 @@ if (isset($_COOKIE["basket"])) {
         <!-- Proceed to Checkout button -->
         <div class="row justify-content-end">
             <div class="col-lg-1 mb-8">
-                <input type="submit" value="Checkout" name="checkout">
+                <button class="btn btn-primary btn-proceed-to-checkout">Proceed to Checkout</button>
             </div>
-            <div class="col-lg-1 mb-8">
+            <!-- <div class="col-lg-1 mb-8">
                 <input type="submit" value="Update" name="update">
-            </div>
+            </div> -->
         </div>
         </section>
         </form>
