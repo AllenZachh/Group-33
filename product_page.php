@@ -16,25 +16,25 @@
         $productRows = $rows->fetchAll();
 
         //Checks if the page was loaded with POST method, then checks if everything was entered, then updates the basket cookie
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            if (isset($_POST["size"])) {
-                $productSize = $_POST["size"];
-                $rows = $db->query("SELECT productid FROM product WHERE size = '".$productSize."' AND colour = '".$product["colour"]."'");
-                $selectProduct = $rows->fetch();
-                $prod = $selectProduct[0];
-                $array = array();
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["size"])) {
+            $productSize = $_POST["size"];
+            $rows = $db->query("SELECT productid FROM product WHERE size = '".$productSize."' AND colour = '".$product["colour"]."' AND productTypeid = '".$product["productTypeid"]."'");
+            $selectProduct = $rows->fetch();
+            $prod = $selectProduct[0];
+            $array = array();
 
-                if (isset($_COOKIE["basket"]) && $_COOKIE["basket"] != 'null') {
-                    $array = json_decode($_COOKIE["basket"], true);
-                    array_push($array, $prod);
-                    $array = json_encode($array, true);
-                    setcookie('basket', $array, time()+3600);
-                } else {
-                    $array = json_encode($array, true);
-                    setcookie('basket', $array, time()+3600);
-                }
+            if (isset($_COOKIE["basket"]) && $_COOKIE["basket"] != 'null') {
+                $array = json_decode($_COOKIE["basket"], true);
+                array_push($array, $prod);
+                $array = json_encode($array, true);
+                setcookie('basket', $array, time()+3600);
+            } else {
+                $array = json_encode($array, true);
+                setcookie('basket', $array, time()+3600);
             }
         }
+    }
 
 ?>
 
