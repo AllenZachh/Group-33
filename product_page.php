@@ -50,27 +50,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styleAwais.css">
     <title>Document</title>
+    <?php require_once("navbar.php"); navbar("productList"); ?>
 </head>
 <body>
-    <div class="logo">
-    <h1>Glacier Gear</h1>
-    <img src = "./images/logo.jpg">
-    </div>
-    <div class="navigation">
-    <ul>
-        <li><a href="home.php">Home</a></li>
-        <li><a href="products_list.php">Products</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
-        <li><a href="about.asp">About Us</a></li>
-        <div class="navright">
-            <li><a href = "search.php">Search</a></li>
-            <li><a href="accountpage.php">Account</a></li>
-            <li><a href="basket.php">Basket</a></li>
-          </div>
-      </ul>
-    </div>
-      <div w3-include-html="/header.html"></div>
-      
       
       
       

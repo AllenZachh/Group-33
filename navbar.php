@@ -8,6 +8,7 @@ function navbar($currentPage){
     }
 
     echo '<div class="topnav">
+    <link rel ="stylesheet" href = "./css/navbarStyle.css">
     <div id="searchResults"></div>'.$loggedIn.'
         <a href="aboutus.php">About Us
             <ion-icon name="person-circle-outline"></ion-icon>
@@ -62,7 +63,8 @@ function navbar($currentPage){
             <div class="subtitle">"Stay Warm, Embrace Style: Elevating Winter for the Modern Man!"</div>
             <img src="images/Glacier Guys.png" alt="pic">
         </div>
-
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     </div>';
 }

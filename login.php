@@ -44,7 +44,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styleAwais.css">
-    <title>Document</title>
+    <title>Log-in | Glacier Guys</title>
+    <?php require_once("navbar.php"); navbar("login"); ?>
 </head>
 <body class="bgimg">
       <div class="lgrcontainer">
@@ -66,7 +67,6 @@
         <?php echo login(); ?>
         <p>Don't have an account?<a href="register.php">Register Now!</a>.</p>
 
-        <p><a href="home.php">Go back to the homepage</a>.<p>
           
         <?php
 
