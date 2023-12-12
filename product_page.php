@@ -2,6 +2,7 @@
 
     session_start();
     require_once('connectdb.php');
+    $result = "";
 
     // Selects the product and prodcutType from table using the html attribute, aswell as every type of the productType
     $product = htmlspecialchars($_GET["select_product"]);
@@ -30,9 +31,13 @@
                 $array = json_encode($array, true);
                 setcookie('basket', $array, time()+3600);
             } else {
+                array_push($array, $prod);
                 $array = json_encode($array, true);
                 setcookie('basket', $array, time()+3600);
             }
+            $result = "Item added to basket";
+        } else {
+            $result = "Please select a colour and size";
         }
     }
 
@@ -145,14 +150,15 @@
                 ?>
 
 </div>
-<label for="quantity">Quantity</label>
-<input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="<?php echo $product['stock']; ?>">
+<!-- <label for="quantity">Quantity</label>
+<input type="number" onclick="finalprice()" id="quantity" name="quantity" min="1" max="<?php echo $product['stock']; ?>"> -->
 <button  onclick = "checkradio()" class = "cartbutton">Add to Cart</button>
 <input type="hidden" name="submitted" value="true">
 </form>
 <div class = bottom>
     <h5 id = "productid" class="productid"></h3>
     <h5 id = " " class="pstock"><?php echo $product['stock']; ?> Left in Stock!</h5>
+    <h3><?=$result?> </h3>
 
 </div>
 <h1 id = "price"></h1>
@@ -177,24 +183,6 @@
            var expandImg = document.getElementById("expandedImg");
            expandImg.src = image.src;
           
-        }
-
-        function checkradio() {
-
-            try{
-                var sizeSelect = document.querySelector('.size:checked').value;
-                var colourSelect = document.querySelector('.colour:checked').value;
-                var quantityCheck = document.getElementById("quantity");
-
-                var sentence = "<?php echo $productType["name"]; ?> has been added to your basket";
-                document.getElementById("result").innerHTML = sentence;
-
-
-            } catch (TypeError) {
-                var incorrect = "You need to select your colour and size!";
-                document.getElementById("result").innerHTML = incorrect;
-            }
-
         }
     
         </script>
