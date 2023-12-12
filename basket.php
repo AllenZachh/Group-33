@@ -152,14 +152,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         </section>
         </form>
-    <footer>
+    <!-- <footer>
         <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
             <ion-icon size="large" name="logo-instagram"></ion-icon>
         </a>
         <a class="socialmedia" href="https://twitter.com/" target="_blank">
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
-    </footer>
+    </footer> -->
     <script>
         // Sample product details
         const productPrice = 59.99;
