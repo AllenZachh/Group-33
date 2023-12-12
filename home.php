@@ -39,21 +39,21 @@
             </div>
         </div>
         <div class="slide">
-            <img src="./images/slider-image2.png" alt="Slider Image 2">
+            <img src="images/slider-image2.png" alt="Slider Image 2">
             <div class="slide-content">
                 <p class="slide-text">Complete Your Look</p>
                 <p class="additional-slide-text">Explore our range of stylish hats and beanies, perfect for chilly days and nights.</p>
             </div>
         </div>
         <div class="slide">
-            <img src="./images/slider-image3.png" alt="Slider Image 3">
+            <img src=images/slider-image3.png" alt="Slider Image 3">
             <div class="slide-content">
                 <p class="slide-text">Essential Winter Accessories</p>
                 <p class="additional-slide-text">Accessorize with our scarves and shawls to add flair to your winter outfit.</p>
             </div>
         </div>
         <div class="slide">
-            <img src="./images/slider-image4.png" alt="Slider Image 4">
+            <img src="images/slider-image4.png" alt="Slider Image 4">
             <div class="slide-content">
                 <p class="slide-text">Gear Up for Winter Adventures</p>
                 <p class="additional-slide-text">Discover our range of boots and gloves designed for durability and warmth in the toughest conditions.</p>
