@@ -113,28 +113,28 @@
                 <div class="hat-item">
                     <img src="images/Hat1.png" alt="Hat1" class="original-img">
                     <img src="images/Hat1-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Text for Hat 1</p>
+                    <p class="coat-text">Beige Beanie £20</p>
                     
                 </div>
                 <div class="hat-item">
                     <img src="images/Hat2.png" alt="Hat1" class="original-img">
                     <img src="images/Hat2-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Text for Hat 2</p>
+                    <p class="coat-text">Grey Beanie £20</p>
                 </div>
                 <div class="hat-item">            
                     <img src="images/Hat3.png" alt="Hat1" class="original-img">
                     <img src="images/Hat3-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Text for Hat 3</p>
+                    <p class="coat-text">Blue Beanie £20</p>
                 </div>                 
                 <div class="hat-item">
                     <img src="images/Hat4.png" alt="Hat1" class="original-img">
                     <img src="images/Hat4-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Text for Hat 4</p>
+                    <p class="coat-text">Trapper Hat £30</p>
                 </div>                
                 <div class="hat-item">
                     <img src="images/Hat5.png" alt="Hat1" class="original-img">
                     <img src="images/Hat5-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Text for Hat 5</p>
+                    <p class="coat-text">Bobble Hat £27</p>
                 </div>            
             </div>
         </div>
@@ -146,27 +146,27 @@
                 <div class="boot-item">
                     <img src="images/Boot1.png" alt="Boot" class="original-img">
                     <img src="images/Boot1-hover.png" alt="Boot Hover" class="hover-img">
-                    <p class="boot-text">Text for Boot 1</p>
+                    <p class="boot-text">Dark Brown £110</p>
                 </div>
                 <div class="boot-item">
                     <img src="images/Boot2.png" alt="Boot" class="original-img">
                     <img src="images/Boot2-hover.png" alt="Boot Hover" class="hover-img">
-                    <p class="boot-text">Text for Boot 2</p>
+                    <p class="boot-text">Light Brown £100</p>
                 </div>
                 <div class="boot-item">
                     <img src="images/Boot3.png" alt="Boot" class="original-img">
                     <img src="images/Boot3-hover.png" alt="Boot Hover" class="hover-img">
-                    <p class="boot-text">Text for Boot 3</p>
+                    <p class="boot-text">Brown with Red Laces £145</p>
                 </div>                
                 <div class="boot-item">
                     <img src="images/Boot4.png" alt="Boot" class="original-img">
                     <img src="images/Boot4-hover.png" alt="Boot Hover" class="hover-img">
-                    <p class="boot-text">Text for Boot 4</p>
+                    <p class="boot-text">Black £150</p>
                 </div>                
                 <div class="boot-item">
                     <img src="images/Boot5.png" alt="Boot" class="original-img">
                     <img src="images/Boot5-hover.png" alt="Boot Hover" class="hover-img">
-                    <p class="boot-text">Text for Boot 5</p>
+                    <p class="boot-text">Bland and Orange £70/p>
                 </div>            
             </div>
         </div>
@@ -178,27 +178,27 @@
                 <div class="glove-item">
                     <img src="images/Glove1.png" alt="Glove" class="original-img">
                     <img src="images/Glove1-hover.png" alt="Glove Hover" class="hover-img">
-                    <p class="glove-text">Text for Glove 1</p>
+                    <p class="glove-text">Green Fleece Gloves £30</p>
                 </div>
                 <div class="glove-item">
                     <img src="images/Glove2.png" alt="Glove" class="original-img">
                     <img src="images/Glove2-hover.png" alt="Glove Hover" class="hover-img">
-                    <p class="glove-text">Text for Glove 2</p>
+                    <p class="glove-text">Black Gloves £45</p>
                 </div>
                 <div class="glove-item">
                     <img src="images/Glove3.png" alt="Glove" class="original-img">
                     <img src="images/Glove3-hover.png" alt="Glove Hover" class="hover-img">
-                    <p class="glove-text">Text for Glove 3</p>
+                    <p class="glove-text">Breathable Black Gloves $35</p>
                 </div>
                 <div class="glove-item">
                     <img src="images/Glove4.png" alt="Glove" class="original-img">
                     <img src="images/Glove4-hover.png" alt="Glove Hover" class="hover-img">
-                    <p class="glove-text">Text for Glove 4</p>
+                    <p class="glove-text">Inside Fur Black Gloves £45</p>
                 </div>
                 <div class="glove-item">
                     <img src="images/Glove5.png" alt="Glove" class="original-img">
                     <img src="images/Glove5-hover.png" alt="Glove Hover" class="hover-img">
-                    <p class="glove-text">Text for Glove 5</p>
+                    <p class="glove-text">Fingerless Grey Gloves £30</p>
                 </div>
             </div>
         </div>
@@ -210,27 +210,27 @@
             <div class="accessory-item">
                 <img src="images/Accessory1.png" alt="Accessory" class="original-img">
                 <img src="images/Accessory1-hover.png" alt="Accessory Hover" class="hover-img">
-                <p class="accessory-text">Text for Accessory 1</p>
+                <p class="accessory-text">Green and Blue Scarf £24</p>
             </div>
             <div class="accessory-item">
                 <img src="images/Accessory2.png" alt="Accessory" class="original-img">
                 <img src="images/Accessory2-hover.png" alt="Accessory Hover" class="hover-img">
-                <p class="accessory-text">Text for Accessory 2</p>
+                <p class="accessory-text">Green and Blue Ski Goggles £90</p>
             </div>
             <div class="accessory-item">
                 <img src="images/Accessory3.png" alt="Accessory" class="original-img">
                 <img src="images/Accessory3-hover.png" alt="Accessory Hover" class="hover-img">
-                <p class="accessory-text">Text for Accessory 3</p>
+                <p class="accessory-text">Red Scarf £32</p>
             </div>
             <div class="accessory-item">
                 <img src="images/Accessory4.png" alt="Accessory" class="original-img">
                 <img src="images/Accessory4-hover.png" alt="Accessory Hover" class="hover-img">
-                <p class="accessory-text">Text for Accessory 4</p>
+                <p class="accessory-text">Grey Neck Warmer £18</p>
             </div>
             <div class="accessory-item">
                 <img src="images/Accessory5.png" alt="Accessory" class="original-img">
                 <img src="images/Accessory5-hover.png" alt="Accessory Hover" class="hover-img">
-                <p class="accessory-text">Text for Accessory 5</p>
+                <p class="accessory-text">Black and Grey Ski Goggles £102</p>
             </div>
         </div>
     </div>
