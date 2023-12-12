@@ -191,7 +191,7 @@ display: flex;
 /* register.html and login.html style*/
 
  .bgimg {
-    background-image: url('background.jpg');
+    background-image: url('Images/lgrbackground.jpg');
     background-size: cover;
 }
 
