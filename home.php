@@ -46,7 +46,7 @@
             </div>
         </div>
         <div class="slide">
-            <img src=images/slider-image3.png" alt="Slider Image 3">
+            <img src="images/slider-image3.png" alt="Slider Image 3">
             <div class="slide-content">
                 <p class="slide-text">Essential Winter Accessories</p>
                 <p class="additional-slide-text">Accessorize with our scarves and shawls to add flair to your winter outfit.</p>
