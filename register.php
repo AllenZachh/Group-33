@@ -80,7 +80,7 @@
 <body class="bgimg">
 
         <div class="lgrcontainer">
-          <img src="images/logo.jpg"/>
+          <img src="./images/Glacier Guys.png"/>
           <h1>Welcome to Glacier Guy's Gear!!!</h1>
           <p>Please fill in this form to create an account and join the family.</p>
           <form method='post' action='register.php'>

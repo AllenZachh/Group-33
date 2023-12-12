@@ -49,7 +49,7 @@
 </head>
 <body class="bgimg">
       <div class="lgrcontainer">
-        <img src = "./images/logo.jpg"/>
+        <img src = "./images/Glacier Guys.png"/>
 
         <h1>Welcome back!!!</h1>
         <hr>
