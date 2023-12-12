@@ -96,7 +96,7 @@
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
                                             <p class="coat-text">'.$row["name"].'</p>
-                                        </div>"';
+                                        </div>';
                                 next($rows);
                             }
                         }
