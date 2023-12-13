@@ -16,7 +16,7 @@
         <li><a href="products_list.php">Products</a></li>
         <li><a href="contact.php">Contact Us</a></li>
         <li><a href="aboutus.php">About Us</a></li>
-        <li><img src="Images/logo.png" alt="Logo" class="logo"></li>
+        <li><img src="Images/Glacier Guys.png" alt="Logo" class="logo"></li>
         
     </ul>
 
