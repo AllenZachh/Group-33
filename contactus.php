@@ -46,7 +46,7 @@
         </div>
     </div>
     
-    <form action="contact.php" method="post">
+    <form action="contactus.php" method="post">
         <p>Feel free to express your concerns in the form below, and we'll reach out to you shortly!</p>
         <label for="name">Name:</label><br>
         <input type="text" id="name" name="name" required><br>
