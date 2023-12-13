@@ -14,7 +14,7 @@
     <ul class="navigation">
         <li><a href="home.php">Home</a></li>
         <li><a href="products_list.php">Products</a></li>
-        <li><a href="contact.php">Contact Us</a></li>
+        <li><a href="contactus.php">Contact Us</a></li>
         <li><a href="aboutus.php">About Us</a></li>
         <li><img src="Images/Glacier Guys.png" alt="Logo" class="logo"></li>
         
