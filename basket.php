@@ -2,24 +2,40 @@
 session_start();
 require_once("connectdb.php");
 
-// Checks if 'basket' cookie is set 
-if (isset($_COOKIE["basket"])) {
+// Checks if user is signed in, if not it will check if there a cookie set
+if (isset($_SESSION['username'])){
+    $query="SELECT basket FROM user WHERE username = '".$_SESSION["username"]."'";
+    $items = array();
+    $array = json_decode(($db->query($query))->fetch()[0]);
+    foreach ($array as $product) {
+        array_push($items, $product);
+    }
+} elseif (isset($_COOKIE["basket"])) {
     $items = array();
     $array = json_decode($_COOKIE["basket"], true);
     foreach ($array as $product) {
         array_push($items, $product);
     }}
 
-// Deletes items from POST
+// Deletes items from basket using POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST["remove"])) {
-        $array = json_decode($_COOKIE["basket"], true);
-        if (($key = array_search($_POST["remove"], $array)) !== false) {
-            unset($array[$key]);
-            $array = json_encode($array);
-            setcookie('basket', $array, time()+3600);
+        if (isset($_SESSION['username'])){
+            if (($key = array_search($_POST["remove"], $array)) !== false) {
+                array_splice($array, $key, 1);
+                $array = json_encode($array);
+                $stat = $db->prepare('UPDATE user SET basket = ? WHERE username = "'.$_SESSION['username'].'"');
+			    $stat->execute(array($array));
+            }
+
+        } else {
+            $array = json_decode($_COOKIE["basket"], true);
+            if (($key = array_search($_POST["remove"], $array)) !== false) {
+                unset($array[$key]);
+                $array = json_encode($array);
+                setcookie('basket', $array, time()+3600);
+            }}
             header("Location:basket.php");
-        }
     }}
 
 ?>

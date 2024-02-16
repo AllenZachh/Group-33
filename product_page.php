@@ -16,29 +16,41 @@
         $rows = $db->query($query);
         $productRows = $rows->fetchAll();
 
-        //Checks if the page was loaded with POST method, then checks if everything was entered, then updates the basket cookie
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["size"])) {
-            $productSize = $_POST["size"];
-            $rows = $db->query("SELECT productid FROM product WHERE size = '".$productSize."' AND colour = '".$product["colour"]."' AND productTypeid = '".$product["productTypeid"]."'");
-            $selectProduct = $rows->fetch();
-            $prod = $selectProduct[0];
-            $array = array();
+    //Checks if the page was loaded with POST method, then checks if everything was entered, then updates the basket cookie
+    if (isset($_POST["size"])) {
+        $productSize = $_POST["size"];
+        $rows = $db->query("SELECT productid FROM product WHERE size = '".$productSize."' AND colour = '".$product["colour"]."' AND productTypeid = '".$product["productTypeid"]."'");
+        $selectProduct = $rows->fetch();
+        $prod = $selectProduct[0];
+        $array = array();
 
+        if (isset($_SESSION["username"])){
+            $query="SELECT basket FROM user WHERE username = '".$_SESSION["username"]."'";
+            try{
+                $array = json_decode(($db->query($query))->fetch()[0]);
+                array_push($array, $prod);
+            } catch (TypeError){
+                $array = [];
+                array_push($array, $prod);
+            }
+            $array = json_encode($array, true);
+
+            $stat = $db->prepare('UPDATE user SET basket = ? WHERE username = "'.$_SESSION['username'].'"');
+			$stat->execute(array($array));
+
+        } else {
             if (isset($_COOKIE["basket"]) && $_COOKIE["basket"] != 'null') {
                 $array = json_decode($_COOKIE["basket"], true);
-                array_push($array, $prod);
-                $array = json_encode($array, true);
-                setcookie('basket', $array, time()+3600);
-            } else {
-                array_push($array, $prod);
-                $array = json_encode($array, true);
-                setcookie('basket', $array, time()+3600);
             }
-            $result = "Item added to basket";
-        } else {
-            $result = "Please select a colour and size";
+            array_push($array, $prod);
+            $array = json_encode($array, true);
+            setcookie('basket', $array, time()+3600);
         }
+
+
+        $result = "Item added to basket";
+    } else {
+        $result = "Please select a colour and size";
     }
 
 ?>
