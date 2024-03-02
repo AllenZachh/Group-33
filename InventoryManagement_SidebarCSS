@@ -1,0 +1,80 @@
+
+body{
+    background-color: rgb(132, 165, 184);
+  
+  }
+
+
+  .navigation ul {
+    
+      list-style-type: none;
+      margin-left: 100px;
+      padding: 0;
+      overflow: hidden;
+      background-color: #84A5B8;
+   
+      
+    }
+    
+  .navigation li {
+      float: left;
+      padding-bottom: 50px;
+      
+     
+    }
+    
+  .navigation  li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 10px 25px;
+      text-decoration: none;
+      
+    }
+    
+  .navigation  li a:hover {
+      background-color: #B3DAF1;
+    }
+  
+  .navright {
+      float: right;
+  }
+
+
+  /* Sidebar */
+  
+  div.sidebar {
+    width: 12%;
+    background-color: rgb(0, 0, 0);
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    margin-top: 90px;
+
+  }
+
+  ul.sidebar_menu {
+    padding: 12px ;
+    top: 20%;
+    font-size: 15px;
+    text-transform: uppercase;
+    display: inline-block;
+
+  }
+
+  ul.sidebar_menu li {
+    padding: 15px;
+  }
+
+
+  a {   /* Text for sidebar */
+    color: white;
+    text-decoration: none;
+  }
+
+  li :hover{
+    color: red;
+  }
+
+
+
