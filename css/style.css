@@ -628,3 +628,103 @@ footer {
     font-size: 30px;
 
 }
+
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+.sidebar{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 999;
+}
+nav{
+position: absolute;
+top: 0;
+bottom: 0;
+height: 100%;
+left: 0;
+background: rgb(37, 63, 78);
+opacity: 0.5;
+width: 90px;
+overflow: hidden;
+transition: width 0.4s linear;
+box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+margin-top: 70px;
+}
+.logo {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    transition: all 1s ease;
+    margin: 10px 0 0 0px; /* Adjust the margin for initial hiding */
+}
+
+
+.logo img {
+    width: 50px;
+    height: 37px;
+    border-radius: 5%;
+    margin-right: 0px; /* Adjust the margin for spacing */
+}
+
+.logo span {
+    font-weight: bold;
+    padding: 15px;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 3px; /* Adjust the vertical alignment */
+    white-space: nowrap; /* Add this line */
+
+}
+.sidebar a {
+    position: relative;
+    color: #30D5C8;
+    font-size: 14px;
+    display: flex;
+    align-items: center; /* Align items vertically */
+    width: 100%; /* Adjusted width to fill the sidebar */
+    padding: 15px;
+    text-decoration:none; /* Remove default underline */
+    transition: padding-bottom 0.5s; /* Add transition for smoother effect */
+
+}
+
+.sidebar a:hover {
+    background: rgb(66, 104, 124);
+    text-decoration: underline;
+    transition: 0.5s;
+    padding-bottom: 5px; /* Add padding-bottom to create space between icon and underline */
+    
+}
+
+.fas{
+    position: relative;
+    width: 70px;
+    height: 40px;
+    top: 14px;
+    font-size: 25px;
+    text-align: center;
+    margin-right: 10px;
+    padding-bottom: 5px;
+}
+.nav-item {
+    position: relative;
+    top: 12px;
+    margin-left: 10px;
+    display: flex; /* Add display property */
+    align-items: center; /* Align items vertically */
+}
+
+
+nav:hover{
+    width: 280px;
+    transform: all 0.5s ease;
+}
+.sidebar li{
+    list-style-type: none;
+
+}
