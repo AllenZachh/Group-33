@@ -649,7 +649,7 @@ height: 100%;
 left: 0;
 background: rgb(37, 63, 78);
 opacity: 0.5;
-width: 90px;
+width: 120px;
 overflow: hidden;
 transition: width 0.4s linear;
 box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
@@ -708,7 +708,7 @@ margin-top: 70px;
     top: 14px;
     font-size: 25px;
     text-align: center;
-    margin-right: 10px;
+    margin-right: 40px;
     padding-bottom: 5px;
 }
 .nav-item {
@@ -728,3 +728,4 @@ nav:hover{
     list-style-type: none;
 
 }
+
