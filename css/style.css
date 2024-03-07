@@ -660,7 +660,7 @@ margin-top: 70px;
     display: flex;
     align-items: center;
     transition: all 1s ease;
-    margin: 10px 0 0 0px; /* Adjust the margin for initial hiding */
+    margin: 10px 0 0 0px; 
 }
 
 
@@ -668,7 +668,7 @@ margin-top: 70px;
     width: 50px;
     height: 37px;
     border-radius: 5%;
-    margin-right: 0px; /* Adjust the margin for spacing */
+    margin-right: 0px; 
 }
 
 .logo span {
@@ -676,20 +676,19 @@ margin-top: 70px;
     padding: 15px;
     font-size: 18px;
     text-transform: uppercase;
-    margin-top: 3px; /* Adjust the vertical alignment */
-    white-space: nowrap; /* Add this line */
-
+    margin-top: 3px; 
+    white-space: nowrap; 
 }
 .sidebar a {
     position: relative;
     color: #30D5C8;
     font-size: 14px;
     display: flex;
-    align-items: center; /* Align items vertically */
-    width: 100%; /* Adjusted width to fill the sidebar */
+    align-items: center; 
+    width: 100%; 
     padding: 15px;
-    text-decoration:none; /* Remove default underline */
-    transition: padding-bottom 0.5s; /* Add transition for smoother effect */
+    text-decoration:none; 
+    transition: padding-bottom 0.5s; 
 
 }
 
@@ -697,7 +696,7 @@ margin-top: 70px;
     background: rgb(66, 104, 124);
     text-decoration: underline;
     transition: 0.5s;
-    padding-bottom: 5px; /* Add padding-bottom to create space between icon and underline */
+    padding-bottom: 5px; 
     
 }
 
@@ -715,8 +714,8 @@ margin-top: 70px;
     position: relative;
     top: 12px;
     margin-left: 10px;
-    display: flex; /* Add display property */
-    align-items: center; /* Align items vertically */
+    display: flex; 
+    align-items: center; 
 }
 
 
