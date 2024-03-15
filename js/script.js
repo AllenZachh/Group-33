@@ -70,3 +70,39 @@ function scrollToTop() {
         window.scrollTo(0, currentScroll - (currentScroll / 8)); 
     }
 }
+document.addEventListener("DOMContentLoaded", function() {
+    const productTableBody = document.getElementById("productTableBody");
+
+    function fetchProducts() {
+        fetch('fetch_products.php')
+            .then(response => response.json())
+            .then(data => {
+                productTableBody.innerHTML = '';
+                
+                data.forEach(product => {
+                    const { productid, colour, size, imageFilePath } = product;
+                    addProductToTable(productid, colour, size, imageFilePath);
+                });
+            })
+            .catch(error => console.error('Error fetching products:', error));
+    }
+
+    fetchProducts();
+
+    function addProductToTable(productid, colour, size, imageURL) {
+        const row = `
+            <tr>
+                <td><img src="${imageURL}" alt="Product Image"></td>
+                <td>${productid}</td>
+                <td>${colour}</td>
+                <td>${size}</td>
+                <td>
+                    <button class="edit-btn">Edit</button>
+                    <button class="remove-btn">Remove</button>
+                </td>
+            </tr>
+        `;
+        productTableBody.insertAdjacentHTML("beforeend", row);
+    }
+
+});
