@@ -196,6 +196,7 @@ input[type="text"]:hover {
 .coat-item:hover .hover-img {
     display: block;
     transform: scale(1.1);
+
 }
 
 .hat-item:hover .original-img {
@@ -204,7 +205,7 @@ input[type="text"]:hover {
 
 .hat-item:hover .hover-img {
     display: block;
-    transform: scale(1.1);
+        transform: scale(1.1);
 
 }
 
@@ -336,12 +337,13 @@ input[type="text"]:hover {
 
 .Boots .boot-item:hover .original-img {
     display: none;
+    
 }
 
 .Boots .boot-item:hover .hover-img {
     display: block;
     transform: scale(1.1);
-    
+
     
 }
 .Boots .boot-text {
@@ -406,6 +408,7 @@ input[type="text"]:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     margin-top: 5px;
+    text-align: center;
 }
 .Accessories {
     position: relative;
@@ -461,6 +464,7 @@ input[type="text"]:hover {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     margin-top: 5px;
+    text-align: center;
 }
 
 .socialmedia{
@@ -642,8 +646,7 @@ footer {
     z-index: 999;
 }
 nav{
-position: absolute;
-top: 0;
+position: fixed;
 bottom: 0;
 height: 100%;
 left: 0;
@@ -653,7 +656,7 @@ width: 120px;
 overflow: hidden;
 transition: width 0.4s linear;
 box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
-margin-top: 70px;
+top: 70px; 
 }
 .logo {
     text-align: center;
@@ -671,13 +674,15 @@ margin-top: 70px;
     margin-right: 0px; 
 }
 
+
 .logo span {
     font-weight: bold;
     padding: 15px;
     font-size: 18px;
     text-transform: uppercase;
-    margin-top: 3px; 
-    white-space: nowrap; 
+    margin-top: 3px;
+    white-space: nowrap;
+
 }
 .sidebar a {
     position: relative;
@@ -687,7 +692,7 @@ margin-top: 70px;
     align-items: center; 
     width: 100%; 
     padding: 15px;
-    text-decoration:none; 
+    text-decoration:none;
     transition: padding-bottom 0.5s; 
 
 }
@@ -728,3 +733,202 @@ nav:hover{
 
 }
 
+.stock-table {
+    width: 80%;
+    border-collapse: collapse;
+    background-color: rgb(179, 218, 241, 0.6);
+    margin-left: 200px;
+    margin-top: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    table-layout: fixed;
+}
+
+.stock-table th, .stock-table td {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 25%;
+}
+
+.stock-table th {
+    background-color: rgb(66, 104, 124);
+    color: white;
+}
+
+.stock-table td img {
+    width: 50px;
+    height: auto;
+}
+
+.stock-table tbody tr:nth-child(even) {
+    background-color: rgba(66, 104, 124, 0.2);
+}
+
+.stock-table tbody tr:hover {
+    background-color: rgba(66, 104, 124, 0.4);
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+.stock-table {
+    border-collapse: collapse;
+  }
+  
+  .stock-table th, .stock-table td {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  .stock-table th {
+    background-color: rgb(66, 104, 124);
+    color: white;
+  }
+  
+  .stock-table tbody tr:nth-child(even) {
+    background-color: rgba(66, 104, 124, 0.2);
+  }
+  
+  .stock-table tbody tr:hover {
+    background-color: rgba(66, 104, 124, 0.4);
+  }
+  
+  .stock-table button {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: rgba(66, 104, 124, 0.8);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .stock-table button:hover {
+    background-color: rgb(66, 104, 124);
+  }
+
+.form-container {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: rgba(179, 218, 241, 0.6);
+    width: 50%;
+    margin-left: 150px;
+}
+
+.form-container h2 {
+    margin-bottom: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 100px;
+}
+
+.form-container input[type="text"],
+.form-container input[type="number"],
+.form-container input[type="url"]{
+    margin-bottom: 10px;
+    margin-left: 100px;
+    width: 75%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgba(179, 218, 241, 0.6);
+    color: rgb(0, 0, 0);
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="number"]:focus,
+.form-container input[type="url"]:focus {
+    background-color: rgba(179, 218, 241, 0.6); 
+}
+
+.form-container button {
+    margin-bottom: 10px;
+    margin-left: 150px;
+    width: 15%;
+    padding: 8px;
+    box-sizing: border-box;
+    border: none;
+    background-color: rgba(179, 218, 241, 0.6);
+    color: #fff;
+}
+
+.form-container button {
+    background-color: #30D5C8;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+    background-color: #26547c;
+}
+
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+.stock-table {
+    border-collapse: collapse;
+    background-color: rgba(179, 218, 241, 0.6);
+    font-family: Arial, Helvetica, sans-serif;
+    table-layout: fixed;
+    width: 75%; 
+}
+
+.stock-table th,
+.stock-table td {
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.stock-table th {
+    background-color: rgb(66, 104, 124);
+    color: white;
+}
+
+.stock-table tbody tr:nth-child(even) {
+    background-color: rgba(66, 104, 124, 0.2);
+}
+
+.stock-table tbody tr:hover {
+    background-color: rgba(66, 104, 124, 0.4);
+}
+
+.stock-table tbody td img {
+    width: 50px;
+    height: auto;
+}
+
+
+.report-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.report-container h1 {
+    font-size: 32px;
+    color: #26547c;
+    margin-bottom: 20px;
+}
+
+.report-btn {
+    padding: 12px 24px;
+    margin: 10px;
+    font-size: 18px;
+    border: none;
+    background-color: #30D5C8;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.report-btn:hover {
+    background-color: #26547c;
+}
+.report-container h1{
+    font-family: Arial, Helvetica, sans-serif;
+}
