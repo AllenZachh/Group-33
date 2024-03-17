@@ -53,7 +53,7 @@
 
         <h1>Welcome back!!!</h1>
         <hr>
-        <form method="post" action="login.php">
+        <form method="post" action="login.php" id = "login">
           <label for="email"><b>Username</b></label>
           <input type="text" placeholder="Enter Username" name="username" id="username" required>
       
@@ -61,7 +61,7 @@
           <input type="password" placeholder="Enter Password" name="password" id="psw" required>
 
       
-          <button type="submit" class="registerbtn">Login</button>
+          <button type="submit" class="registerbtn" id="lgnbtn">Login</button>
           <input type="hidden" name="submitted" value="true">
         </form>
         <?php echo login(); ?>
@@ -88,4 +88,31 @@
 
       </div>
 </body>
+
+<script type="text/javascript">
+  (function(){
+  // set flag to indicate whether we should wait or actually submit
+  var delaySubmit = true;
+  // get form el
+  var form = document.getElementById('login');
+  form.addEventListener("submit", function(e) {
+
+    document.getElementById("lgnbtn").setAttribute("disabled", "true"); 
+    // if we've already waited the 2 seconds, submit
+    if( ! delaySubmit )
+      return;
+
+    // otherwise, stop the submission
+    e.preventDefault();
+    // set the flag for next time
+    delaySubmit = false;
+
+    // and resubmit in 2 seconds. 
+    window.setTimeout(function() {
+      const myTimeout = setTimeout(document.getElementById("login").submit(), 2000);
+    }, 2000);
+  });
+})();
+</script>
+
 </html>
