@@ -77,6 +77,7 @@
 </div>
 
     </div>
+
     <div class="Coats" id="Coats">
         <div class="coats-section">
             <h2>Coats</h2>
@@ -110,35 +111,31 @@
         <div class="hats-section">
             <h2>Hats</h2>
             <div class="images-container">
-                <div class="hat-item">
-                    <img src="images/Hat1.png" alt="Hat1" class="original-img">
-                    <img src="images/Hat1-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Beige Beanie £20</p>
-                    
-                </div>
-                <div class="hat-item">
-                    <img src="images/Hat2.png" alt="Hat1" class="original-img">
-                    <img src="images/Hat2-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Grey Beanie £20</p>
-                </div>
-                <div class="hat-item">            
-                    <img src="images/Hat3.png" alt="Hat1" class="original-img">
-                    <img src="images/Hat3-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Blue Beanie £20</p>
-                </div>                 
-                <div class="hat-item">
-                    <img src="images/Hat4.png" alt="Hat1" class="original-img">
-                    <img src="images/Hat4-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Trapper Hat £30</p>
-                </div>                
-                <div class="hat-item">
-                    <img src="images/Hat5.png" alt="Hat1" class="original-img">
-                    <img src="images/Hat5-hover.png" alt="Hat1 Hover" class="hover-img">
-                    <p class="coat-text">Bobble Hat £27</p>
+                <?php
+
+                    // Queries the database to find all productTypes with the keyword "Coat", Then displays each type once
+                        $query= "SELECT * FROM producttype WHERE keywords LIKE '%Hat%'";
+                        $rows = $db->query($query);
+                        $rows = $rows->fetchAll();
+                        foreach ($rows as $row){
+                            $query= "SELECT * FROM product WHERE productTypeid = ".$row['productTypeid']." AND size = 'M' LIMIT 1";
+                            $rows = $db->query($query);
+                            $rows = $rows->fetchAll();
+                            while (current($rows)) {
+                                echo '  <div class="hat-item">
+                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
+                                            <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
+                                            <p class="hat-text">'.$row["name"].'</p>
+                                        </div>';
+                                next($rows);
+                            }
+                        }
+                    ?>
                 </div>            
             </div>
         </div>
     </div>
+
     <div class="Boots" id="Boots">
         <div class="boots-section">
             <h2>Boots</h2>
