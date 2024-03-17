@@ -4,6 +4,20 @@ require_once("connectdb.php");
 $items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid ) LIMIT 20");
 $items->execute();
 $products = $items->fetchAll(PDO::FETCH_ASSOC);
+if (isset($_GET['q'])){
+  $prods = $products;
+  $products = array();
+  $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%'");
+  $srch->execute();
+  $productTypes = $srch->fetchAll(PDO::FETCH_ASSOC);
+
+  foreach ($prods as $prod){
+    foreach($productTypes as $prodType)
+    if (in_array($prod['productTypeid'], $prodType)){
+      array_push($products, $prod);
+    }
+  }
+}
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +31,10 @@ $products = $items->fetchAll(PDO::FETCH_ASSOC);
 
     <?php require_once("navbar.php"); navbar("productList"); ?>
         <div class="search-container">
-            <input type="text" id="searchInput" placeholder="Coats, Hats...">
-            <button class="custom-button" onclick="search()">Search</button>
+          <form method="get" action="products_list.php" class="search-bar">
+          <input type="text" placeholder="Search..." name="q" id="search">
+          <button type="submit"><img src="./images/search-icon-free-vector.jpg"></button>
+          <input type="hidden" name="submitted" value="true">
         </div>
 
 
@@ -71,6 +87,7 @@ $products = $items->fetchAll(PDO::FETCH_ASSOC);
             <span class="multi-range-price">
               <input type="range" min="0" max="1000" value="0" id="lower">
               <input type="range" min="0" max="1000" value="1000" id="upper">
+              <?php echo($_GET['q'])?>
             </span>
             <p>Lowest Price: £<span id="lowerValue">
               <p>Highest Price: £<span id="upperValue"></span>
@@ -85,15 +102,14 @@ $products = $items->fetchAll(PDO::FETCH_ASSOC);
                     <?php foreach ($products as $product): ?>
                         <?php
                             $typeid = $product["productTypeid"];
-                            $item_specifics = $db->prepare("SELECT * FROM producttype WHERE producttypeid=$typeid ");
+                            $item_specifics = $db->prepare("SELECT * FROM producttype WHERE producttypeid=$typeid  ");
                             $item_specifics->execute();
                             $spec = $item_specifics->fetch(PDO::FETCH_ASSOC);
                         ?>
+                        <div class = "img-container">
                         <a href="product_page.php?select_product=<?=$product["productid"]?>" class="single-prod">
                             <img src="<?=$product["imageFilePath"]?>" alt="<?=$spec["name"]?>" width="50" height="50">
-                            <span id = "name" class="name" style="color:beige"><?=$spec["name"]?></span>
-                            <span id = "price" class="price" style="color:beige">£<?=$spec["price"]?></span>
-                        </a>
+                        </a> </div>
                     <?php endforeach; ?>
                 </div>
                     </div>
@@ -181,4 +197,8 @@ slider2.oninput = function() {
     padding: 20px;
     text-align: center;
 }
+
+.img-container{
+}
+
 </style>
