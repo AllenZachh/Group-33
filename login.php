@@ -109,8 +109,8 @@
 
     // and resubmit in 2 seconds. 
     window.setTimeout(function() {
-      const myTimeout = setTimeout(document.getElementById("login").submit(), 2000);
-    }, 2000);
+      const myTimeout = setTimeout(document.getElementById("login").submit(), 1000);
+    }, 1000);
   });
 })();
 </script>
