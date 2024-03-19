@@ -4,6 +4,9 @@ require_once("connectdb.php");
 $items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid ) LIMIT 20");
 $items->execute();
 $products = $items->fetchAll(PDO::FETCH_ASSOC);
+if (isset($_GET["select"])){
+  $_GET['q'] = htmlspecialchars($_GET["select"]);
+}
 if (isset($_GET['q'])){
   $prods = $products;
   $products = array();
@@ -87,7 +90,6 @@ if (isset($_GET['q'])){
             <span class="multi-range-price">
               <input type="range" min="0" max="1000" value="0" id="lower">
               <input type="range" min="0" max="1000" value="1000" id="upper">
-              <?php echo($_GET['q'])?>
             </span>
             <p>Lowest Price: £<span id="lowerValue">
               <p>Highest Price: £<span id="upperValue"></span>
