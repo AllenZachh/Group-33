@@ -8,7 +8,18 @@
 <head>
     <script src="https://kit.fontawesome.com/de49bed1ab.js" crossorigin="anonymous"></script>
     <?php require_once("navbar.php"); navbar("stockManage"); ?>
-</head>
+</head
+
+<?php
+
+require_once('connections.php');
+
+$var1 = $con->prepare("SELECT * FROM `product`");
+$var1->execute();
+
+$result1 = $var1->fetchAll(PDO::FETCH_ASSOC);
+
+?>
 
 <body>
 <?php
@@ -45,11 +56,25 @@
         <table class="stock-table">
             <thead>
                 <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
+                    <th>Product Id</th>
+                    <th>Type ID</th>
                     <th>Stock</th>
+                    <th>Colour</th>
+                    <th>Size</th>
                 </tr>
+                <?php
+                foreach ($result1 as $row) {
+                ?>
+                    <tr>
+                        <td><?php echo $row['productid']; ?></td>
+                        <td><?php echo $row['productTypeid']; ?></td>
+                        <td><?php echo $row['stock']; ?></td>
+                        <td><?php echo $row['colour']; ?></td>
+                        <td><?php echo $row['size']; ?></td>
+                    </tr>
+                <?php
+                }
+                ?>
             </thead>
         </table>
     </div>
