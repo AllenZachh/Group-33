@@ -12,9 +12,9 @@
 
 <?php
 
-require_once('connections.php');
+require_once('connectdb.php');
 
-$var1 = $con->prepare("SELECT * FROM `product`");
+$var1 = db->prepare("SELECT * FROM `product`");
 $var1->execute();
 
 $result1 = $var1->fetchAll(PDO::FETCH_ASSOC);
