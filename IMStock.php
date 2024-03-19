@@ -1,6 +1,13 @@
 <?php
     session_start();
+    require_once('connectdb.php');
+
+    if (isset($_POST['stock'])){
+        $stmt = $db->prepare('UPDATE product SET stock = ? WHERE productid = ?');
+        $stmt->execute(array($_POST['stock'], htmlspecialchars($_GET["select"])));
+    }
 ?>
+        
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/script.js"></script>
@@ -10,11 +17,13 @@
     <?php require_once("navbar.php"); navbar("stockManage"); ?>
 </head>
 
-<body>
-<?php
-    if (isset($_SESSION['accountType'])){
-        if ($_SESSION['accountType'] == "admin"){
-            echo <<< EOT
+    <?php
+        if (!isset($_SESSION['accountType']) or $_SESSION['accountType'] != "admin"){
+            echo "<h1>Sorry Nothing Here!!!</h1>";
+            exit();
+        }
+    
+    ?>
     <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">Top</button>
 
     
@@ -41,18 +50,66 @@
         </ul>
         </nav>
     </div>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+ 
+<?php
+try{
+
+    if (isset($_GET["q"])){
+        $query="SELECT * FROM product WHERE keywords LIKE '%".$_GET['q']."%'";
+        $rows = $db->query($query);
+    } else {
+      $query="SELECT * FROM product";
+      $rows = $db->query($query);
+    }
+    $query="SELECT * FROM productType";
+    $types = $db->query($query);
+    $types =  $types->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($rows && $rows->rowCount()>0){
+
+    ?>
     <div class="table-container">
-        <table class="stock-table">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Stock</th>
-                </tr>
-            </thead>
-        </table>
-    </div>
+  <table class = "stock-table">
+  <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th> <th align='left'><b>Stock</b></th ><th align='left'><b>Size</b></th ><th align='left'>Action</th></tr>
+  <?php
+    while  ($row =  $rows->fetch())	{
+        echo  " <form method='post' action='IMStock.php?select=".$row['productid']."'>
+                <tr><td align='left'><img src = '" . $row['imageFilePath'] . "' height = '200'></img></td>
+                <td align='left'>" . $types[$row['productTypeid']-1]['name'] . "</td>
+                <td align='left'>". $types[$row['productTypeid']-1]['description'] . "</td>
+                <td align='left'><input type = 'number' name = 'stock' value = '" . $row['stock'] . "'></input></td>
+                <td align='left'>" . $row['size'] . "</td>";
+      
+        echo "<td align='left'>
+          <button value='edit' class='tbl_btn'>Save</button>
+          <input type='hidden' name='edit' />
+        </form>
+        </td></tr>\n";
+
+          }
+          echo  '</table></div>';
+  } else {
+    echo "<p>No Products</p>";
+  }
+} catch (PDOException $ex) {
+  $dbEr = TRUE;
+  //echo($ex->getMessage());
+}
+?>
+    </body>
+</html>
+
+
     <footer>
         <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
             <ion-icon size="large" name="logo-instagram"></ion-icon>
@@ -60,18 +117,9 @@
         <a class="socialmedia" href="https://twitter.com/" target="_blank">
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
-        
     </footer>
-
 
 
 </body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-EOT;}} else {
-    echo <<< EOT
-
-    <h1>Sorry Nothing Here!!!</h1>
-
-EOT;
-}
