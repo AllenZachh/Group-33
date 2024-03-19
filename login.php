@@ -20,6 +20,10 @@
         if (password_verify($_POST["password"], $row["password"])){
 
           $_SESSION["username"]=$_POST["username"];
+          $stat = $db->prepare('SELECT accountType FROM user WHERE username = "'.$_SESSION['username'].'"');
+          $stat->execute();
+          $accType = $stat->fetch(PDO::FETCH_ASSOC);
+          $_SESSION["accountType"]=$accType["accountType"];
           return "Logged in!";
 
         } else {
