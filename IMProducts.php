@@ -1,7 +1,7 @@
 <?php
     session_start();
+    require_once('connectdb.php');
 ?>
-        
 <!DOCTYPE html>
 <link rel="stylesheet" href="./css/style.css">
 <script src="./js/script.js"></script>
@@ -12,12 +12,14 @@
 </head>
 
 <body>
-    <?php
-        if (isset($_SESSION['accountType'])){
-            if ($_SESSION['accountType'] == "admin"){
-                echo <<< EOT
+<?php
+    if (!isset($_SESSION['accountType']) OR $_SESSION['accountType'] != "admin"){
+        echo '<h1>Sorry Nothing Here!!!</h1>';
+        exit();
+    }
+?>
+    
     <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">Top</button>
-
     
     <div class="sidebar">
         <nav>
@@ -42,46 +44,53 @@
         </ul>
         </nav>
     </div>
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
+   
+    <?php
+try{
+
+    if (isset($_GET["q"])){
+        $query="SELECT * FROM product WHERE keywords LIKE '%".$_GET['q']."%'";
+        $rows = $db->query($query);
+    } else {
+      $query="SELECT * FROM productType";
+      $rows = $db->query($query);
+    }
+    $query="SELECT * FROM product";
+    $types = $db->query($query);
+    $types =  $types->fetchAll(PDO::FETCH_ASSOC);
+
+    if ($rows && $rows->rowCount()>0){
+
+    ?>
+    <input type="button" onclick="location.href='addProduct.php';" value="Add New Product" />
     <div class="table-container">
-        <table class="stock-table">
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>ID</th>
-                    <th>Colour</th>
-                    <th>Size</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody id="productTableBody">
-            </tbody>
-        </table>
-    </div>
-    <div class="form-container">
-        <h2>Add Product</h2>
-            <form id="addProductForm">
-                <input type="text" id="productName" placeholder="Product Name" required>
-                <input type="text" id="productDescription" placeholder="Product Description" required>
-                <input type="number" id="productStock" placeholder="Stock" required>
-                <input type="text" id="productSize" placeholder="Size" required>
-                <input type="text" id="productImageURL" placeholder="Image URL">
-                <button type="submit">Add Product</button>
-            </form>
+  <table class = "stock-table">
+  <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'>Action</th></tr>
+  <?php
+    while  ($row =  $rows->fetch())	{
+        $img = $db->query("SELECT imageFilePath FROM product WHERE productTypeid = ".$row['productTypeid']." AND size = 'M' LIMIT 1");
+        $img = $img->fetch(PDO::FETCH_ASSOC);
+        echo  " <form method='post' action='editProduct.php?select=".$row['productTypeid']."'>
+                <tr><td align='left'><img src = '" . $img['imageFilePath'] . "' height = '200'></img></td>
+                <td align='left'>" . $row['name'] . "</td>
+                <td align='left'>". $row['description'] . "</td>";
+      
+        echo "<td align='left'>
+          <button value='edit' class='tbl_btn'>Edit</button>
+          <input type='hidden' name='edit' />
+        </form>
+        </td></tr>\n";
 
-         </div>
-    </body>
-</html>
-
+          }
+          echo  '</table></div>';
+  } else {
+    echo "<p>No Products</p>";
+  }
+} catch (PDOException $ex) {
+  $dbEr = TRUE;
+  //echo($ex->getMessage());
+}
+?>
 
     <footer>
         <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
@@ -90,17 +99,11 @@
         <a class="socialmedia" href="https://twitter.com/" target="_blank">
             <ion-icon size="large" name="logo-twitter"></ion-icon>
         </a>
+        
     </footer>
+
 
 
 </body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-EOT;}} else {
-    echo <<< EOT
-
-    <h1>Sorry Nothing Here!!!</h1>
-
-EOT;
-}
- ?>
