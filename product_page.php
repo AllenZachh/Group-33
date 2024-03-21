@@ -151,8 +151,8 @@
 </form>
 
 <!-- Button to send to review page-->
-<form action="review.php" method="POST"">
-    <input type="submit" value="Review Item"/>
+<form action="review.php" method="GET"">
+    <input type="submit" value="product_id"/>
 </form>
 
 <div class = bottom>
