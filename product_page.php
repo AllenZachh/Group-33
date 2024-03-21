@@ -149,6 +149,12 @@
 <button  onclick = "checkradio()" class = "cartbutton">Add to Cart</button>
 <input type="hidden" name="submitted" value="true">
 </form>
+
+<!-- Button to send to review page-->
+<form action="" method="POST"">
+    <input type="submit" value="Review Item"/>
+</form>
+
 <div class = bottom>
     <h5 id = "productid" class="productid"></h3>
     <h3><?=$result?> </h3>
