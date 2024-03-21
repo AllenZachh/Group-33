@@ -134,7 +134,7 @@
                             }
                             if (!in_array($row['size'], $sizes)){
                                 echo '  <input type="radio" id="'.$row["size"].'" name="size" value="'.$row["size"].'" class="size" '.$st.'>
-                                        <label for="'.$row["size"].'">'.$row["size"].'</label><br>';
+                                        <label for="'.$row["size"].'">'.$row["size"].'<br><br>'.strval($row["stock"]).'</label><br>';
                                 array_push($sizes, $row['size']);
                             }
                         }
@@ -151,7 +151,6 @@
 </form>
 <div class = bottom>
     <h5 id = "productid" class="productid"></h3>
-    <h5 id = " " class="pstock"><?php echo $product['stock']; ?> Left in Stock!</h5>
     <h3><?=$result?> </h3>
 
 </div>

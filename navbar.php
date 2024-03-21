@@ -50,6 +50,19 @@ function navbar($currentPage){
             <ion-icon name="shirt-outline"></ion-icon>
         </a>';
 
+    if ($currentPage == "stockManage"){
+        $current = 'class="active"';
+    } else {
+        $current = '';
+    }
+    if (isset($_SESSION['accountType'])){
+        if ($_SESSION['accountType'] == "admin"){
+            echo ' <a '.$current.' href="IMProducts.php">Inventory Management
+                        <ion-icon name="bag-outline"></ion-icon>
+                    </a>';
+        }
+    }
+
     if ($currentPage == "home"){
         $current = 'class="active"';
     } else {

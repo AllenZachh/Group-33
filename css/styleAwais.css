@@ -280,3 +280,40 @@ a.link:active
    color: #B3DAF1;
    text-decoration: none;
 }
+
+.search-bar{
+  max-height: 20px;
+  width: 20%;
+  background: rgba(0,0,0, 0.6);
+  display: flex;
+  align-items: center;
+  border-radius: 60px;
+  padding: 1% 30px;
+}
+
+.search-bar input{
+  background: transparent;
+  flex: 1;
+  border: 0;
+  outline: none;
+  padding: 24px, 20px;
+  font-size: 20px;
+  color: #f1f1f1;
+}
+
+.search-bar button img{
+  width: 20px;
+  height: 20px;
+}
+
+.search-bar button{
+  border: 0;
+  border-radius: 50%;
+  width: 10%;
+  height: 40px;
+  background: rgba(rgb(255, 255, 255), 0.6);
+}
+
+.search-bar button:hover{
+  filter: brightness(80%);
+}
