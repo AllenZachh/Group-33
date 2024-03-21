@@ -1,44 +1,4 @@
-/* header.html css*/
 
-.logo{
-  display: flex;
-  flex-direction: row;
-  height: 30%;
-  width: 10%;
-}
-.logo img{
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
-  }
-
-.navigation ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #84A5B8;
-  }
-  
-.navigation li {
-    float: left;
-  }
-  
-.navigation  li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 10px 25px;
-    text-decoration: none;
-  }
-  
-.navigation  li a:hover {
-    background-color: #B3DAF1;
-  }
-
-.navright {
-    float: right;
-}
 
 /* product_page.html css*/
 
@@ -58,6 +18,7 @@ display: flex;
 }
 
 .productimage {
+  position: relative;
   flex: 1;
   width: 70%;
   margin-right: 20px;
@@ -68,6 +29,17 @@ display: flex;
   width: 60%;
   margin-top: 10px;
   margin-right: 50px;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 3px solid #000;
+  border-radius: 50%;
+  fill: #4884a7;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 1200px;
+  height: 2100px;
 }
 
 .productinfo{
@@ -281,39 +253,195 @@ a.link:active
    text-decoration: none;
 }
 
-.search-bar{
-  max-height: 20px;
-  width: 20%;
-  background: rgba(0,0,0, 0.6);
+/* sort and filter */
+.pagerow {
   display: flex;
-  align-items: center;
-  border-radius: 60px;
-  padding: 1% 30px;
-}
-
-.search-bar input{
-  background: transparent;
   flex: 1;
-  border: 0;
-  outline: none;
-  padding: 24px, 20px;
-  font-size: 20px;
-  color: #f1f1f1;
+}
+.pagecolumn {
+  float: left;
 }
 
-.search-bar button img{
-  width: 20px;
-  height: 20px;
+.left {
+  width: 25%;
 }
 
-.search-bar button{
-  border: 0;
-  border-radius: 50%;
-  width: 10%;
-  height: 40px;
-  background: rgba(rgb(255, 255, 255), 0.6);
+.right {
+  width: 75%;
 }
 
-.search-bar button:hover{
-  filter: brightness(80%);
+
+.product {
+  margin: auto;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.product img {
+  size: 50%;
+}
+
+/* Account pages*/
+
+.accountNav ul {
+  
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 25%;
+  background-color: #f1f1f1;
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scrolling if the sidenav has too much content */
+
+}
+.accountNav {
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  .accountNav li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .accountNav li a:hover {
+    background-color: #618ea7;
+    color: white;
+  }
+  
+  accountContainer {
+    display: flex;
+  }
+  
+  .accountNav {
+    flex: 50%;
+  }
+  
+  .accountInfo {
+    flex: 50%;
+  }
+  
+
+  .orderCard {
+    border: #f1f1f1;
+    border-style: solid;
+    border-radius: 10px;
+    display: flex;
+}
+
+.orderCardImg,
+.orderCardInfo,
+.orderCardButtons {
+    flex-basis: calc(33.33%);
+}
+
+.orderCardImg {
+    padding: 10px;
+}
+
+.orderCardImg img {
+  width: 50%;
+}
+
+.orderCardInfo {
+  justify-content: left;
+}
+
+.orderCardButtons {
+  padding-top: 10px;
+    display: block;
+    justify-content: right;
+    align-items: center;
+}
+
+.rButton, .submit {
+  width: fit-content;
+  height: fit-content;
+  background-color: #B3DAF1;
+  border: none;
+  color: white;
+  text-align: center;
+  border-radius:12px;
+  font-size: xx-large;
+  
+
+}
+
+.accountTop {
+  display: flex;
+}
+
+.accountNav {
+  flex: 30%;
+}
+
+.accountWelcome {
+  flex:70%;
+  
+}
+.accountWelcome h1 {
+  text-align: left;
+}
+
+/*Refund page */
+
+.orderCardRefundOptions {
+  padding-top: 2px;
+}
+
+.reason {
+  background-color: #4884a7;
+  position: relative;
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  width: 100%;
+
+}
+
+.reasons {
+  color: white;
+}
+
+/*Review*/
+
+.rating {
+  float: left;
+  height: 46px;
+  padding: 0 10px;
+}
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+}
+.rating:not(:checked) > label {
+  float:right;
+  width:1em;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:30px;
+  color:#ccc;
+}
+
+.rating > input:checked ~ label {
+  color: #ffc700;    
+}
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: #deb217;  
+}
+
+/*review page*/
+
+textarea{
+  width: 90%;
+  height: 150px;
+  padding: 10px;
+  box-sizing: border-box; /* Include padding and border in element's total width and height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: none;
+
 }
