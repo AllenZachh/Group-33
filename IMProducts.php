@@ -32,7 +32,7 @@
                 <i class="fas fa-newspaper"></i>
                 <span class="nav-item">Report</span> 
             </a></li>
-            <li><a href="ImStock.php">
+            <li><a href="IMStock.php">
                 <i class="fas fa-warehouse"></i>
                 <span>Stock</span>
             </a></li>
@@ -52,7 +52,7 @@ try{
         $query="SELECT * FROM product WHERE keywords LIKE '%".$_GET['q']."%'";
         $rows = $db->query($query);
     } else {
-      $query="SELECT * FROM productType";
+      $query="SELECT * FROM producttype";
       $rows = $db->query($query);
     }
     $query="SELECT * FROM product";
