@@ -151,7 +151,7 @@
 </form>
 
 <!-- Button to send to review page-->
-<form action="" method="POST"">
+<form action="review.php" method="POST"">
     <input type="submit" value="Review Item"/>
 </form>
 
