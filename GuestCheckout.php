@@ -20,7 +20,6 @@
     <div class="container mt-5">
         <div class="row">
 
-            <!-- Delivery Options -->
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header bg-white">
@@ -29,29 +28,31 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between mb-4">
                         </div>
-                        <form>
+                        <form id="checkout-form">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="First Name*" required>
+                                    <input type="text" class="form-control" id="first-name" placeholder="First Name*" required>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <input type="text" class="form-control" placeholder="Last Name*" required>
+                                    <input type="text" class="form-control" id="last-name" placeholder="Last Name*" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control" placeholder="Email*" required>
+                                <input type="email" class="form-control" id="email" placeholder="Email*" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" class="form-control" placeholder="Phone Number*" required>
+                                <input type="email" class="form-control" id="confirm-email" placeholder="Confirm Email*" required>
                             </div>
-                           <!-- This is for after backend is implemented -> <form action="OdrerConfirmation.html" method="post"> -->
+                            <div class="form-group">
+                                <input type="tel" class="form-control" id="phone-number" placeholder="Phone Number*" required>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-block">Save & Continue</button>
                         </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Order Summary -->
+
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header bg-white">
@@ -76,11 +77,11 @@
         </div>
     </div>
 
-    <!-- Bootstrap's JavaScript, jQuery and Popper.js -->
+
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- JavaScript -->
+
     <script>
         document.getElementById('checkout-form').addEventListener('submit', function(event) {
             var email = document.getElementById('email').value;
@@ -90,7 +91,7 @@
                 alert('Error: Email addresses do not match.');
                 event.preventDefault();
             } else {
-                window.location.href = 'OrderConfirmation.html';
+                window.location.href = 'OrderConfirmation.php';
                 event.preventDefault();
             }
         });
