@@ -26,8 +26,7 @@ navbar("productList"); ?>
             <div class="accountNav">
                 <ul>
                     <li><a href="viewDetails.php">View Details</a></li>
-                    <li><a href="products_list.html">View Orders</a></li>
-                    <li><a href="contactus.html">Send Enquires</a></li>
+                    <li><a href="orders.php">View Orders</a></li>
                 </ul>
             </div>
             <div class="accountWelcome">
