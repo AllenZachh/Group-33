@@ -25,8 +25,6 @@
                         <h4 class="text-center">Delivery Options</h4>
                     </div>
                     <div class="card-body">
-                        <div class="d-flex justify-content-between mb-4">
-                        </div>
                         <form id="checkout-form">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
@@ -45,11 +43,22 @@
                             <div class="form-group">
                                 <input type="tel" class="form-control" id="phone-number" placeholder="Phone Number*" required>
                             </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="address-line" placeholder="Address Line*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="city-country" placeholder="City, Country*" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="postcode" placeholder="Postcode*" required>
+                            </div>
                             <button type="submit" class="btn btn-primary btn-block">Save & Continue</button>
                         </form>
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Order Summary -->
             <div class="col-md-6 mb-4">
