@@ -61,13 +61,22 @@
                             <input type="tel" class="form-control" id="phone" name="phone" value="123 456 7890" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="address">Shipping Address:</label>
-                            <textarea class="form-control" id="address" name="address" rows="3" readonly>User's address goes here</textarea>
+                            <label for="address-line">Address Line:</label>
+                            <input type="text" class="form-control" id="address-line" name="address-line" value="User's street address" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="city-country">City, Country:</label>
+                            <input type="text" class="form-control" id="city-country" name="city-country" value="City, Country" readonly>
+                        </div>
+                        <div class="form-group">
+                            <label for="postcode">Postcode:</label>
+                            <input type="text" class="form-control" id="postcode" name="postcode" value="Postcode" readonly>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Place Order</button>
                     </form>
                 </div>
             </div>
+
 
             <!-- Order Summary -->
             <div class="col-md-6">
