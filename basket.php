@@ -98,16 +98,25 @@ include 'navbar.php';
                             <p class="card-text">Subtotal: £<?= number_format($totalprice, 2) ?></p>
                             <p class="card-text">Delivery: £5.00</p>
                             <h4>Total: £<?= number_format($totalprice + 5, 2) ?></h4>
-                            <form action="ChooseCheckout.php" method="post">
-                                <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Proceed to Checkout</button>
-                            </form>
+                            <?php if (isset($_SESSION['username'])): ?>
+                                <!-- IF user is logged in, direct them straight to UserCheckout.php -->
+                                <form action="UserCheckout.php" method="post">
+                                    <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Proceed to Checkout</button>
+                                </form>
+                            <?php else: ?>
+                                <!-- If user isn't logged in, direct them to ChooseCheckout.php-->
+                                <form action="ChooseCheckout.php" method="post">
+                                    <button class="btn btn-primary btn-lg btn-block mt-4" type="submit">Proceed to Checkout</button>
+                                </form>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
         <?php endif; ?>
     </div>
-
+    
+    <!-- Bootstrap's JavaScript, jQuery and Popper.js -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -115,3 +124,7 @@ include 'navbar.php';
 
 </body>
 </html>
+
+
+
+
