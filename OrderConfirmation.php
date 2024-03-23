@@ -48,13 +48,13 @@
                                 <li><strong>Total Amount:</strong> £55.00</li>
                             </ul>
                         </div>
-                        <p>Your items will be shipped to the following address:</p>
+                        <p>Your item(s) will be shipped to the following address:</p>
                         <div class="order-details">
                             <address>
-                                Username<br>
-                                Address Line 1<br>
-                                City, State<br>
-                                Country, Postcode
+                                Username <br>
+                                Address Line 1 <br>
+                                Country & City <br>
+                                Postcode
                             </address>
                         </div>
                         <p>If you have any questions or concerns, please <a href="contactus.php">contact us</a>.</p>
