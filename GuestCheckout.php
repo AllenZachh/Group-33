@@ -18,7 +18,7 @@
     <div class="container mt-5">
         <div class="row">
 
-            <!-- Delivery Options -->
+            <!-- Delivery Details -->
             <div class="col-md-6 mb-4">
                 <div class="card">
                     <div class="card-header bg-white">
@@ -99,13 +99,9 @@
                 alert('Error: Email addresses do not match.');
                 event.preventDefault();
             } else {
+                alert('Your order has been placed.');
                 window.location.href = 'OrderConfirmation.php';
                 event.preventDefault();
             }
         });
     </script>
-
-
-
-
-  
