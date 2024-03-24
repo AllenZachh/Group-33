@@ -1,6 +1,20 @@
 <?php
     session_start();
     require_once('connectdb.php');
+
+    if (isset($_SESSION['username'])){
+        $sql = "SELECT * FROM user WHERE username = '".$_SESSION['username']."'";
+        $info = $db->query($sql);
+        $info = $info->fetch();
+        $fulnm = $info["fullName"];
+        $email = $info["email"];
+        $phnum = $info["phoneNum"];
+        $adrln1 = $info["address1"];
+        $adrln2 = $info["address2"];
+        $country = $info["country"];
+        $postcode = $info["postcode"];
+
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -50,27 +64,27 @@
                     <form id="checkout-form" method="post">
                         <div class="form-group">
                             <label for="full-name">Full Name:</label>
-                            <input type="text" class="form-control" id="full-name" name="full-name" value="User1" readonly>
+                            <input type="text" class="form-control" id="full-name" name="full-name" value="<?php echo$fulnm;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control" id="email" name="email" value="User1@hotmail.com" readonly>
+                            <input type="email" class="form-control" id="email" name="email" value="<?php echo$email;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number:</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" value="123 456 7890" readonly>
+                            <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo$phnum;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="address-line">Address Line:</label>
-                            <input type="text" class="form-control" id="address-line" name="address-line" value="User's street address" readonly>
+                            <input type="text" class="form-control" id="address-line" name="address-line" value="<?php echo$adrln1;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="city-country">City, Country:</label>
-                            <input type="text" class="form-control" id="city-country" name="city-country" value="City, Country" readonly>
+                            <input type="text" class="form-control" id="city-country" name="city-country" value="<?php echo$country;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="postcode">Postcode:</label>
-                            <input type="text" class="form-control" id="postcode" name="postcode" value="Postcode" readonly>
+                            <input type="text" class="form-control" id="postcode" name="postcode" value="<?php echo$postcode;  ?>" readonly>
                         </div>
                         <button type="submit" class="btn btn-primary btn-block">Place Order</button>
                     </form>
@@ -82,21 +96,17 @@
             <div class="col-md-6">
                 <div class="summary-card">
                     <div class="card-header bg-white">
-                        <h4 class="text-center">In Your Bag</h4>
+                        <h4 class="text-center">Basket</h4>
                     </div>
                     <div class="card-body">
                         <!-- N/A to be replaced with actual data from database -->
                         <div class="summary-item">
-                            <p>Item: N/A</p>
-                            <p>Size: N/A</p>
-                            <p>Colour: N/A</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <p>Subtotal: £50.00</p>
                                     <p>Delivery: £5.00</p>
                                     <p>Total: £55.00</p>
                                 </div>
-                                <img src="path-to-item-image.jpg" alt="Item Image" class="img-thumbnail">
                             </div>
                         </div>
                     </div>
