@@ -44,13 +44,13 @@
     
         <div class="report-container">
             <h1>Generate Report</h1>
-             <form action = "index.php" method="POST">
+             <form action = "./FPDF/index.php" method="POST">
                 <button type ="submit" name="btn_sales" class="btn">Sales Report</button>
             </form>
-            <form action ='index.php' method="POST">
+            <form action ='./FPDF/index.php' method="POST">
                 <button type ="submit" name="btn_orders" class="btn">Orders Report</button>
             </form>
-            <form action = "index.php" method = "POST">
+            <form action = "./FPDF/index.php" method = "POST">
                 <button type = "submit" name= "btn_stock" class="report-btn">Stock Report</button>
             </form>
         </div>
