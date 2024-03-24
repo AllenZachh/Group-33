@@ -66,7 +66,7 @@ $price = $productToChange["price"];
 ?>
 <div class="table-container">
 <table class = "stock-table">
-<tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'>Action</th></tr>
+<tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'>Price</th></tr>
 
 <?php
 $query="SELECT * FROM product WHERE productTypeid = ".$productToChange['productTypeid'];

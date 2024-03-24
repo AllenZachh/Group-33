@@ -1,6 +1,10 @@
 <?php
     session_start();
     require_once('connectdb.php');
+
+    $prodTypes = "SELECT * FROM producttype";
+    $prodTypes = $db->query($prodTypes);
+    $prodTypes = $prodTypes->fetchAll();
 ?>
         
 <!DOCTYPE html>
@@ -58,20 +62,22 @@
 
 <div class="table-container">
 <table class = "stock-table">
-<tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'><b>Price (£)</b></th><th align='left'><b>Keywords</b></tr>
+<tr><th align='left'><b>Product Type</b></th >
 
-<?php
-echo "<br><br><h1 class='IMTitle'>Add a product!</h1>";
+<br><br><h1 class='IMTitle'>Add a product!</h1>
 
-echo '<form method="post" action="addProduct.php" enctype="multipart/form-data"><tr>
-<td><label for="img">Please Upload Hover Image</label><input name="fileToUpload" id="fileToUpload" type="file" accept="img/*"></label></td>
-<td><input type="textbox" name="name" required/></td>
-<td><input type="textbox" name="description" required/></td>
-<td><input type="number" name="price" required/></td>
-<td><input type="textbox" name="keywords" required/></td>
-</tr></table></div>';
-
+<form method="post" action="addProductColour.php" enctype="multipart/form-data"><tr>
+<td><label for="productType">
+<div class="drop-down">
+<select name="productType" id="productType">
+  <?php 
+    foreach ($prodTypes as $prod){
+        echo "<option class='".$prod["name"]."' value='".$prod["name"]."'>".$prod["name"]."</option>";
+    }
   ?>
+</select>
+</div></label></td>';
+
   <div class="table-container">
   <table class = "stock-table">
   <tr><th align='left'><b>Size</b></th ><th align='left'><b>Stock</b></th> <th align='left'><b>Colour</b></th></tr>
@@ -99,26 +105,22 @@ $name=isset($_POST["name"])?$_POST["name"]:false;
 $description=isset($_POST["description"])?$_POST["description"]:false;
 $keywords=isset($_POST["keywords"])?$_POST["keywords"]:false;
 $price=isset($_POST["price"])?$_POST["price"]:false;
+$prodTypeid=isset($_POST["productType"])?$_POST["productType"]:false;
 
 $colour=isset($_POST["colour"])?$_POST["colour"]:false;
 
-include('uploadFile.php');
+include('uploadFileSingle.php');
 
 try{
-
-  $stat = $db->prepare('INSERT INTO producttype (productTypeid, name, keywords, price, description, hoverImageFilePath) VALUES (NULL, ?, ?, ?, ?, ?)');
-  $stat->execute(array($name, $keywords, $price, $description, $target_file));
-  
-  $stmt = $db->prepare('SELECT productTypeid FROM producttype WHERE hoverImageFilePath = "'.$target_file.'" LIMIT 1');
-  $stmt->execute();
-  $id = $stmt->fetch();
+    $prodTypes = "SELECT productTypeid FROM producttype WHERE name = '".$prodTypeid."'";
+    $prodTypes = $db->query($prodTypes);
+    $prodTypes = $prodTypes->fetch();
 
   foreach($sizes as $size){
     $stock=isset($_POST["stock".$size])?$_POST["stock".$size]:false;
     $stat = $db->prepare('INSERT INTO product (productid, productTypeid, stock, colour, size, imageFilePath) VALUES (NULL, ?, ?, ?, ?, ?)');
-    $stat->execute(array($id['productTypeid'], $stock, $colour, $size, $target_file2));
+    $stat->execute(array($prodTypes['productTypeid'], $stock, $colour, $size, $target_file2));
   }
-  header("Location:IMProducts.php");
 
 } catch (PDOexception $ex){
   $error = TRUE;

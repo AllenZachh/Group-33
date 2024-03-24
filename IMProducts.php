@@ -62,7 +62,6 @@ try{
     if ($rows && $rows->rowCount()>0){
 
     ?>
-    <input type="button" onclick="location.href='addProduct.php';" value="Add New Product" />
     <div class="table-container">
   <table class = "stock-table">
   <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'>Action</th></tr>
@@ -91,7 +90,8 @@ try{
   //echo($ex->getMessage());
 }
 ?>
-
+    <div class="addbtn"><input type="button" onclick="location.href='addProduct.php';" value="Add New Product"><br></div>
+    <div class="addbtn2"><input type="button" onclick="location.href='addProductColour.php';" value="Add Colour Variant of Existing Product"></div>
     <footer>
         <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
             <ion-icon size="large" name="logo-instagram"></ion-icon>

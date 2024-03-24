@@ -86,7 +86,6 @@ try{
 
     ?>
     <div class="table-container">
-<<<<<<< HEAD
   <table class = "stock-table">
   <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th> <th align='left'><b>Stock</b></th ><th align='left'><b>Size</b></th ><th align='left'>Action</th></tr>
   <?php
@@ -117,16 +116,4 @@ try{
     </body>
 </html>
 
-    <footer>
-        <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
-            <ion-icon size="large" name="logo-instagram"></ion-icon>
-        </a>
-        <a class="socialmedia" href="https://twitter.com/" target="_blank">
-            <ion-icon size="large" name="logo-twitter"></ion-icon>
-        </a>
-    </footer>
-
-
 </body>
-<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
