@@ -96,7 +96,7 @@
                                 echo '  <div class="coat-item">
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
-                                            <p class="coat-text">'.$row["name"].'</p>
+                                            <p class="coat-text">'.$row["name"]." £".$row['price'].'</p>
                                         </div>';
                                 next($rows);
                             }
@@ -125,7 +125,7 @@
                                 echo '  <div class="hat-item">
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
-                                            <p class="hat-text">'.$row["name"].'</p>
+                                            <p class="hat-text">'.$row["name"]." £".$row['price'].'</p>
                                         </div>';
                                 next($rows);
                             }
@@ -154,7 +154,7 @@
                                 echo '  <div class="boot-item">
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
-                                            <p class="boot-text">'.$row["name"].'</p>
+                                            <p class="boot-text">'.$row["name"]." £".$row['price'].'</p>
                                         </div>';
                                 next($rows);
                             }
@@ -183,7 +183,7 @@
                                 echo '  <div class="glove-item">
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
-                                            <p class="glove-text">'.$row["name"].'</p>
+                                            <p class="glove-text">'.$row["name"]." £".$row['price'].'</p>
                                         </div>';
                                 next($rows);
                             }
@@ -212,7 +212,7 @@
                                 echo '  <div class="accessory-item">
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.current($rows)['imageFilePath'].'" alt="Coat" class="original-img"> </a>
                                             <a href="product_page.php?select_product='.current($rows)['productid'].'"> <img src="'.$row['hoverImageFilePath'].'" alt="Coat Hover" class="hover-img"> </a>
-                                            <p class="accessory-text">'.$row["name"].'</p>
+                                            <p class="accessory-text">'.$row["name"]." £".$row['price'].'</p>
                                         </div>';
                                 next($rows);
                             }
