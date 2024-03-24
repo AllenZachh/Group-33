@@ -58,7 +58,7 @@
 
 <div class="table-container">
 <table class = "stock-table">
-<tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'><b>Price (£)</b></th><th align='left'><b>Keywords</b></tr>
+<tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th><th align='left'><b>Price (£)</b></th><th align='left'><b>Keywords<br>Make sure to add the type of item!<br>e.g. 'Coat' or 'Hat'</b></tr>
 
 <?php
 echo "<br><br><h1 class='IMTitle'>Add a product!</h1>";
