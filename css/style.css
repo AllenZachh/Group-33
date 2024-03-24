@@ -498,6 +498,7 @@ input[type="text"]:hover {
 
 .slider input[type="radio"] {
     display: none;
+    
 }
 
 .slide {
@@ -520,7 +521,7 @@ input[type="text"]:hover {
 }
 
 .manual-btn {
-    border: 2px solid #ffffff;
+    border: 2px solid #002630;
     padding: 5px;
     border-radius: 10px;
     cursor: pointer;
@@ -532,7 +533,7 @@ input[type="text"]:hover {
 }
 
 .manual-btn:hover {
-    background-color: white;
+    background-color: #002630;
 }
 
 .next {
@@ -605,19 +606,19 @@ input[type="text"]:hover {
     margin-right: 40px;
 }
 #radio1:checked ~ .navigation-auto .auto-btn1{
-    background: white;
+    background: #002630;
 
 }
 #radio2:checked ~ .navigation-auto .auto-btn2{
-    background: white;
+    background: #002630;
 
 }
 #radio3:checked ~ .navigation-auto .auto-btn3{
-    background: white;
+    background: #002630;
 
 }
 #radio4:checked ~ .navigation-auto .auto-btn4{
-    background: white;
+    background: #002630;
 
 }
 footer {

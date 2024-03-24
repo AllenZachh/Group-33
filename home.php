@@ -33,28 +33,28 @@
 
     <div class="slides">
         <div class="slide">
-            <a href="products_list.php?select=Coat"><img src="./images/White_Parka.jpg" style="width:100%; height:100%;" alt="Slider Image 1"></a>
+            <a href="products_list.php?select=Coat"><img src="./images/man-in-coat.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
                 <div class="slide-content">
                 <p class="slide-text">Coats</p>
                     <p class="additional-slide-text">An extensive range of top of the market coats for you winter adventures.</p>
             </div>
         </div>
         <div class="slide">
-        <a href="products_list.php?select=Hat"><img src="./images/slider-image2.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
+        <a href="products_list.php?select=Hat"><img src="./images/man-in-hat.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
             <div class="slide-content">
                 <p class="slide-text">Complete Your Look</p>
                 <p class="additional-slide-text">Explore our range of stylish hats and beanies, perfect for chilly days and nights.</p>
             </div>
         </div>
         <div class="slide">
-        <a href="products_list.php?select=Accessory"><img src="./images/slider-image3.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
+        <a href="products_list.php?select=Accessory"><img src="./images/man-with-goggles.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
             <div class="slide-content">
                 <p class="slide-text">Essential Winter Accessories</p>
                 <p class="additional-slide-text">Accessorize with our scarves and shawls to add flair to your winter outfit.</p>
             </div>
         </div>
         <div class="slide">
-            <a href="products_list.php?select=Boot,Glove"><img src="./images/slider-image4.png" style="width:100%; height:100%;" alt="Slider Image 1"></a>
+            <a href="products_list.php?select=Boot,Glove"><img src="./images/man-with-gloves.jpg" style="width:100%; height:100%;" alt="Slider Image 1"></a>
             <div class="slide-content">
                 <p class="slide-text">Gear Up for Winter Adventures</p>
                 <p class="additional-slide-text">Discover our range of boots and gloves designed for durability and warmth in the toughest conditions.</p>
