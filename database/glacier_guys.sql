@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2024 at 12:00 AM
+-- Generation Time: Mar 24, 2024 at 09:19 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,7 +30,15 @@ SET time_zone = "+00:00";
 CREATE TABLE `order` (
   `orderid` int(11) NOT NULL,
   `userid` int(11) NOT NULL,
-  `datePlaced` date NOT NULL
+  `datePlaced` date NOT NULL,
+  `totalPrice` int(11) NOT NULL,
+  `fullName` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `phoneNumber` varchar(16) NOT NULL,
+  `country` varchar(8) NOT NULL,
+  `city` varchar(32) NOT NULL,
+  `address` varchar(64) NOT NULL,
+  `postcode` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -90,7 +98,87 @@ INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, 
 (22, 2, 50, 'Blue', 'S', './images/Coat2Blue.png'),
 (23, 2, 50, 'Blue', 'M', './images/Coat2Blue.png'),
 (24, 2, 50, 'Blue', 'L', './images/Coat2Blue.png'),
-(25, 2, 50, 'Blue', 'XL', './images/Coat2Blue.png');
+(25, 2, 50, 'Blue', 'XL', './images/Coat2Blue.png'),
+(26, 3, 50, 'Mustard', 'XS', './images/Coat3.png'),
+(27, 3, 50, 'Mustard', 'S', './images/Coat3.png'),
+(28, 3, 50, 'Mustard', 'M', './images/Coat3.png'),
+(29, 3, 50, 'Mustard', 'L', './images/Coat3.png'),
+(30, 3, 50, 'Mustard', 'XL', './images/Coat3.png'),
+(31, 3, 50, 'Green', 'XS', './images/Coat3Green.png'),
+(32, 3, 50, 'Green', 'S', './images/Coat3Green.png'),
+(33, 3, 50, 'Green', 'M', './images/Coat3Green.png'),
+(34, 3, 50, 'Green', 'L', './images/Coat3Green.png'),
+(35, 3, 50, 'Green', 'XL', './images/Coat3Green.png'),
+(36, 3, 50, 'Silver', 'XS', './images/Coat3Silver.png'),
+(37, 3, 50, 'Silver', 'S', './images/Coat3Silver.png'),
+(38, 3, 50, 'Silver', 'M', './images/Coat3Silver.png'),
+(39, 3, 50, 'Silver', 'L', './images/Coat3Silver.png'),
+(40, 3, 50, 'Silver', 'XL', './images/Coat3Silver.png'),
+(41, 4, 50, 'Black', 'XS', './images/Coat4.png'),
+(42, 4, 50, 'Black', 'S', './images/Coat4.png'),
+(43, 4, 50, 'Black', 'M', './images/Coat4.png'),
+(44, 4, 50, 'Black', 'L', './images/Coat4.png'),
+(45, 4, 50, 'Black', 'XL', './images/Coat4.png'),
+(46, 5, 50, 'Brown', 'XS', './images/Coat5.png'),
+(47, 5, 50, 'Brown', 'S', './images/Coat5.png'),
+(48, 5, 50, 'Brown', 'M', './images/Coat5.png'),
+(49, 5, 50, 'Brown', 'L', './images/Coat5.png'),
+(50, 5, 50, 'Brown', 'XL', './images/Coat5.png'),
+(51, 5, 50, 'Black', 'XS', './images/Coat5Black.png'),
+(52, 5, 50, 'Black', 'S', './images/Coat5Black.png'),
+(53, 5, 50, 'Black', 'M', './images/Coat5Black.png'),
+(54, 5, 50, 'Black', 'L', './images/Coat5Black.png'),
+(55, 5, 50, 'Black', 'XL', './images/Coat5Black.png'),
+(56, 5, 50, 'Blue', 'XS', './images/Coat5Blue.png'),
+(57, 5, 50, 'Blue', 'S', './images/Coat5Blue.png'),
+(58, 5, 50, 'Blue', 'M', './images/Coat5Blue.png'),
+(59, 5, 50, 'Blue', 'L', './images/Coat5Blue.png'),
+(60, 5, 50, 'Blue', 'XL', './images/Coat5Blue.png'),
+(61, 5, 50, 'Green', 'XS', './images/Coat5Green.png'),
+(62, 5, 50, 'Green', 'S', './images/Coat5Green.png'),
+(63, 5, 50, 'Green', 'M', './images/Coat5Green.png'),
+(64, 5, 50, 'Green', 'L', './images/Coat5Green.png'),
+(65, 5, 50, 'Green', 'XL', './images/Coat5Green.png'),
+(66, 5, 50, 'Yellow', 'XS', './images/Coat5Yellow.png'),
+(67, 5, 50, 'Yellow', 'S', './images/Coat5Yellow.png'),
+(68, 5, 50, 'Yellow', 'M', './images/Coat5Yellow.png'),
+(69, 5, 50, 'Yellow', 'L', './images/Coat5Yellow.png'),
+(70, 5, 50, 'Yellow', 'XL', './images/Coat5Yellow.png'),
+(71, 6, 50, 'Beige', 'XS', './images/Hat1.png'),
+(72, 6, 50, 'Beige', 'S', './images/Hat1.png'),
+(73, 6, 50, 'Beige', 'M', './images/Hat1.png'),
+(74, 6, 50, 'Beige', 'L', './images/Hat1.png'),
+(75, 6, 50, 'Beige', 'XL', './images/Hat1.png'),
+(76, 6, 50, 'Black', 'XS', './images/Hat1Black.png'),
+(77, 6, 50, 'Black', 'S', './images/Hat1Black.png'),
+(78, 6, 50, 'Black', 'M', './images/Hat1Black.png'),
+(79, 6, 50, 'Black', 'L', './images/Hat1Black.png'),
+(80, 6, 50, 'Black', 'XL', './images/Hat1Black.png'),
+(81, 6, 50, 'White', 'XS', './images/Hat1White.png'),
+(82, 6, 50, 'White', 'S', './images/Hat1White.png'),
+(83, 6, 50, 'White', 'M', './images/Hat1White.png'),
+(84, 6, 50, 'White', 'L', './images/Hat1White.png'),
+(85, 6, 50, 'White', 'XL', './images/Hat1White.png'),
+(86, 7, 50, 'Navy Blue', 'XS', './images/Hat3.png'),
+(87, 7, 50, 'Navy Blue', 'S', './images/Hat3.png'),
+(88, 7, 50, 'Navy Blue', 'M', './images/Hat3.png'),
+(89, 7, 50, 'Navy Blue', 'L', './images/Hat3.png'),
+(90, 7, 50, 'Navy Blue', 'XL', './images/Hat3.png'),
+(91, 7, 50, 'Green', 'XS', './images/Hat3Green.png'),
+(92, 7, 50, 'Green', 'S', './images/Hat3Green.png'),
+(93, 7, 50, 'Green', 'M', './images/Hat3Green.png'),
+(94, 7, 50, 'Green', 'L', './images/Hat3Green.png'),
+(95, 7, 50, 'Green', 'XL', './images/Hat3Green.png'),
+(96, 7, 50, 'Orange', 'XS', './images/Hat3Orange.png'),
+(97, 7, 50, 'Orange', 'S', './images/Hat3Orange.png'),
+(98, 7, 50, 'Orange', 'M', './images/Hat3Orange.png'),
+(99, 7, 50, 'Orange', 'L', './images/Hat3Orange.png'),
+(100, 7, 50, 'Orange', 'XL', './images/Hat3Orange.png'),
+(101, 11, 78, 'Orange', 'XS', './images/Sturdy Winter Boot.png'),
+(102, 11, 43, 'Orange', 'S', './images/Sturdy Winter Boot.png'),
+(103, 11, 12, 'Orange', 'M', './images/Sturdy Winter Boot.png'),
+(104, 11, 32, 'Orange', 'L', './images/Sturdy Winter Boot.png'),
+(105, 11, 65, 'Orange', 'XL', './images/Sturdy Winter Boot.png');
 
 -- --------------------------------------------------------
 
@@ -104,7 +192,6 @@ CREATE TABLE `producttype` (
   `keywords` text NOT NULL,
   `price` varchar(8) NOT NULL,
   `description` text NOT NULL,
-  `defaultImageFilePath` text NOT NULL,
   `hoverImageFilePath` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -112,42 +199,18 @@ CREATE TABLE `producttype` (
 -- Dumping data for table `producttype`
 --
 
-INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `description`, `defaultImageFilePath`, `hoverImageFilePath`) VALUES
-(1, 'Coat 1', 'Winter, Coat, Puffer', '50', 'Winter Puffer Coat', './images/Coat1.png', './images/Coat1-hover.png'),
-(2, 'Coat 2', 'Coat', '70', 'coat...', '', './images/Coat2-hover.png');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `reviews`
---
-
-CREATE TABLE `reviews` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `review` text NOT NULL,
-  `rating` tinyint(1) NOT NULL,
-  `review_date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`id`, `product_id`, `name`, `review`, `rating`, `review_date`) VALUES
-(1, 1, 'David Deacon', 'I use this website daily, the amount of content is brilliant.', 5, '2020-01-09 20:43:02'),
-(2, 1, 'John Doe', 'Great website, great content, and great support!', 4, '2020-01-09 21:00:41'),
-(3, 1, 'Robert Billings', 'Website needs more content, good website but content is lacking.', 3, '2020-01-09 21:10:16'),
-(4, 1, 'Daniel Callaghan', 'Great!', 5, '2020-01-09 23:51:05'),
-(5, 1, 'Bobby', 'Not much content.', 2, '2020-01-14 21:54:24'),
-(6, 1, 'Joshua Kennedy', 'Fantasic website, has everything I need to know.', 5, '2020-01-16 17:34:27'),
-(7, 1, 'Johannes Hansen', 'Really like this website, helps me out a lot!', 5, '2020-01-16 17:35:12'),
-(8, 1, 'Wit Kwiatkowski', 'Please provide more quality content.', 5, '2020-01-16 17:36:03'),
-(11, 1, 'Naomi Holt', 'Appreciate the amount of content you guys do.', 5, '2020-01-16 17:39:17'),
-(12, 1, 'Isobel Whitehead', 'Thank you for providing a website that helps us out a lot!', 5, '2020-01-16 17:40:28'),
-(13, 1, 'Warren Mills', 'Everything is awesome!', 5, '2020-01-16 19:34:08'),
-(14, 1, 'Larry Johnson', 'Brilliant, thank you for providing quality content!', 5, '2020-01-29 18:40:36');
+INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `description`, `hoverImageFilePath`) VALUES
+(1, 'Coat 1', 'Winter, Coat, Puffer', '50', 'Winter Puffer Coat', './images/Coat1-hover.png'),
+(2, 'Coat 2', 'Coat', '70', 'coat...', './images/Coat2-hover.png'),
+(3, 'Coat 3', 'Coat, Winter', '80', 'Winter Coat perfect for walks in the snow!', './images/Coat3-hover.png'),
+(4, 'Coat 4', 'Coat', '80', '', './images/Coat4-hover.png'),
+(5, 'Coat 5', 'Coat', '50', '', './images/Coat5-hover.png'),
+(6, 'Beanie', 'Hat', '20', '', './images/Hat1-hover.png'),
+(7, 'Logo Beanie', 'Hat', '25', '', './images/Hat3-hover.png'),
+(8, 'Trapper Hat', 'Hat', '25', '', './images/Hat4-hover.png'),
+(9, 'Bobble Hat', 'Hat', '30', '', './images/Hat5-hover.png'),
+(10, 'Boot', 'Boot', '30', '', './images/Boot1-hover.png'),
+(11, 'Sturdy Winter Boot', 'Boots Sturdy Hiking Snow', '70', 'Sturdy winter boots ideal for long walks in the snow!', './images/Sturdy Winter Boot.png');
 
 -- --------------------------------------------------------
 
@@ -162,16 +225,21 @@ CREATE TABLE `user` (
   `email` varchar(128) NOT NULL,
   `accountType` varchar(8) NOT NULL,
   `basket` text NOT NULL,
-  `phoneNum` int(11) NOT NULL
+  `phoneNum` int(11) NOT NULL,
+  `address1` varchar(64) NOT NULL,
+  `address2` varchar(64) NOT NULL,
+  `country` varchar(8) NOT NULL,
+  `postcode` text NOT NULL,
+  `city` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `basket`, `phoneNum`) VALUES
-(1, 'Jacob Woodhouse', '$2y$10$4gmdX8rLuqkzGjms/Yy6IeftdaNR0nbeSUr5akO4zTn9evgRiM8ei', 'Jacobwoodhouse333@gmail.com', 'user', '[]', 0),
-(2, 'Jacob', '$2y$10$nMaxWk.2dGHEASYracqYA.R0msR5Jw8.YstmawNWa/0yUodMpF/Ua', '220219442@aston.ac.uk', 'admin', '', 0);
+INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `basket`, `phoneNum`, `address1`, `address2`, `country`, `postcode`, `city`) VALUES
+(1, 'Jacob Woodhouse', '$2y$10$4gmdX8rLuqkzGjms/Yy6IeftdaNR0nbeSUr5akO4zTn9evgRiM8ei', 'Jacobwoodhouse333@gmail.com', 'user', '[26]', 0, 'Aston St', '', 'UK', 'B4 7ET', 'Birmingham'),
+(2, 'Jacob', '$2y$10$nMaxWk.2dGHEASYracqYA.R0msR5Jw8.YstmawNWa/0yUodMpF/Ua', '220219442@aston.ac.uk', 'admin', '', 0, '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
@@ -206,12 +274,6 @@ ALTER TABLE `producttype`
   ADD PRIMARY KEY (`productTypeid`);
 
 --
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
@@ -237,25 +299,19 @@ ALTER TABLE `orderitems`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `producttype`
 --
 ALTER TABLE `producttype`
-  MODIFY `productTypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `productTypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
