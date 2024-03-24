@@ -105,9 +105,9 @@
           <form method='post' action='register.php'>
             <label for="username"><b>Username</b></label></br>
             <input type="text" placeholder="Enter Username" name="username" id="username" required>
+            <br><br>
             <label for="fullname"><b>Full-name</b></label></br>
             <input type="text" placeholder="Enter Full-name" name="fulnm" id="fulnm" required>
-            <br></br>
             <br></br>
             <label for="email"><b>Email</b></label></br>
             <input type="email" placeholder="Enter Email" name="email" id="email" required>
