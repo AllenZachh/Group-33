@@ -7,9 +7,10 @@ if (isset($_SESSION['username'])){
     $query="SELECT basket FROM user WHERE username = '".$_SESSION["username"]."'";
     $items = array();
     $array = json_decode(($db->query($query))->fetch()[0]);
+    if ($array){
     foreach ($array as $product) {
         array_push($items, $product);
-    }
+    }}
 } elseif (isset($_COOKIE["basket"])) {
     $items = array();
     $array = json_decode($_COOKIE["basket"], true);
