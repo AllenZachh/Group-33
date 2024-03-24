@@ -1,26 +1,39 @@
 <?php
 session_start();
 require_once("connectdb.php");
-$items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid ) LIMIT 20");
+
+$items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid) LIMIT 20");
 $items->execute();
 $products = $items->fetchAll(PDO::FETCH_ASSOC);
+$sort = isset($_GET["sort_by"]) ? htmlspecialchars($_GET["sort_by"]) : NULL;
 if (isset($_GET["select"])){
   $_GET['q'] = htmlspecialchars($_GET["select"]);
 }
 if (isset($_GET['q'])){
   $prods = $products;
   $products = array();
-  $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%'");
+  if (isset($_GET['sort_by'])){
+    if ($sort == "PriceLH"){
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price ASC");
+    } if ($sort == "PriceHL"){
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price DESC");
+    } if ($sort == "A2Z"){
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY name ASC");
+    }
+  } else {
+    $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%'");
+  }
   $srch->execute();
   $productTypes = $srch->fetchAll(PDO::FETCH_ASSOC);
 
-  foreach ($prods as $prod){
-    foreach($productTypes as $prodType)
+  foreach ($productTypes as $prodType){
+    foreach($prods as $prod)
     if (in_array($prod['productTypeid'], $prodType)){
       array_push($products, $prod);
     }
   }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -46,56 +59,19 @@ if (isset($_GET['q'])){
         <div class="pagerow">
           <div class="pagecolumn left">
             <h2>Sort</h2>
-            <input type="radio" id="popular" name="sortby" value="Most Popular">
-            <label for="popular">Most Popular</label><br>
 
-            <input type="radio" id="priceLH" name="sortby" value="Price ()">
-            <label for="priceLH">Price(Lowest to Highest)</label><br>
+                <input type="radio" id="priceLH" name="sort_by" value="PriceLH">
+                <label for="priceLH">Price(Lowest to Highest)</label><br>
 
-            <input type="radio" id="priceHL" name="sortby" value="Price">
-            <label for="priceHL">Price(Highest to Lowest)</label>
+                <input type="radio" id="priceHL" name="sort_by" value="PriceHL">
+                <label for="priceHL">Price(Highest to Lowest)</label><br>
 
-            <input type="radio" id="a2z" name="sortby" value="A2Z">
-            <label for="a2z">A-Z</label>
+                <input type="radio" id="a2z" name="sort_by" value="A2Z">
+                <label for="a2z">A-Z</label>
+                <br><br>
 
-            <h2>Category</h2>
-            <input type="checkbox" id="category1" name="category1" value="category1">
-            <label for="category1">category1</label><br>
-            <input type="checkbox" id="category2" name="category2" value="category2">
-            <label for="category2">category2</label><br>
-            <input type="checkbox" id="category3" name="category3" value="category3">
-            <label for="category3">category3</label><br>
-
-            <h2>Size</h2>
-            <input type="checkbox" id="xs" name="xs" value="xs">
-            <label for="xs">XS</label><br>
-            <input type="checkbox" id="s" name="s" value="s">
-            <label for="s">S</label><br>
-            <input type="checkbox" id="m" name="m" value="m">
-            <label for="m">M</label><br>
-            <input type="checkbox" id="l" name="l" value="l">
-            <label for="l">L</label><br>
-            <input type="checkbox" id="xl" name="xl" value="xl">
-            <label for="xl">XL</label><br>
-
-            <h2>Colour</h2>
-            <input type="checkbox" id="red" name="red" value="red">
-            <label for="red"></label>red</label><br>
-            <input type="checkbox" id="blue" name="blue" value="blue">
-            <label for="blue">blue</label><br>
-            <input type="checkbox" id="green" name="green" value="green">
-            <label for="green">green</label><br>
-
-            <h2>Price</h2>
-            <span class="multi-range-price">
-              <input type="range" min="0" max="1000" value="0" id="lower">
-              <input type="range" min="0" max="1000" value="1000" id="upper">
-            </span>
-            <p>Lowest Price: £<span id="lowerValue">
-              <p>Highest Price: £<span id="upperValue"></span>
-              </span>
-              <p></p>
               <button id = "makeChanges" type = "buton">Confirm</button>
+            </form>
             </div>
             <div class="pagecolumn right">
                 <h1>Products</h1>
