@@ -71,7 +71,6 @@
         $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `phoneNum`, `address1`, `address2`, `postcode`, `country`, `fullName`, `city`) VALUES (NULL, ?, ?, ?, "user", ?, ?, ?, ?, ?, ?, ?)');
 			  $stat->execute(array($username, $password, $email, $phnum, $adrln1, $adrln2, $postcode, $country, $fulnm, $city));
         $created = True;
-        header("Location:login.php");
 
       } catch (PDOexception $ex){
         $error = TRUE;
