@@ -17,11 +17,18 @@
     <?php require_once("navbar.php"); navbar("stockManage"); ?>
 </head>
 
-    <?php
-        if (!isset($_SESSION['accountType']) or $_SESSION['accountType'] != "admin"){
-            echo "<h1>Sorry Nothing Here!!!</h1>";
-            exit();
-        }
+<?php
+
+require_once('connectdb.php');
+
+$var1 = $db->prepare("SELECT * FROM `product`");
+$var1->execute();
+
+$result1 = $var1->fetchAll(PDO::FETCH_ASSOC);
+if (!isset($_SESSION['accountType']) or $_SESSION['accountType'] != "admin"){
+    echo "<h1>Sorry Nothing Here!!!</h1>";
+    exit();
+}
     
     ?>
     <button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">Top</button>
@@ -79,6 +86,7 @@ try{
 
     ?>
     <div class="table-container">
+<<<<<<< HEAD
   <table class = "stock-table">
   <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th> <th align='left'><b>Stock</b></th ><th align='left'><b>Size</b></th ><th align='left'>Action</th></tr>
   <?php
@@ -108,7 +116,6 @@ try{
 ?>
     </body>
 </html>
-
 
     <footer>
         <a class="socialmedia" href="https://www.instagram.com/" target="_blank">
