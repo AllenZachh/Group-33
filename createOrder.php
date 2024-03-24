@@ -37,7 +37,7 @@ $info = $info->fetch(); //Select the order that was just created
 
 $i = $basket[0];
 $temp = $basket[0];
-$quantity = 1;
+$quantity = 0;
 foreach ($basket as $item){
     // go through each item in basket, for each item that is duplicated, add 1 to quantity, otherwise add to orderItem with value quantity
     if ($item != $i){

@@ -13,6 +13,7 @@
         $adrln2 = $info["address2"];
         $country = $info["country"];
         $postcode = $info["postcode"];
+        $city = $info["city"];
 
         $query="SELECT basket FROM user WHERE username = '".$_SESSION["username"]."'";
         $items = array();
@@ -89,12 +90,16 @@
                             <input type="tel" class="form-control" id="phone" name="phone" value="<?php echo$phnum;  ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="address-line">Address Line:</label>
-                            <input type="text" class="form-control" id="address-line" name="address-line" value="<?php echo$adrln1;  ?>" readonly>
+                        <div class="form-group">
+                            <label for="city-country">Country:</label>
+                            <input type="text" class="form-control" id="city-country" name="city-country" value="<?php echo$country;  ?>" readonly>
+                        </div>
+                            <label for="city">City:</label>
+                            <input type="text" class="form-control" id="city" name="city" value="<?php echo$city;  ?>" readonly>
                         </div>
                         <div class="form-group">
-                            <label for="city-country">City, Country:</label>
-                            <input type="text" class="form-control" id="city-country" name="city-country" value="<?php echo$country;  ?>" readonly>
+                            <label for="address-line">Address:</label>
+                            <input type="text" class="form-control" id="address-line" name="address-line" value="<?php echo$adrln1;  ?>" readonly>
                         </div>
                         <div class="form-group">
                             <label for="postcode">Postcode:</label>

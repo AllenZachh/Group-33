@@ -11,6 +11,7 @@
         $adrln1 = $info["address1"];
         $country = $info["country"];
         $postcode = $info["postcode"];
+        $city = $info["city"];
 
         $sql = "SELECT * FROM `order` WHERE `userid` = ".$userid." ORDER BY `orderid` DESC LIMIT 1";
         $orderinfo = $db->query($sql);
@@ -69,8 +70,9 @@
                         <div class="order-details">
                             <address>
                                 <?php echo$fulnm;  ?><br>
-                                <?php echo$adrln1;  ?> <br>
                                 <?php echo$country;  ?> <br>
+                                <?php echo$city;  ?> <br>
+                                <?php echo$adrln1;  ?> <br>
                                 <?php echo$postcode;  ?>
                             </address>
                         </div>

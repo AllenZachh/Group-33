@@ -13,6 +13,7 @@
       $phnum=isset($_POST["phnum"])?$_POST["phnum"]:false;
       $country=isset($_POST["country"])?$_POST["country"]:false;
       $fulnm=isset($_POST["fulnm"])?$_POST["fulnm"]:false;
+      $city=isset($_POST["city"])?$_POST["city"]:false;
       
       //compare passwords to make sure theyre the same, then set variable password to the hashed entered password
       if ($_POST['password']==$_POST['password_2']){
@@ -67,8 +68,8 @@
 
       // Try to add the new user entry into the database
 
-        $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `phoneNum`, `address1`, `address2`, `postcode`, `country`, `fullName`) VALUES (NULL, ?, ?, ?, "user", ?, ?, ?, ?, ?, ?)');
-			  $stat->execute(array($username, $password, $email, $phnum, $adrln1, $adrln2, $postcode, $country, $fulnm));
+        $stat = $db->prepare('INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `phoneNum`, `address1`, `address2`, `postcode`, `country`, `fullName`, `city`) VALUES (NULL, ?, ?, ?, "user", ?, ?, ?, ?, ?, ?, ?)');
+			  $stat->execute(array($username, $password, $email, $phnum, $adrln1, $adrln2, $postcode, $country, $fulnm, $city));
         $created = True;
         header("Location:login.php");
 
@@ -127,6 +128,9 @@
               <option class="germany" value="Germany">Germany</option>
             </select>
             </div>
+            </br>
+            <label for="city"><b>City</b></label></br>
+            <input type="text" placeholder="City" name="city" id="city" required>
             </br></br>
             <label for="adrln1"><b>Address line 1</b></label></br>
             <input type="text" placeholder="Address line 1" name="adrln1" id="adrln1" required>
