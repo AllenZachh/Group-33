@@ -1,6 +1,23 @@
 <?php
     session_start();
     require_once('connectdb.php');
+    if (isset($_SESSION['username'])){
+        // Select info about user inc basket
+        $sql = "SELECT * FROM user WHERE username = '".$_SESSION['username']."'";
+        $info = $db->query($sql);
+        $info = $info->fetch();
+        $userid = $info["userid"];
+        $fulnm = $info["fullName"];
+        $adrln1 = $info["address1"];
+        $country = $info["country"];
+        $postcode = $info["postcode"];
+
+        $sql = "SELECT * FROM `order` WHERE `userid` = ".$userid." ORDER BY `orderid` DESC LIMIT 1";
+        $orderinfo = $db->query($sql);
+        $orderinfo = $orderinfo->fetch();
+        $orderid = $orderinfo["orderid"];
+        $totalprice = $orderinfo["totalPrice"];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,18 +60,18 @@
                         <p class="text-center">Thank you for your order!</p>
                         <div class="order-details">
                             <ul class="list-unstyled">
-                                <li><strong>Order Number:</strong> #123456</li>
+                                <li><strong>Order Number:</strong> #<?php echo$orderinfo[0];  ?></li>
                                 <li><strong>Date:</strong> <?= date("jS F Y") ?></li>
-                                <li><strong>Total Amount:</strong> £55.00</li>
+                                <li><strong>Total Amount:</strong> £<?php echo$totalprice;  ?></li>
                             </ul>
                         </div>
                         <p>Your item(s) will be shipped to the following address:</p>
                         <div class="order-details">
                             <address>
-                                Username <br>
-                                Address Line 1 <br>
-                                Country & City <br>
-                                Postcode
+                                <?php echo$fulnm;  ?><br>
+                                <?php echo$adrln1;  ?> <br>
+                                <?php echo$country;  ?> <br>
+                                <?php echo$postcode;  ?>
                             </address>
                         </div>
                         <p>If you have any questions or concerns, please <a href="contactus.php">contact us</a>.</p>

@@ -14,6 +14,19 @@
         $country = $info["country"];
         $postcode = $info["postcode"];
 
+        $query="SELECT basket FROM user WHERE username = '".$_SESSION["username"]."'";
+        $items = array();
+        $array = json_decode(($db->query($query))->fetch()[0]);
+        foreach ($array as $product) {
+            array_push($items, $product);
+        }
+        foreach ($items as $singleitem) {
+            $stmt = $db->prepare("SELECT p.*, pt.price, pt.name FROM product p JOIN producttype pt ON p.productTypeid = pt.productTypeid WHERE p.productid = ?");
+            $stmt->execute([$singleitem]);
+            $product = $stmt->fetch();
+            $totalprice += $product['price'];
+        }
+
     }
 ?>
 <!DOCTYPE html>
@@ -103,7 +116,7 @@
                         <div class="summary-item">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
-                                    <p>Subtotal: £50.00</p>
+                                    <p>Subtotal: <?php echo$totalprice; ?></p>
                                     <p>Delivery: £5.00</p>
                                     <p>Total: £55.00</p>
                                 </div>
@@ -122,8 +135,7 @@
     <script>
         document.getElementById('checkout-form').addEventListener('submit', function(event) {
             // This will be replaced by backend logic to process the order
-            alert('Your order has been placed.');
-            window.location.href = 'OrderConfirmation.php';
+            window.location.href = 'createOrder.php';
             event.preventDefault();
         });
     </script>
