@@ -50,7 +50,7 @@ function changeSlide() {
     };
 }
 
-slideInterval = setInterval(changeSlide(), 2000);
+slideInterval = setInterval(changeSlide(), 4000);
 window.onscroll = function() { scrollFunction() };
 
 function scrollFunction() {
