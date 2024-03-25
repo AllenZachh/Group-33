@@ -36,6 +36,7 @@ if (isset($_GET['product_id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styleAwais.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="./css/reviews.css">
 </head>
 <body>
 <?php require_once("navbar.php"); navbar("productList"); ?>
