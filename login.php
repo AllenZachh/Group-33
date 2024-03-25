@@ -20,10 +20,11 @@
         if (password_verify($_POST["password"], $row["password"])){
 
           $_SESSION["username"]=$_POST["username"];
-          $stat = $db->prepare('SELECT accountType FROM user WHERE username = "'.$_SESSION['username'].'"');
+          $stat = $db->prepare('SELECT accountType, userid FROM user WHERE username = "'.$_SESSION['username'].'"');
           $stat->execute();
           $accType = $stat->fetch(PDO::FETCH_ASSOC);
           $_SESSION["accountType"]=$accType["accountType"];
+          $_SESSION["userid"]=$accType["userid"];
           return "Logged in!";
 
         } else {
@@ -75,11 +76,15 @@
         <?php
 
           if (isset($_SESSION["username"])){ 
-            $addPage = '"'.'addproject.php'.'"';
             echo "<br><br><br><form method='post'>
               <button value='logout' class='tbl_btn'>Logout</button>
               <input type='hidden' name='logout' value='true' />
-              </form></td></tr>\n";
+              </form>\n<br>
+              <form action='changePassword.php'>
+              <button value='Change Password' class='tbl_btn'>Change Password</button>
+              <input type='hidden' name='changePassword' value='true' />
+              </form>
+              ";
           }
           
           if (isset($_POST["logout"])){ 

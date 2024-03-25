@@ -151,6 +151,18 @@
           <?php echo register(); ?>
           <p>Already have an account? <a href="login.php">Sign in</a>.</p>
 
+          <?php
+
+          if (isset($_SESSION["username"])){ 
+            echo "<br>
+              <form action='changePassword.php'>
+              <button value='Change Password' class='tbl_btn'>Change Password</button>
+              <input type='hidden' name='changePassword' value='true' />
+              </form>
+              ";
+          }
+          ?>
+
         </div>
       </form>
 </body>
