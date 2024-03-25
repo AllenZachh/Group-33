@@ -197,7 +197,7 @@
 
     <div class="Accessories" id="Accessories">
         <div class="accessories-section">
-            <h2>Accessorys</h2>
+            <h2>Accessories</h2>
             <div class="images-container">
                 <?php
 
