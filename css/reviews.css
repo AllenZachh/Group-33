@@ -1,0 +1,38 @@
+.overall_rating .num {
+    font-size: 30px;
+    font-weight: bold;
+    color: #F5A624;
+}
+.overall_rating .stars {
+    letter-spacing: 3px;
+    font-size: 32px;
+    color: #F5A624;
+    padding: 0 5px 0 10px;
+}
+.overall_rating .total {
+    color: #777777;
+    font-size: 14px;
+}
+
+.review {
+    padding: 20px 0;
+    border-bottom: 1px solid #eee;
+}
+.review .name {
+    padding: 0 0 3px 0;
+    margin: 0;
+    font-size: 18px;
+    color: #555555;
+}
+.review .rating {
+    letter-spacing: 2px;
+    font-size: 22px;
+    color: #F5A624;
+}
+.review .date {
+    color: #777777;
+    font-size: 14px;
+}
+.review .content {
+    padding: 5px 0;
+}
