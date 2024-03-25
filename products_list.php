@@ -2,7 +2,7 @@
 session_start();
 require_once("connectdb.php");
 
-$items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid) LIMIT 20");
+$items = $db->prepare("SELECT * FROM product WHERE (productid, productTypeid) IN (SELECT MIN(productid) as min_productid, productTypeid FROM product GROUP BY productTypeid)");
 $items->execute();
 $products = $items->fetchAll(PDO::FETCH_ASSOC);
 $sort = isset($_GET["sort_by"]) ? htmlspecialchars($_GET["sort_by"]) : NULL;
@@ -14,14 +14,14 @@ if (isset($_GET['q'])){
   $products = array();
   if (isset($_GET['sort_by'])){
     if ($sort == "PriceLH"){
-      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price ASC");
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price ASC LIMIT 20");
     } if ($sort == "PriceHL"){
-      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price DESC");
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY price DESC LIMIT 20");
     } if ($sort == "A2Z"){
-      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY name ASC");
+      $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' ORDER BY name ASC LIMIT 20");
     }
   } else {
-    $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%'");
+    $srch = $db->prepare("SELECT productTypeid FROM producttype WHERE keywords LIKE '%".$_GET['q']."%' LIMIT 20");
   }
   $srch->execute();
   $productTypes = $srch->fetchAll(PDO::FETCH_ASSOC);
