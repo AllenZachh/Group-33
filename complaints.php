@@ -2,10 +2,8 @@
     session_start();
     require_once('connectdb.php');
 
-    if (isset($_POST['stock'])){
-        $stmt = $db->prepare('UPDATE product SET stock = ? WHERE productid = ?');
-        $stmt->execute(array($_POST['stock'], htmlspecialchars($_GET["select"])));
-    }
+    $query="SELECT * FROM complaints";
+    $rows = $db->query($query);
 ?>
         
 <!DOCTYPE html>
@@ -66,50 +64,20 @@ if (!isset($_SESSION['accountType']) or $_SESSION['accountType'] != "admin"){
     <script src="script.js" defer></script>
 </head>
 <body>
- 
-<?php
-try{
-
-    $query="SELECT * FROM product";
-    $rows = $db->query($query);
-    $query="SELECT * FROM producttype";
-    $types = $db->query($query);
-    $types =  $types->fetchAll(PDO::FETCH_ASSOC);
-
-    if ($rows && $rows->rowCount()>0){
-
-    ?>
+ <h1 style = "text-align:center;">Complaints</h1>
     <div class="table-container">
   <table class = "stock-table">
-  <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th> <th align='left'><b>Stock</b></th ><th align='left'><b>Size</b></th ><th align='left'>Action</th></tr>
+  <tr><th align='left'><b>Name</b></th ><th align='left'><b>Email</b></th> <th align='left'><b>Comment</b></th> <th align='left'><b>Date</b></th ></tr>
   <?php
     while  ($row =  $rows->fetch())	{
-      try{
-        echo  " <form method='post' action='IMStock.php?select=".$row['productid']."'>
-                <tr><td align='left'><img src = '" . $row['imageFilePath'] . "' height = '200'></img></td>
-                <td align='left'>" . $types[$row['productTypeid']-1]['name'] . "</td>
-                <td align='left'>". $types[$row['productTypeid']-1]['description'] . "</td>
-                <td align='left'><input type = 'number' name = 'stock' value = '" . $row['stock'] . "'></input></td>
-                <td align='left'>" . $row['size'] . "</td>";
+        echo  " <tr><td align='left'>" . $row["name"] . "</td>
+                <td align='left'>". $row["email"] . "</td>
+                <td align='left'>". $row["comment"] ."</input></td>
+                <td align='left'>" . $row['date'] . "</td>";
       
-        echo "<td align='left'>
-          <button value='edit' class='tbl_btn'>Save</button>
-          <input type='hidden' name='edit' />
-        </form>
-        </td></tr>\n";
-      } catch (TypeError){
-        echo"item not found";
-      }
 
-          }
-          echo  '</table></div>';
-  } else {
-    echo "<p>No Products</p>";
+
   }
-} catch (PDOException $ex) {
-  $dbEr = TRUE;
-  //echo($ex->getMessage());
-}
 ?>
     </body>
 </html>

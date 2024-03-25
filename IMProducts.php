@@ -36,6 +36,10 @@
                 <i class="fas fa-warehouse"></i>
                 <span>Stock</span>
             </a></li>
+            <li><a href="complaints.php">
+                <i class="fas fa-hand-point-up"></i>
+                <span>Complaints</span>
+            </a></li>
         </ul>
         </nav>
     </div>

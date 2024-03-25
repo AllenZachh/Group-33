@@ -64,7 +64,7 @@ function navbar($currentPage){
     }
     if (isset($_SESSION['accountType'])){
         if ($_SESSION['accountType'] == "admin"){
-            echo ' <a '.$current.' href="IMProducts.php">Inventory Management
+            echo ' <a '.$current.' href="IMProducts.php">Admin
                         <ion-icon name="bag-outline"></ion-icon>
                     </a>';
         }
