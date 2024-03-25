@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 24, 2024 at 10:36 PM
+-- Generation Time: Mar 25, 2024 at 03:06 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -174,11 +174,96 @@ INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, 
 (98, 7, 50, 'Orange', 'M', './images/Hat3Orange.png'),
 (99, 7, 50, 'Orange', 'L', './images/Hat3Orange.png'),
 (100, 7, 50, 'Orange', 'XL', './images/Hat3Orange.png'),
-(101, 11, 78, 'Orange', 'XS', './images/Sturdy Winter Boot.png'),
-(102, 11, 43, 'Orange', 'S', './images/Sturdy Winter Boot.png'),
-(103, 11, 12, 'Orange', 'M', './images/Sturdy Winter Boot.png'),
-(104, 11, 32, 'Orange', 'L', './images/Sturdy Winter Boot.png'),
-(105, 11, 65, 'Orange', 'XL', './images/Sturdy Winter Boot.png');
+(101, 11, 78, 'Orange', 'XS', './images/Boot2.png'),
+(102, 11, 43, 'Orange', 'S', './images/Boot2.png'),
+(103, 11, 12, 'Orange', 'M', './images/Boot2.png'),
+(104, 11, 32, 'Orange', 'L', './images/Boot2.png'),
+(105, 11, 65, 'Orange', 'XL', './images/Boot2.png'),
+(106, 8, 23, 'Grey', 'XS', './images/Trapper HatGrey.png'),
+(107, 8, 43, 'Grey', 'S', './images/Trapper HatGrey.png'),
+(108, 8, 43, 'Grey', 'M', './images/Trapper HatGrey.png'),
+(109, 8, 21, 'Grey', 'L', './images/Trapper HatGrey.png'),
+(110, 8, 13, 'Grey', 'XL', './images/Trapper HatGrey.png'),
+(111, 9, 34, 'Grey', 'XS', './images/Bobble HatGrey.png'),
+(112, 9, 43, 'Grey', 'S', './images/Bobble HatGrey.png'),
+(113, 9, 23, 'Grey', 'M', './images/Bobble HatGrey.png'),
+(114, 9, 44, 'Grey', 'L', './images/Bobble HatGrey.png'),
+(115, 9, 33, 'Grey', 'XL', './images/Bobble HatGrey.png'),
+(116, 10, 23, 'Leather', 'XS', './images/BootLeather.png'),
+(117, 10, 53, 'Leather', 'S', './images/BootLeather.png'),
+(118, 10, 34, 'Leather', 'M', './images/BootLeather.png'),
+(119, 10, 43, 'Leather', 'L', './images/BootLeather.png'),
+(120, 10, 65, 'Leather', 'XL', './images/BootLeather.png'),
+(121, 12, 23, 'Brown', 'XS', './images/Boot3.png'),
+(122, 12, 43, 'Brown', 'S', './images/Boot3.png'),
+(123, 12, 86, 'Brown', 'M', './images/Boot3.png'),
+(124, 12, 23, 'Brown', 'L', './images/Boot3.png'),
+(125, 12, 57, 'Brown', 'XL', './images/Boot3.png'),
+(126, 13, 43, 'Black', 'XS', './images/Boot4.png'),
+(127, 13, 54, 'Black', 'S', './images/Boot4.png'),
+(128, 13, 34, 'Black', 'M', './images/Boot4.png'),
+(129, 13, 76, 'Black', 'L', './images/Boot4.png'),
+(130, 13, 37, 'Black', 'XL', './images/Boot4.png'),
+(131, 14, 23, 'Black', 'XS', './images/Sports Boot.png'),
+(132, 14, 54, 'Black', 'S', './images/Sports Boot.png'),
+(133, 14, 34, 'Black', 'M', './images/Sports Boot.png'),
+(134, 14, 43, 'Black', 'L', './images/Sports Boot.png'),
+(135, 14, 34, 'Black', 'XL', './images/Sports Boot.png'),
+(136, 15, 23, 'Green', 'XS', './images/Insulated Gloves.png'),
+(137, 15, 43, 'Green', 'S', './images/Insulated Gloves.png'),
+(138, 15, 32, 'Green', 'M', './images/Insulated Gloves.png'),
+(139, 15, 35, 'Green', 'L', './images/Insulated Gloves.png'),
+(140, 15, 53, 'Green', 'XL', './images/Insulated Gloves.png'),
+(141, 16, 23, 'Black', 'XS', './images/Tactile Gloves.png'),
+(142, 16, 45, 'Black', 'S', './images/Tactile Gloves.png'),
+(143, 16, 23, 'Black', 'M', './images/Tactile Gloves.png'),
+(144, 16, 53, 'Black', 'L', './images/Tactile Gloves.png'),
+(145, 16, 23, 'Black', 'XL', './images/Tactile Gloves.png'),
+(146, 17, 25, 'Black', 'XS', './images/Sports Gloves.png'),
+(147, 17, 54, 'Black', 'S', './images/Sports Gloves.png'),
+(148, 17, 34, 'Black', 'M', './images/Sports Gloves.png'),
+(149, 17, 34, 'Black', 'L', './images/Sports Gloves.png'),
+(150, 17, 42, 'Black', 'XL', './images/Sports Gloves.png'),
+(151, 18, 55, 'Black', 'XS', './images/Heat-Trapping Gloves.png'),
+(152, 18, 34, 'Black', 'S', './images/Heat-Trapping Gloves.png'),
+(153, 18, 98, 'Black', 'M', './images/Heat-Trapping Gloves.png'),
+(154, 18, 45, 'Black', 'L', './images/Heat-Trapping Gloves.png'),
+(155, 18, 76, 'Black', 'XL', './images/Heat-Trapping Gloves.png'),
+(156, 19, 43, 'Grey', 'XS', './images/Fingerless Gloves.png'),
+(157, 19, 45, 'Grey', 'S', './images/Fingerless Gloves.png'),
+(158, 19, 35, 'Grey', 'M', './images/Fingerless Gloves.png'),
+(159, 19, 65, 'Grey', 'L', './images/Fingerless Gloves.png'),
+(160, 19, 32, 'Grey', 'XL', './images/Fingerless Gloves.png'),
+(161, 20, 23, 'Blue', 'XS', './images/Striped Scarf.png'),
+(162, 20, 45, 'Blue', 'S', './images/Striped Scarf.png'),
+(163, 20, 34, 'Blue', 'M', './images/Striped Scarf.png'),
+(164, 20, 54, 'Blue', 'L', './images/Striped Scarf.png'),
+(165, 20, 12, 'Blue', 'XL', './images/Striped Scarf.png'),
+(166, 21, 23, 'Neon', 'XS', './images/Winter Goggles.png'),
+(167, 21, 43, 'Neon', 'S', './images/Winter Goggles.png'),
+(168, 21, 12, 'Neon', 'M', './images/Winter Goggles.png'),
+(169, 21, 43, 'Neon', 'L', './images/Winter Goggles.png'),
+(170, 21, 21, 'Neon', 'XL', './images/Winter Goggles.png'),
+(171, 21, 23, 'Neon', 'XS', './images/Winter Goggles.png'),
+(172, 21, 43, 'Neon', 'S', './images/Winter Goggles.png'),
+(173, 21, 12, 'Neon', 'M', './images/Winter Goggles.png'),
+(174, 21, 43, 'Neon', 'L', './images/Winter Goggles.png'),
+(175, 21, 21, 'Neon', 'XL', './images/Winter Goggles.png'),
+(176, 23, 32, 'Tartan', 'XS', './images/Tartan Scarf.png'),
+(177, 23, 54, 'Tartan', 'S', './images/Tartan Scarf.png'),
+(178, 23, 23, 'Tartan', 'M', './images/Tartan Scarf.png'),
+(179, 23, 34, 'Tartan', 'L', './images/Tartan Scarf.png'),
+(180, 23, 12, 'Tartan', 'XL', './images/Tartan Scarf.png'),
+(181, 24, 12, 'Grey', 'XS', './images/Snood.png'),
+(182, 24, 32, 'Grey', 'S', './images/Snood.png'),
+(183, 24, 21, 'Grey', 'M', './images/Snood.png'),
+(184, 24, 23, 'Grey', 'L', './images/Snood.png'),
+(185, 24, 64, 'Grey', 'XL', './images/Snood.png'),
+(186, 25, 12, 'Grey', 'XS', './images/Sports Goggles.png'),
+(187, 25, 32, 'Grey', 'S', './images/Sports Goggles.png'),
+(188, 25, 21, 'Grey', 'M', './images/Sports Goggles.png'),
+(189, 25, 32, 'Grey', 'L', './images/Sports Goggles.png'),
+(190, 25, 54, 'Grey', 'XL', './images/Sports Goggles.png');
 
 -- --------------------------------------------------------
 
@@ -209,8 +294,21 @@ INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `descri
 (7, 'Logo Beanie', 'Hat', '25', '', './images/Hat3-hover.png'),
 (8, 'Trapper Hat', 'Hat', '25', '', './images/Hat4-hover.png'),
 (9, 'Bobble Hat', 'Hat', '30', '', './images/Hat5-hover.png'),
-(10, 'Boot', 'Boot', '30', '', './images/Boot1-hover.png'),
-(11, 'Sturdy Winter Boot', 'Boots Sturdy Hiking Snow', '70', 'Sturdy winter boots ideal for long walks in the snow!', './images/Sturdy Winter Boot.png');
+(10, 'Leather Walking Boot', 'Boot', '30', 'Leather Walking boot great for outdoors as well as formal settings!', './images/Boot1-hover.png'),
+(11, 'Sturdy Winter Boot', 'Boots Sturdy Hiking Snow', '70', 'Sturdy winter boots ideal for long walks in the snow!', './images/Sturdy Winter Boot.png'),
+(12, 'Water Proof Hiking Boot', 'Boot, Waterproof', '50', 'Water proof boots ideal for activities in wetter climates', './images/Water Proof Hiking Boot.png'),
+(13, 'Sleek Boot', 'Boot, Hiking, Waterproof', '50', '...', './images/Sleek Boot.png'),
+(14, 'Sports Boot', 'Boot, Sports', '45', 'Sporty boot ideal for winter sports!', './images/Boot5-hover.png'),
+(15, 'Insulated Gloves', 'Gloves', '15', 'Insulated gloves ideal for winter activities!', './images/Insulated Gloves-hover.png'),
+(16, 'Tactile Gloves', 'Gloves, Sports', '20', 'Tactile gloves handy for winter sports!', './images/Tactile Gloves-hover.png'),
+(17, 'Sports Gloves', 'Gloves, Sports', '30', 'Sports gloves are top of the range for winter sports', './images/Sports Gloves-hover.png'),
+(18, 'Heat-Trapping Gloves', 'Gloves, Warm', '20', 'Heat trapping gloves for keeping your hand warm even in the coldest climates!', './images/Heat-Trapping Gloves-hover.png'),
+(19, 'Fingerless Gloves', 'Gloves, Fingerless', '10', 'Fingerless gloves keep your hands warm without hindering mobility!', './images/Fingerless Gloves-hover.png'),
+(20, 'Striped Scarf', 'Accessory, Scarf, Neck', '20', 'Keep your neck warm in cold climates!', './images/Striped Scarf-hover.png'),
+(21, 'Winter Goggles', 'Accessory, Goggles, Eyes, Sports', '45', 'Winter goggles to protect your eyes in the harsh winter sun, ideal for winter sports!', './images/Winter Goggles-hover.png'),
+(23, 'Tartan Scarf', 'Accessory, Scarf, Neck', '25', 'Add some colour to your winter outfit while staying warm!', './images/Tartan Scarf-hover.png'),
+(24, 'Snood', 'Accessory, Snood, Face Cover', '15', 'A winter accessory to keep your face warm during the winter!', './images/Snood-hover.png'),
+(25, 'Sports Goggles', 'Accessory, Goggles, Eyes, Sports', '35', 'Sleek sports goggles for winter activites!', './images/Sports Goggles-hover.png');
 
 -- --------------------------------------------------------
 
@@ -245,7 +343,9 @@ INSERT INTO `reviews` (`id`, `product_id`, `name`, `review`, `rating`, `review_d
 (13, 1, 'Warren Mills', 'Everything is awesome!', 5, '2020-01-16 19:34:08'),
 (14, 1, 'Larry Johnson', 'Brilliant, thank you for providing quality jackets!', 5, '2020-01-29 18:40:36'),
 (22, 1, 'Majid Yusuf', 'Very enjoyable product!', 4, '2024-03-25 01:01:24'),
-(23, 46, 'Majid Yusuf', 'Nice jacket', 4, '2024-03-25 01:11:57');
+(23, 46, 'Majid Yusuf', 'Nice jacket', 4, '2024-03-25 01:11:57'),
+(24, 1, 'Jacob Woodhouse', 'Great', 5, '2024-03-25 01:22:19');
+
 -- --------------------------------------------------------
 
 --
@@ -340,19 +440,19 @@ ALTER TABLE `orderitems`
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
+  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `producttype`
 --
 ALTER TABLE `producttype`
-  MODIFY `productTypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `productTypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
