@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 05:58 AM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.2.0
+-- Host: localhost
+-- Generation Time: Mar 25, 2024 at 05:33 AM
+-- Server version: 8.0.36-0ubuntu0.20.04.1
+-- PHP Version: 8.2.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `glacier_guys`
+-- Database: `u_220219442_glacierguys`
 --
 
 -- --------------------------------------------------------
@@ -28,10 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `complaints` (
-  `complaintid` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `comment` text NOT NULL,
+  `complaintid` int NOT NULL,
+  `name` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `comment` text COLLATE utf8mb4_general_ci NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -49,17 +49,17 @@ INSERT INTO `complaints` (`complaintid`, `name`, `email`, `comment`, `date`) VAL
 --
 
 CREATE TABLE `order` (
-  `orderid` int(11) NOT NULL,
-  `userid` int(11) DEFAULT NULL,
+  `orderid` int NOT NULL,
+  `userid` int DEFAULT NULL,
   `datePlaced` date NOT NULL,
-  `totalPrice` int(11) NOT NULL,
-  `fullName` varchar(64) NOT NULL,
-  `email` varchar(64) NOT NULL,
-  `phoneNumber` varchar(16) NOT NULL,
-  `country` varchar(8) NOT NULL,
-  `city` varchar(32) NOT NULL,
-  `address` varchar(64) NOT NULL,
-  `postcode` varchar(9) NOT NULL
+  `totalPrice` int NOT NULL,
+  `fullName` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `email` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `phoneNumber` varchar(16) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `country` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `city` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `address` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `postcode` varchar(9) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -70,7 +70,20 @@ INSERT INTO `order` (`orderid`, `userid`, `datePlaced`, `totalPrice`, `fullName`
 (2, 1, '2024-03-25', 85, '', '', '', '', '', '', ''),
 (3, 1, '2024-03-25', 75, '', '', '', '', '', '', ''),
 (4, 1, '2024-03-25', 50, '', '', '', '', '', '', ''),
-(5, 1, '2024-03-25', 5, '', '', '', '', '', '', '');
+(5, 1, '2024-03-25', 5, '', '', '', '', '', '', ''),
+(6, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(12, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(13, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(14, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(15, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(16, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(17, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(18, 1, '2024-03-25', 75, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -79,10 +92,10 @@ INSERT INTO `order` (`orderid`, `userid`, `datePlaced`, `totalPrice`, `fullName`
 --
 
 CREATE TABLE `orderitems` (
-  `orderItemsid` int(11) NOT NULL,
-  `orderid` int(11) NOT NULL,
-  `productid` int(11) NOT NULL,
-  `quantity` int(11) NOT NULL
+  `orderItemsid` int NOT NULL,
+  `orderid` int NOT NULL,
+  `productid` int NOT NULL,
+  `quantity` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -93,7 +106,12 @@ INSERT INTO `orderitems` (`orderItemsid`, `orderid`, `productid`, `quantity`) VA
 (2, 2, 26, 1),
 (3, 3, 22, 1),
 (8, 4, 13, 1),
-(11, 5, 23, 1);
+(11, 5, 23, 1),
+(12, 7, 17, 1),
+(13, 15, 17, 1),
+(14, 16, 17, 1),
+(15, 17, 17, 1),
+(16, 18, 17, 1);
 
 -- --------------------------------------------------------
 
@@ -102,12 +120,12 @@ INSERT INTO `orderitems` (`orderItemsid`, `orderid`, `productid`, `quantity`) VA
 --
 
 CREATE TABLE `product` (
-  `productid` int(11) NOT NULL,
-  `productTypeid` int(11) NOT NULL,
-  `stock` int(11) NOT NULL,
-  `colour` text NOT NULL,
-  `size` text NOT NULL,
-  `imageFilePath` text NOT NULL
+  `productid` int NOT NULL,
+  `productTypeid` int NOT NULL,
+  `stock` int NOT NULL,
+  `colour` text COLLATE utf8mb4_general_ci NOT NULL,
+  `size` text COLLATE utf8mb4_general_ci NOT NULL,
+  `imageFilePath` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -313,12 +331,12 @@ INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, 
 --
 
 CREATE TABLE `producttype` (
-  `productTypeid` int(11) NOT NULL,
-  `name` varchar(64) NOT NULL,
-  `keywords` text NOT NULL,
-  `price` varchar(8) NOT NULL,
-  `description` text NOT NULL,
-  `hoverImageFilePath` text NOT NULL
+  `productTypeid` int NOT NULL,
+  `name` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `keywords` text COLLATE utf8mb4_general_ci NOT NULL,
+  `price` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `description` text COLLATE utf8mb4_general_ci NOT NULL,
+  `hoverImageFilePath` text COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -359,13 +377,13 @@ INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `descri
 --
 
 CREATE TABLE `reviews` (
-  `id` int(11) NOT NULL,
-  `product_id` int(11) NOT NULL,
+  `id` int NOT NULL,
+  `product_id` int NOT NULL,
   `name` varchar(255) NOT NULL,
   `review` text NOT NULL,
   `rating` tinyint(1) NOT NULL,
-  `review_date` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+  `review_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Dumping data for table `reviews`
@@ -395,19 +413,19 @@ INSERT INTO `reviews` (`id`, `product_id`, `name`, `review`, `rating`, `review_d
 --
 
 CREATE TABLE `user` (
-  `userid` int(11) NOT NULL,
-  `username` varchar(64) NOT NULL,
-  `password` text NOT NULL,
-  `email` varchar(128) NOT NULL,
-  `accountType` varchar(8) NOT NULL,
-  `basket` text NOT NULL,
-  `phoneNum` int(11) NOT NULL,
-  `address1` varchar(64) NOT NULL,
-  `address2` varchar(64) NOT NULL,
-  `country` varchar(8) NOT NULL,
-  `postcode` text NOT NULL,
-  `city` varchar(32) NOT NULL,
-  `fullName` varchar(64) NOT NULL
+  `userid` int NOT NULL,
+  `username` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` text COLLATE utf8mb4_general_ci NOT NULL,
+  `email` varchar(128) COLLATE utf8mb4_general_ci NOT NULL,
+  `accountType` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `basket` text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `phoneNum` int NOT NULL,
+  `address1` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `address2` varchar(64) COLLATE utf8mb4_general_ci NOT NULL,
+  `country` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `postcode` text COLLATE utf8mb4_general_ci NOT NULL,
+  `city` varchar(32) COLLATE utf8mb4_general_ci NOT NULL,
+  `fullName` varchar(64) COLLATE utf8mb4_general_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -415,7 +433,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `basket`, `phoneNum`, `address1`, `address2`, `country`, `postcode`, `city`, `fullName`) VALUES
-(1, 'Jacob Woodhouse', '$2y$10$0USqY0UkwVR83LFEtiDWDuVWPv2IDTVcW/3YTdO.qYH/jd0GNmVXC', 'Jacobwoodhouse333@gmail.com', 'admin', '', 0, '20 Ankadine Road', '', 'UK', 'DY8 4UG', 'Stourbridge', 'Jacob Woodhouse'),
+(1, 'Jacob Woodhouse', '$2y$10$0USqY0UkwVR83LFEtiDWDuVWPv2IDTVcW/3YTdO.qYH/jd0GNmVXC', 'Jacobwoodhouse333@gmail.com', 'admin', NULL, 0, '20 Ankadine Road', '', 'UK', 'DY8 4UG', 'Stourbridge', 'Jacob Woodhouse'),
 (2, 'Jacob', '$2y$10$nMaxWk.2dGHEASYracqYA.R0msR5Jw8.YstmawNWa/0yUodMpF/Ua', '220219442@aston.ac.uk', 'admin', '', 0, '', '', '', '', '', '');
 
 --
@@ -476,43 +494,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `complaints`
 --
 ALTER TABLE `complaints`
-  MODIFY `complaintid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `complaintid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `orderid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `orderItemsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `orderItemsid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `productid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
+  MODIFY `productid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=191;
 
 --
 -- AUTO_INCREMENT for table `producttype`
 --
 ALTER TABLE `producttype`
-  MODIFY `productTypeid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `productTypeid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `userid` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
