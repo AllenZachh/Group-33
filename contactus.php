@@ -10,7 +10,7 @@
 
     <style>
         body {
-            background-image: url('Images/contact.jpg');
+            background-image: url('./images/contact.jpg');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -35,7 +35,7 @@
         <li><a href="product_list.php">Products</a></li>
         <li><a href="contactus.php">Contact Us</a></li>
         <li><a href="aboutus.php">About Us</a></li>
-        <li><img src="Images/logo.png" alt="Logo" class="logo"></li>
+        <li><img src="./images/Glacier Guys.png" alt="Logo" class="logo"></li>
     </ul>
 
     <div class="contact-details">
@@ -70,10 +70,10 @@
 
 <footer>
     <div class="social-icons">
-        <a href="https://www.facebook.com" target="_blank"><img src="Images/fb.jpg" alt="Facebook"></a>
-        <a href="https://www.linkedin.com" target="_blank"><img src="Images/lkin.jpg" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com" target="_blank"><img src="Images/insta.jpg" alt="Instagram"></a>
-        <a href="https://www.twitter.com" target="_blank"><img src="Images/x.jpeg" alt="Twitter"></a>
+        <a href="https://www.facebook.com" target="_blank"><img src="./images/fb.jpg" alt="Facebook"></a>
+        <a href="https://www.linkedin.com" target="_blank"><img src="./images/lkin.jpg" alt="LinkedIn"></a>
+        <a href="https://www.instagram.com" target="_blank"><img src="./images/insta.jpg" alt="Instagram"></a>
+        <a href="https://www.twitter.com" target="_blank"><img src="./images/x.jpeg" alt="Twitter"></a>
     </div>
     <p>&copy; 2023 Glacier Guys</p>
 </footer>

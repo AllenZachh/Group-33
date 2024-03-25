@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="css/castyles.css">
-    <link rel="stylesheet" href="css/hf.css">
+    <link rel="stylesheet" href="./css/castyles.css">
+    <link rel="stylesheet" href="./css/hf.css">
     <title>Contact Us</title>
 </head>
 
@@ -16,7 +16,7 @@
         <li><a href="products_list.php">Products</a></li>
         <li><a href="contactus.php">Contact Us</a></li>
         <li><a href="aboutus.php">About Us</a></li>
-        <li><img src="Images/Glacier Guys.png" alt="Logo" class="logo"></li>
+        <li><img src="./images/Glacier Guys.png" alt="Logo" class="logo"></li>
         
     </ul>
 
@@ -26,7 +26,7 @@
 
     <section class="container about-us">
         <div class="new-card" id="values">
-            <img src="Images/Values.jpg" alt="Values">
+            <img src="./images/Values.jpg" alt="Values">
             <div class="overlay">
                 <div class="content">
                     <h2> Company Values</h2>
@@ -41,7 +41,7 @@
         </div>
 
         <div class="new-card" id=" vision-mission">
-            <img src="Images/vm.jpg" alt="Vision and Mission">
+            <img src="./images/vm.jpg" alt="Vision and Mission">
             <div class="overlay">
                 <div class="content">
                     <h2> Vision and Mission</h2>
@@ -55,7 +55,7 @@
         </div>
 
         <div class="new-card" id="teamwork">
-            <img src="Images/teamwork.jpg" alt="Teamwork">
+            <img src="./images/teamwork.jpg" alt="Teamwork">
             <div class="overlay">
                 <div class="content">
                     <h2>Teamwork</h2>
@@ -67,7 +67,7 @@
         </div>
 
         <div class="new-card" id="who-we-are">
-            <img src="Images/Aston.jpg" alt="Who We Are">
+            <img src="./images/Aston.jpg" alt="Who We Are">
             <div class="overlay">
                 <div class="content">
                     <h2>Who Are We</h2>
@@ -78,7 +78,7 @@
         </div>
 
         <div class="new-card" id="our-products">
-            <img src="Images/Products.jpg" alt="Our Products">
+            <img src="./images/Products.jpg" alt="Our Products">
             <div class="overlay">
                 <div class="content">
                     <h2>Our Products</h2>
@@ -94,10 +94,10 @@
 
     <footer>
         <div class="social-icons">
-            <a href="https://www.facebook.com" target="_blank"><img src="Images/fb.jpg" alt="Facebook"></a>
-            <a href="https://www.linkedin.com" target="_blank"><img src="Images/lkin.jpg" alt="LinkedIn"></a>
-            <a href="https://www.instagram.com" target="_blank"><img src="Images/insta.jpg" alt="Instagram"></a>
-            <a href="https://www.twitter.com" target="_blank"><img src="Images/x.jpeg" alt="Twitter"></a>
+            <a href="https://www.facebook.com" target="_blank"><img src="././images/fb.jpg" alt="Facebook"></a>
+            <a href="https://www.linkedin.com" target="_blank"><img src="./images/lkin.jpg" alt="LinkedIn"></a>
+            <a href="https://www.instagram.com" target="_blank"><img src="./images/insta.jpg" alt="Instagram"></a>
+            <a href="https://www.twitter.com" target="_blank"><img src="./images/x.jpeg" alt="Twitter"></a>
         </div>
         <p>&copy; 2023 Glacier Guys</p>
     </footer>

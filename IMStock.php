@@ -66,14 +66,9 @@ if (!isset($_SESSION['accountType']) or $_SESSION['accountType'] != "admin"){
 <?php
 try{
 
-    if (isset($_GET["q"])){
-        $query="SELECT * FROM product WHERE keywords LIKE '%".$_GET['q']."%'";
-        $rows = $db->query($query);
-    } else {
-      $query="SELECT * FROM product";
-      $rows = $db->query($query);
-    }
-    $query="SELECT * FROM productType";
+    $query="SELECT * FROM product";
+    $rows = $db->query($query);
+    $query="SELECT * FROM producttype";
     $types = $db->query($query);
     $types =  $types->fetchAll(PDO::FETCH_ASSOC);
 
@@ -85,6 +80,7 @@ try{
   <tr><th align='left'><b>Image</b></th ><th align='left'><b>Name</b></th> <th align='left'><b>Description</b></th> <th align='left'><b>Stock</b></th ><th align='left'><b>Size</b></th ><th align='left'>Action</th></tr>
   <?php
     while  ($row =  $rows->fetch())	{
+      try{
         echo  " <form method='post' action='IMStock.php?select=".$row['productid']."'>
                 <tr><td align='left'><img src = '" . $row['imageFilePath'] . "' height = '200'></img></td>
                 <td align='left'>" . $types[$row['productTypeid']-1]['name'] . "</td>
@@ -97,6 +93,9 @@ try{
           <input type='hidden' name='edit' />
         </form>
         </td></tr>\n";
+      } catch (TypeError){
+        echo"item not found";
+      }
 
           }
           echo  '</table></div>';
