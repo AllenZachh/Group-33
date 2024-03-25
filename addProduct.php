@@ -118,7 +118,6 @@ try{
     $stat = $db->prepare('INSERT INTO product (productid, productTypeid, stock, colour, size, imageFilePath) VALUES (NULL, ?, ?, ?, ?, ?)');
     $stat->execute(array($id['productTypeid'], $stock, $colour, $size, $target_file2));
   }
-  header("Location:IMProducts.php");
 
 } catch (PDOexception $ex){
   $error = TRUE;
