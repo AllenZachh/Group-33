@@ -36,11 +36,6 @@
                 <i class="fas fa-warehouse"></i>
                 <span>Stock</span>
             </a></li>
-            <li><a href="IMAnalytics.php">
-                <i class="fas fa-chart-bar"></i>
-                <span>Analytics</span>
-            </a>
-            </li>
         </ul>
         </nav>
     </div>
