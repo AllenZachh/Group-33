@@ -57,7 +57,7 @@ foreach ($basket as $item){
 $createOrderItem = $db->prepare("INSERT INTO orderitems (orderItemsid, orderid, productid, quantity) VALUES (NULL, ?, ?, ?)");
 $createOrderItem->execute(array($info["orderid"], $temp, $quantity));
 
-$rmvBasket = $db->prepare("UPDATE user SET basket = NULL WHERE userid = ".$userid);
+$rmvBasket = $db->prepare("UPDATE user SET basket = NULL WHERE userid = '".$userid."'");
 $rmvBasket->execute();
 
 header("Location:OrderConfirmation.php");
