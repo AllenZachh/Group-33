@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 25, 2024 at 03:06 AM
+-- Generation Time: Mar 25, 2024 at 05:58 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `glacier_guys`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `complaints`
+--
+
+CREATE TABLE `complaints` (
+  `complaintid` int(11) NOT NULL,
+  `name` varchar(64) NOT NULL,
+  `email` varchar(64) NOT NULL,
+  `comment` text NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `complaints`
+--
+
+INSERT INTO `complaints` (`complaintid`, `name`, `email`, `comment`, `date`) VALUES
+(1, 'Jacob Woodhouse', 'Jacobwoodhouse333@gmail.com', 'baf\r\n', '2024-03-25');
 
 -- --------------------------------------------------------
 
@@ -41,6 +62,16 @@ CREATE TABLE `order` (
   `postcode` varchar(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `order`
+--
+
+INSERT INTO `order` (`orderid`, `userid`, `datePlaced`, `totalPrice`, `fullName`, `email`, `phoneNumber`, `country`, `city`, `address`, `postcode`) VALUES
+(2, 1, '2024-03-25', 85, '', '', '', '', '', '', ''),
+(3, 1, '2024-03-25', 75, '', '', '', '', '', '', ''),
+(4, 1, '2024-03-25', 50, '', '', '', '', '', '', ''),
+(5, 1, '2024-03-25', 5, '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -53,6 +84,16 @@ CREATE TABLE `orderitems` (
   `productid` int(11) NOT NULL,
   `quantity` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orderitems`
+--
+
+INSERT INTO `orderitems` (`orderItemsid`, `orderid`, `productid`, `quantity`) VALUES
+(2, 2, 26, 1),
+(3, 3, 22, 1),
+(8, 4, 13, 1),
+(11, 5, 23, 1);
 
 -- --------------------------------------------------------
 
@@ -74,15 +115,15 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, `imageFilePath`) VALUES
-(1, 1, 50, 'Green', 'XS', './images/Coat1.png'),
+(1, 1, 49, 'Green', 'XS', './images/Coat1.png'),
 (2, 1, 50, 'Green', 'S', './images/Coat1.png'),
-(3, 1, 50, 'Green', 'M', './images/Coat1.png'),
+(3, 1, 49, 'Green', 'M', './images/Coat1.png'),
 (4, 1, 50, 'Green', 'L', './images/Coat1.png'),
 (5, 1, 50, 'Green', 'XL', './images/Coat1.png'),
 (6, 1, 50, 'Red', 'XS', './images/Coat1Red.png'),
-(7, 1, 50, 'Red', 'S', './images/Coat1Red.png'),
+(7, 1, 49, 'Red', 'S', './images/Coat1Red.png'),
 (8, 1, 50, 'Red', 'M', './images/Coat1Red.png'),
-(9, 1, 50, 'Red', 'L', './images/Coat1Red.png'),
+(9, 1, 49, 'Red', 'L', './images/Coat1Red.png'),
 (10, 1, 50, 'Red', 'XL', './images/Coat1Red.png'),
 (11, 1, 50, 'Blue', 'XS', './images/Coat1Blue.png'),
 (12, 1, 50, 'Blue', 'S', './images/Coat1Blue.png'),
@@ -90,12 +131,12 @@ INSERT INTO `product` (`productid`, `productTypeid`, `stock`, `colour`, `size`, 
 (14, 1, 50, 'Blue', 'L', './images/Coat1Blue.png'),
 (15, 1, 50, 'Blue', 'XL', './images/Coat1Blue.png'),
 (16, 2, 50, 'Orange', 'XS', './images/Coat2.png'),
-(17, 2, 50, 'Orange', 'S', './images/Coat2.png'),
+(17, 2, 49, 'Orange', 'S', './images/Coat2.png'),
 (18, 2, 50, 'Orange', 'M', './images/Coat2.png'),
 (19, 2, 50, 'Orange', 'L', './images/Coat2.png'),
 (20, 2, 50, 'Orange', 'XL', './images/Coat2.png'),
 (21, 2, 50, 'Blue', 'XS', './images/Coat2Blue.png'),
-(22, 2, 50, 'Blue', 'S', './images/Coat2Blue.png'),
+(22, 2, 48, 'Blue', 'S', './images/Coat2Blue.png'),
 (23, 2, 50, 'Blue', 'M', './images/Coat2Blue.png'),
 (24, 2, 50, 'Blue', 'L', './images/Coat2Blue.png'),
 (25, 2, 50, 'Blue', 'XL', './images/Coat2Blue.png'),
@@ -306,6 +347,7 @@ INSERT INTO `producttype` (`productTypeid`, `name`, `keywords`, `price`, `descri
 (19, 'Fingerless Gloves', 'Gloves, Fingerless', '10', 'Fingerless gloves keep your hands warm without hindering mobility!', './images/Fingerless Gloves-hover.png'),
 (20, 'Striped Scarf', 'Accessory, Scarf, Neck', '20', 'Keep your neck warm in cold climates!', './images/Striped Scarf-hover.png'),
 (21, 'Winter Goggles', 'Accessory, Goggles, Eyes, Sports', '45', 'Winter goggles to protect your eyes in the harsh winter sun, ideal for winter sports!', './images/Winter Goggles-hover.png'),
+(22, '', '', '', '', ''),
 (23, 'Tartan Scarf', 'Accessory, Scarf, Neck', '25', 'Add some colour to your winter outfit while staying warm!', './images/Tartan Scarf-hover.png'),
 (24, 'Snood', 'Accessory, Snood, Face Cover', '15', 'A winter accessory to keep your face warm during the winter!', './images/Snood-hover.png'),
 (25, 'Sports Goggles', 'Accessory, Goggles, Eyes, Sports', '35', 'Sleek sports goggles for winter activites!', './images/Sports Goggles-hover.png');
@@ -373,12 +415,18 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`userid`, `username`, `password`, `email`, `accountType`, `basket`, `phoneNum`, `address1`, `address2`, `country`, `postcode`, `city`, `fullName`) VALUES
-(1, 'Jacob Woodhouse', '$2y$10$4gmdX8rLuqkzGjms/Yy6IeftdaNR0nbeSUr5akO4zTn9evgRiM8ei', 'Jacobwoodhouse333@gmail.com', 'admin', '[26]', 0, 'Aston St', '', 'UK', 'B4 7ET', 'Birmingham', ''),
+(1, 'Jacob Woodhouse', '$2y$10$0USqY0UkwVR83LFEtiDWDuVWPv2IDTVcW/3YTdO.qYH/jd0GNmVXC', 'Jacobwoodhouse333@gmail.com', 'admin', '', 0, '20 Ankadine Road', '', 'UK', 'DY8 4UG', 'Stourbridge', 'Jacob Woodhouse'),
 (2, 'Jacob', '$2y$10$nMaxWk.2dGHEASYracqYA.R0msR5Jw8.YstmawNWa/0yUodMpF/Ua', '220219442@aston.ac.uk', 'admin', '', 0, '', '', '', '', '', '');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `complaints`
+--
+ALTER TABLE `complaints`
+  ADD PRIMARY KEY (`complaintid`);
 
 --
 -- Indexes for table `order`
@@ -425,16 +473,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `complaints`
+--
+ALTER TABLE `complaints`
+  MODIFY `complaintid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
-  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `orderid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orderitems`
 --
 ALTER TABLE `orderitems`
-  MODIFY `orderItemsid` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `orderItemsid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `product`
