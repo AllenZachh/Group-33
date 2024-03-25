@@ -396,7 +396,7 @@ a.link:active
     align-items: center;
 }
 
-.rButton, .submit {
+.cartbutton, .rButton, .submit, .reviewbutton, .makeChanges, .changeD {
   width: fit-content;
   height: fit-content;
   background-color: #B3DAF1;
@@ -484,4 +484,11 @@ textarea{
   border-radius: 5px;
   resize: none;
 
+}
+
+.endbuttons {
+  display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    
 }
