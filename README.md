@@ -18,7 +18,7 @@ This project contains the following:
 * PHP code for all basic functions of a websstore
 
 
-##How to run (Using XAMPP)
+## How to run (Using XAMPP) ##
 
 * Download Glacier Guys source code
 * Download and Install XAMPP from https://www.apachefriends.org
