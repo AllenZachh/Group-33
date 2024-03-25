@@ -29,7 +29,7 @@
                 <i class="fas fa-newspaper"></i>
                 <span class="nav-item">Report</span> 
             </a></li>
-            <li><a href="ImStock.php">
+            <li><a href="IMStock.php">
                 <i class="fas fa-warehouse"></i>
                 <span>Stock</span>
             </a></li>
