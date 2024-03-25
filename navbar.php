@@ -1,11 +1,18 @@
 <?php 
 
 function navbar($currentPage){
+    if ($currentPage == "account"){
+        $current = 'class="active"';
+    } else {
+        $current = '';
+    }
     if (isset($_SESSION["username"])){ 
-        $loggedIn = "<a>Logged in as ".$_SESSION['username']."</a>";
+        $loggedIn = "<a '.$current.' href='viewDetails.php'>Logged in as ".$_SESSION['username']."</a>";
     } else {
         $loggedIn = "";
     }
+
+    
 
     echo '<div class="topnav">
     <link rel ="stylesheet" href = "./css/navbarStyle.css">

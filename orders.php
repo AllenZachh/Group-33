@@ -1,7 +1,11 @@
 <?php
 session_start();
 require_once('connectdb.php');
-$result = "";
+
+$query= "SELECT * FROM `order` WHERE userid = ".$_SESSION['userid'];
+$rows = $db->query($query);
+$rows = $rows->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +19,7 @@ $result = "";
     <title>Products | Glacier Guys</title>
 </head>
 
-<?php require_once("navbar.php");
-navbar("productList"); ?>
+<?php require_once("navbar.php"); navbar("account"); ?>
 
 <body>
 
@@ -30,30 +33,50 @@ navbar("productList"); ?>
                 </ul>
             </div>
             <div class="accountWelcome">
-                <h1>Hello Name</h1>
+                <h1>Hello <?= $_SESSION['username']?></h1>
                 <h1>These are your orders</h1>
             </div>
         </div>
-        <h2>Order Number</h2>
-        <h2>Order Price</h2>
+        <?php foreach ($rows as $row): 
+            $query= "SELECT * FROM `orderitems` WHERE orderid = ".$row["orderid"];
+            $items = $db->query($query);
+            $items = $items->fetchAll();
+        ?>
+        <h2>Order Number: #<?= $row['orderid']?></h2>
+        <h2>Order Price: £<?= $row['totalPrice']?></h2>
+        <?php
+            foreach ($items as $item):
+
+            $query= "SELECT * FROM `product` WHERE productid = ".$item["productid"];
+            $indivItems = $db->query($query);
+            $indivItems = $indivItems->fetchAll();
+
+            foreach ($indivItems as $indivItem):
+
+            $query= "SELECT * FROM `producttype` WHERE productTypeid = ".$indivItems[0]["productTypeid"];
+            $productType = $db->query($query);
+            $productType = $productType->fetch();
+        ?>
         <div class="orderCard">
             <div class="orderCardImg">
-                <img src="Images/Boot2.png">
+                <img src="<?=  $indivItems[0]["imageFilePath"]?>">
             </div>
             <div class="orderCardInfo">
-                <h4>Item</h4>
-                <h4>Item Price</h4>
-                <h4>Item Size</h4>
-                <h4 id="status">Delivered</h4>
+                <h4><?=  $productType["name"]?></h4>
+                <h4>Price: £<?=  $productType["price"]?></h4>
+                <h4>Size: <?=  $indivItems[0]["size"]?></h4>
+                <h4>Quantity: <?=  $item["quantity"]?></h4>
+                <h4 id="status">Not Delivered</h4>
             </div>
             <div class="orderCardButtons">
-               <a href = "refund.php" 
+               <a href = "refund.php?orderitems_id=<?= $item['orderItemsid']?>" 
                <button class = "rButton" id="refundButton" type="button">Refund this</button></a>
                 <p></p>
-                <a href = "review.php" 
+                <a href = "review.php?product_id=<?= $indivItem['productid']?>.php" 
                 <button class = "rButton" id="reviewButton" type="button">Review this item!!</button></a>
             </div>
-        </div>
+        </div><br>
+        <?php endforeach;endforeach;echo"<br><br>";endforeach; ?>
     </div>
 
 </body>
