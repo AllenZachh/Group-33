@@ -153,7 +153,7 @@
 <!-- Button to send to review page-->
 <form action="review.php" method="get">
     <input type="hidden" id="product_id" name="product_id" value="<?php echo $product['productid']?>">
-    <input type="submit" value="Reviews!">
+    <input class = "reviewbutton" type="submit" value="Reviews!">
 </form>
 
 <div class = bottom>
