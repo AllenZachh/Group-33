@@ -1,13 +1,13 @@
 <?php
 $target_dir = "./images/";
 if (str_contains($_FILES["fileToUpload"]["name"], '.jpg')){
-    $target_file = $target_dir . basename($_POST['name'].'.jpg');
+    $target_file = $target_dir . basename($_POST['name'].'-hover.jpg');
 } elseif (str_contains($_FILES["fileToUpload"]["name"], '.png')) {
-    $target_file = $target_dir . basename($_POST['name'].'.png');
+    $target_file = $target_dir . basename($_POST['name'].'-hover.png');
 } elseif (str_contains($_FILES["fileToUpload"]["name"], '.jpeg')) {
-    $target_file = $target_dir . basename($_POST['name'].'.jpeg');
+    $target_file = $target_dir . basename($_POST['name'].'.-hoverjpeg');
 } elseif (str_contains($_FILES["fileToUpload"]["name"], '.gif')) {
-    $target_file = $target_dir . basename($_POST['name'].'.gif');
+    $target_file = $target_dir . basename($_POST['name'].'.-hovergif');
 } else {
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
 }
