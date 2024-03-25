@@ -15,7 +15,13 @@ $result = "";
 <?php require_once("navbar.php");
 navbar("productList"); ?>
 
-<body>
+<body> 
+    <div class="accountNav">
+                <ul>
+                    <li><a href="viewDetails.php">View Details</a></li>
+                    <li><a href="orders.php">View Orders</a></li>
+                </ul>
+            </div>
     <h1>View and change your details</h1>
 
     <div id = "changeDetails">
@@ -35,7 +41,7 @@ navbar("productList"); ?>
 
         
               </form>
-              <button id = "changeD">Change Details</button>
+              <button class = "changeD" id = "changeD">Change Details</button>
 
             </div>
     </div>
