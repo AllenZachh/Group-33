@@ -1,3 +1,21 @@
+<?php
+
+    session_start();
+    if (isset($_POST)){
+
+        require_once('connectdb.php'); 
+      
+        $name=isset($_POST["name"])?$_POST["name"]:false;
+        $email=isset($_POST["email"])?$_POST["email"]:false;
+        $comment=isset($_POST["comments"])?$_POST["comments"]:false;
+
+        $stat = $db->prepare('INSERT INTO complaints (complaintid, name, email, comment, date) VALUES (NULL, ?, ?, ?, ?)');
+		$stat->execute(array($name, $email, $comment, date("Y-m-d")));
+
+    }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
