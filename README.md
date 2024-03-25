@@ -15,3 +15,16 @@ Team Members:
 This project contains the following:
 
 * PHP code to connect to a MySQL database
+* PHP code for all basic functions of a websstore
+
+
+##How to run (Using XAMPP)
+
+* Download Glacier Guys source code
+* Download and Install XAMPP from https://www.apachefriends.org
+* Start XAMPP Program Control Panel
+* Click on the "Start" buttons next to "Apache" and "MySQL"
+* Unzip source code into "htdocs" folder under "XAMPP" folder on your drive
+* Open any web browser and enter "localhost/phpmyadmin" and create a new database called "glaicer_guys"
+* Import "glacier_guys.sql" from unzipped code (File path "xampp/htdocs/database/glacier_guys.sql")
+* Open a new tab and enter "localhost/home.php"
