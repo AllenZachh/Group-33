@@ -87,13 +87,7 @@
     </script>
 
 <footer>
-    <div class="social-icons">
-        <a href="https://www.facebook.com" target="_blank"><img src="./images/fb.jpg" alt="Facebook"></a>
-        <a href="https://www.linkedin.com" target="_blank"><img src="./images/lkin.jpg" alt="LinkedIn"></a>
-        <a href="https://www.instagram.com" target="_blank"><img src="./images/insta.jpg" alt="Instagram"></a>
-        <a href="https://www.twitter.com" target="_blank"><img src="./images/x.jpeg" alt="Twitter"></a>
-    </div>
-    <p>&copy; 2023 Glacier Guys</p>
+<?php require_once("footer.php"); ?>
 </footer>
 
 </body>

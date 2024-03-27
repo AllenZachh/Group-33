@@ -25,8 +25,8 @@ if ($_SESSION['userid'] == $order['userid']){
     $stat = $db->prepare('UPDATE `order` SET totalPrice = ? WHERE orderid = ?');
     $stat->execute(array($newPrice, $row['orderid']));
 
-    //$stat = $db->prepare('DELETE FROM `orderitems` WHERE orderItemsid = ?');
-    //$stat->execute(array($_GET['orderitems_id']));
+    $stat = $db->prepare('DELETE FROM `orderitems` WHERE orderItemsid = ?');
+    $stat->execute(array($_GET['orderitems_id']));
 
     header('Location: orders.php');
     exit();
